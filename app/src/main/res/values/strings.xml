@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Ranking-Trivia Latam</string>
+
+    <string name="country_name_belize">Belize</string>
+    <string name="country_name_costa_rica">Costa Rica</string>
+    <string name="country_name_el_salvador">El Salvador</string>
+    <string name="country_name_guatemala">Guatemala</string>
+    <string name="country_name_honduras">Honduras</string>
+    <string name="country_name_mexico">México</string>
+    <string name="country_name_nicaragua">Nicaragua</string>
+    <string name="country_name_panama">Panamá</string>
+    <string name="country_name_argentina">Argentina</string>
+    <string name="country_name_bolivia">Bolivia</string>
+    <string name="country_name_brasil">Brasil</string>
+    <string name="country_name_chile">Chile</string>
+    <string name="country_name_colombia">Colombia</string>
+    <string name="country_name_ecuador">Ecuador</string>
+    <string name="country_name_jamaica">Jamaica</string>
+    <string name="country_name_guayana_francesa">Guayana Francesa</string>
+    <string name="country_name_guyana">Guyana</string>
+    <string name="country_name_paraguay">Paraguay</string>
+    <string name="country_name_peru">Perú</string>
+    <string name="country_name_surinam">Surinam</string>
+    <string name="country_name_uruguay">Uruguay</string>
+    <string name="country_name_venezuela">Venezuela</string>
+    <string name="country_name_cuba">Cuba</string>
+    <string name="country_name_republica_dominicana">República Dominicana</string>
+    <string name="country_name_haiti">Haití</string>
+    <string name="country_name_guadalupe">Guadalupe</string>
+    <string name="country_name_martinica">Martinica</string>
+    <string name="country_name_puerto_rico">Puerto Rico</string>
+    <string name="country_name_isla_san_martin">Isla San Martín</string>
+
+    <string name="about_disclaimer">
+        Sobre la veracidad de la información.\n\n
+        La información presentada en este juego sobre rankings y datos de países de América Latina ha sido recopilada de fuentes que consideramos confiables. Sin embargo, no garantizamos la exactitud, exhaustividad o actualidad de dicha información. Los datos proporcionados son solo para fines informativos y de entretenimiento, y no deben ser utilizados como referencia oficial o para la toma de decisiones importantes.
+        \nTe recomendamos consultar fuentes oficiales o actualizadas si necesitas información precisa o verificable.
+    </string>
+    <string name="about_ads">
+        Sobre el uso de anuncios.\n\n
+        Los anuncios que se presentan a lo largo de esta aplicación son gestionados por terceros y, por lo tanto, no tenemos control directo sobre el tipo de contenido que se muestra. La finalidad de estos anuncios es ayudarnos a cubrir los costos asociados con el desarrollo de la app, incluyendo el trabajo del equipo de diseño, desarrollo, alojamiento y mantenimiento.
+        \nAgradecemos tu comprensión y apoyo, ya que estos anuncios nos permiten seguir mejorando la aplicación y ofrecerte una mejor experiencia.
+    </string>
+    <string name="about_ui_and_sounds">
+        Sobre diseños y contenido multimedia.\n\n
+        La mayoría del diseño, arte gráfico, sonidos y demás elementos visuales y auditivos de esta aplicación han sido generados mediante herramientas de inteligencia artificial y retocados o editados por el equipo de desarrollo. Si en algún caso alguno de estos elementos coincide o es similar a otros ya existentes, esto es una mera coincidencia y no nos hacemos responsables por dichas similitudes.
+        \nAgradecemos tu comprensión y te aseguramos que nuestra intención es ofrecer una experiencia única e innovadora en la creación de esta app.
+    </string>
+
+</resources>

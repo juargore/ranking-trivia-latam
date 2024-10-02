@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "112977798107",
+    "project_id": "ranking-trivia-latam",
+    "storage_bucket": "ranking-trivia-latam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112977798107:android:5cb85fe81e2963da85bdfe",
+        "android_client_info": {
+          "package_name": "com.ranking.trivia.latam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4ohsdURC3nCb3Ri-onX85B8MZwUKYDao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
