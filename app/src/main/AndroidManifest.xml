@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ranking.trivia.latam">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:name="com.ranking.trivia.latam.TriviaLatamApplication"
@@ -25,6 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~1033173712"
+            />
+        <!-- android:value="ca-app-pub-3990823026049090~2056184328" PROD -->
+        <!-- android:value="ca-app-pub-3940256099942544~1033173712" DEV -->
     </application>
 
 </manifest>

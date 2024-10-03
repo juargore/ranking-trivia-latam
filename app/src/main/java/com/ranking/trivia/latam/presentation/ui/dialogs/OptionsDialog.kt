@@ -32,7 +32,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
@@ -48,6 +47,7 @@ import androidx.wear.compose.material.FractionalThreshold
 import androidx.wear.compose.material.rememberSwipeableState
 import androidx.wear.compose.material.swipeable
 import com.ranking.trivia.latam.R
+import com.ranking.trivia.latam.presentation.screens.home.HomeViewModel
 import com.ranking.trivia.latam.presentation.theme.CustomBlue
 import com.ranking.trivia.latam.presentation.theme.CustomGreen
 import com.ranking.trivia.latam.presentation.theme.Orange
@@ -60,11 +60,12 @@ import kotlin.math.roundToInt
 @Composable
 fun OptionsDialog(
     isVisible: Boolean,
-    isSoundEnabled: Boolean,
-    onSaveClicked: (enableSound: Boolean) -> Unit,
+    viewModel: HomeViewModel?,
     onExitClicked: () -> Unit
 ) {
-    var soundEnabled by remember { mutableStateOf(isSoundEnabled) }
+    var soundEnabled by remember { mutableStateOf(
+        viewModel?.shouldPlaySound() ?: false)
+    }
 
     if (isVisible) {
         BaseDialog(
@@ -101,7 +102,6 @@ fun OptionsDialog(
                             initialValue = if (soundEnabled) 1 else 0,
                             onCheckedChanged = { checked ->
                                 soundEnabled = checked
-                                println("AQUI: Valor de soundEnabled = $soundEnabled")
                             }
                         )
                         Spacer(modifier = Modifier.width(15.dp))
@@ -148,8 +148,9 @@ fun OptionsDialog(
                         ButtonExitOrRetry(
                             modifier = Modifier.weight(0.5f),
                             onClick = {
-                                println("AQUI: Valor de soundEnabled en onSave() = $soundEnabled")
-                                onSaveClicked(soundEnabled)
+                                viewModel?.saveEnableSound(soundEnabled)
+                                onExitClicked()
+                                //onSaveClicked(soundEnabled)
                                       },
                             content = {
                                 Text(
@@ -318,8 +319,7 @@ fun RadioButtonSample() {
 fun OptionsDialogPreview() {
     OptionsDialog(
         isVisible = true,
-        isSoundEnabled = true,
-        onSaveClicked = { },
+        viewModel = null,
         onExitClicked = { }
     )
 }

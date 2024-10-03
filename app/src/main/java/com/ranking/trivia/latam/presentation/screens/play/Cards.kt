@@ -58,18 +58,8 @@ fun CardEmptySpace(
     ) { isInBound, flag ->
 
         val isCurrentTarget = viewModel.currentDropTarget == index
-
-        val bgColor = if (isInBound && isCurrentTarget) {
-            Color.Yellow
-        } else {
-            Color.White
-        }
-
-        /*val bgColor = if (isInBound) {
-            Color.Yellow
-        } else {
-            Color.White
-        }*/
+        val backgroundColor = if (isInBound && isCurrentTarget) Color.Red else Color.White
+        val borderWidth = if (isInBound && isCurrentTarget) 4.dp else 1.5.dp
 
         flag?.let {
             if (isInBound && emptySpace.flag == null && !viewModel.isThisFlagAlreadyUsed(flag) && isCurrentTarget) {
@@ -87,7 +77,6 @@ fun CardEmptySpace(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(horizontal = 8.dp)
         ) {
-
             val background = Modifier
                 .background(
                     color = CustomBlue.copy(alpha = 0.4f),
@@ -122,8 +111,8 @@ fun CardEmptySpace(
                     .height(100.dp)
                     .width(120.dp)
                     .padding(vertical = 2.dp)
-                    .background(bgColor, shape = RoundedCornerShape(12.dp))
-                    .border(1.5.dp, Color.Black, RoundedCornerShape(12.dp))
+                    .background(backgroundColor, shape = RoundedCornerShape(12.dp))
+                    .border(borderWidth, Color.Black, RoundedCornerShape(12.dp))
             ) {
                 emptySpace.flag?.let {
                     CardFlag(flag = it, enableDragging = false)
@@ -167,7 +156,6 @@ fun CardEmptySpace(
                     }
                 }
             }
-
         }
     }
 }
@@ -244,10 +232,9 @@ fun CardFlag(
             dataToDrop = flag,
         ) {
             Card(
+                modifier = modifier,
                 elevation = CardDefaults.cardElevation(14.dp),
                 shape = RoundedCornerShape(12.dp),
-                modifier = modifier,
-                    //.rotate(getSwingAnimation(angleOffset, duration)),
                 content = { CardContent() }
             )
         }

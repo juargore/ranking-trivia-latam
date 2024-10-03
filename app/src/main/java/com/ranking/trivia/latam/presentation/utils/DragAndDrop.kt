@@ -1,5 +1,6 @@
 package com.ranking.trivia.latam.presentation.utils
 
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -83,7 +84,8 @@ fun <T> DragTarget(
                 currentPosition = it.localToWindow(Offset.Zero)
             }
             .pointerInput(Unit) {
-                detectDragGesturesAfterLongPress(
+                detectDragGestures(
+                //detectDragGesturesAfterLongPress(
                     onDragStart = {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         currentState.dataToDrop = dataToDrop
@@ -132,9 +134,9 @@ fun <T> DropTarget(
                 right = rect.right + margin,
                 bottom = rect.bottom + margin
             )
-            isCurrentDropTarget = expandedRect.contains(dragPosition + dragOffset)
+            //isCurrentDropTarget = expandedRect.contains(dragPosition + dragOffset)
 
-            //isCurrentDropTarget = rect.contains(dragPosition + dragOffset)
+            isCurrentDropTarget = rect.contains(dragPosition + dragOffset)
         }
     }) {
         val data = if (isCurrentDropTarget && !dragInfo.isDragging) dragInfo.dataToDrop as T? else null

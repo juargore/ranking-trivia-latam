@@ -22,17 +22,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ranking.trivia.latam.R
-import com.ranking.trivia.latam.domain.models.Question
-import com.ranking.trivia.latam.domain.models.QuestionLevel
 import com.ranking.trivia.latam.presentation.ui.dialogs.CorrectDialog
 import com.ranking.trivia.latam.presentation.ui.dialogs.IncorrectDialog
 import com.ranking.trivia.latam.presentation.ui.dialogs.TimeUpDialog
 import com.ranking.trivia.latam.presentation.utils.LongPressDraggable
+import com.ranking.trivia.latam.presentation.utils.loadAndShowAd
 import com.ranking.trivia.latam.presentation.utils.playSound
 
 @Composable
@@ -51,50 +49,63 @@ fun PlayScreen(
     var showIncorrectDialog by remember { mutableStateOf(false) }
     var showCorrectDialog by remember { mutableStateOf(false) }
 
+    val adUnitId = "ca-app-pub-3940256099942544/1033173712" // todo: replace the real one
+
     TimeUpDialog(
         isVisible = showTimeUpDialog,
+        onExitClicked = { showTimeUpDialog = false; onBack() },
         onRetryClicked = {
-            // todo: ads every 4 errors
-            showTimeUpDialog = false
-            onResetScreen()
-        },
-        onExitClicked = {
-            showTimeUpDialog = false
-            onBack()
+            if (viewModel.shouldDisplayAd()) {
+                loadAndShowAd(context, adUnitId,
+                    onAdDismissed = {
+                        viewModel.resetErrors()
+                        showTimeUpDialog = false
+                        onResetScreen()
+                    })
+            } else {
+                showTimeUpDialog = false
+                onResetScreen()
+            }
         }
     )
+
     IncorrectDialog(
         isVisible = showIncorrectDialog,
+        onExitClicked = { showIncorrectDialog = false; onBack() },
         onRetryClicked = {
-            // todo: ads every 4 errors
-            showIncorrectDialog = false
-            onResetScreen()
-        },
-        onExitClicked = {
-            showIncorrectDialog = false
-            onBack()
+            if (viewModel.shouldDisplayAd()) {
+                loadAndShowAd(context, adUnitId,
+                    onAdDismissed = {
+                        viewModel.resetErrors()
+                        showIncorrectDialog = false
+                        onResetScreen()
+                    })
+            } else {
+                showIncorrectDialog = false
+                onResetScreen()
+            }
         }
     )
+
     CorrectDialog(
         isVisible = showCorrectDialog,
-        onNextClicked = {
+        onNextOrExitClicked = { isExit ->
             showCorrectDialog = false
             viewModel.saveQuestionAlreadyPlayed(question)
             Handler(Looper.getMainLooper()).postDelayed({
-                onResetScreen()
-            }, 500L)
-        },
-        onExitClicked = {
-            showCorrectDialog = false
-            viewModel.saveQuestionAlreadyPlayed(question)
-            Handler(Looper.getMainLooper()).postDelayed({
-                onBack()
-            }, 500L)
+                if (isExit) onBack() else onResetScreen()
+            },500L)
         }
     )
 
     LaunchedEffect(Unit) {
         viewModel.getQuestionToPlay()
+        if (viewModel.shouldDisplayAdAtStart()) {
+            loadAndShowAd(context, adUnitId,
+                onAdFailedToLoad = { onBack() },
+                onAdDismissed = { viewModel.resetErrors() }
+            )
+        }
     }
 
     Surface(modifier = Modifier.fillMaxSize()) {
@@ -111,7 +122,7 @@ fun PlayScreen(
 
             Row(
                 modifier = Modifier
-                    .padding(top = 160.dp, bottom = 130.dp)
+                    .padding(top = 160.dp, bottom = 170.dp)
             ) {
                 LazyColumn(
                     modifier = Modifier
@@ -138,10 +149,11 @@ fun PlayScreen(
                 }
             }
 
+            // todo: add bottom ad banner here
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(130.dp)
+                    .height(170.dp)
                     .align(Alignment.BottomCenter)
             ) {
                 BottomButton(
@@ -152,13 +164,12 @@ fun PlayScreen(
                     emptySpaces = spaces.filter { it.flag == null }
                 ) {
                     val responseIsCorrect = viewModel.verifyIfListIsCorrect(spaces.map { it.flag?.id!! }, question!!)
-                    if (responseIsCorrect && viewModel.shouldPlaySound()) {
-                        playSound(context, R.raw.sound_success)
+                    if (responseIsCorrect) {
+                        if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_success)
                         showCorrectDialog = true
                     } else {
-                        if (viewModel.shouldPlaySound()) {
-                            playSound(context, R.raw.sound_error)
-                        }
+                        if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_error)
+                        viewModel.incrementCounterOfErrors()
                         showIncorrectDialog = true
                     }
                 }
@@ -168,35 +179,17 @@ fun PlayScreen(
                         modifier = Modifier
                             .weight(0.5f)
                             .fillMaxHeight(),
-                        totalTime = getTimeAccordingLevel(it.level),
+                        totalTime = viewModel.getTimeAccordingLevel(it.level),
                         isPaused = (showCorrectDialog || showIncorrectDialog)
                     ) {
                         timeUp = true
                         showTimeUpDialog = true
-                        if (viewModel.shouldPlaySound()) {
-                            playSound(context, R.raw.sound_error)
-                        }
+
+                        if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_error)
+                        viewModel.incrementCounterOfErrors()
                     }
                 }
             }
         }
-    }
-}
-
-fun getTimeAccordingLevel(level: QuestionLevel): Long {
-    return when (level) {
-        QuestionLevel.I,
-        QuestionLevel.II,
-        QuestionLevel.III,
-        QuestionLevel.IV -> 60000L
-        QuestionLevel.V,
-        QuestionLevel.VI,
-        QuestionLevel.VII -> 50000L
-        QuestionLevel.VIII,
-        QuestionLevel.IX,
-        QuestionLevel.X -> 45000L
-        QuestionLevel.XI -> 40000L
-        QuestionLevel.XII -> 30000L
-        QuestionLevel.XIII -> 20000L
     }
 }

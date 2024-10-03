@@ -1,5 +1,6 @@
 package com.ranking.trivia.latam.presentation.screens.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,14 +31,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import com.ranking.trivia.latam.R
 import com.ranking.trivia.latam.presentation.theme.CustomBlue
-import com.ranking.trivia.latam.presentation.theme.Orange
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedMedium
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedSemiBold
 import com.ranking.trivia.latam.presentation.theme.regularShadow
@@ -48,6 +54,8 @@ import com.ranking.trivia.latam.presentation.utils.Pulsating
 import com.ranking.trivia.latam.presentation.utils.VignetteInverseEffect
 import com.ranking.trivia.latam.presentation.utils.openUrl
 import com.ranking.trivia.latam.presentation.utils.playSound
+import com.ranking.trivia.latam.presentation.utils.sidePadding
+import com.ranking.trivia.latam.presentation.utils.verifyNewerVersion
 
 @Composable
 fun HomeScreen(
@@ -56,161 +64,178 @@ fun HomeScreen(
 ) {
     val context = LocalContext.current
 
-    var showNewerVersionButton by remember { mutableStateOf(false) }
-    var showOptionsDialog by remember { mutableStateOf(false) }
     var showAboutDialog by remember { mutableStateOf(false) }
+    var showOptionsDialog by remember { mutableStateOf(false) }
     var showTutorialDialog by remember { mutableStateOf(false) }
 
-    viewModel.gameHasNewerVersion(
-        (context.packageManager.getPackageInfo(context.packageName, 0).versionCode)
-    ) { gameHasTheNewestVersion ->
-        if (!gameHasTheNewestVersion) showNewerVersionButton = true
-    }
+    AboutDialog(showAboutDialog) { showAboutDialog = false }
 
-    OptionsDialog(
-        isVisible = showOptionsDialog,
-        isSoundEnabled = viewModel.shouldPlaySound(),
-        onSaveClicked = { enableSound: Boolean ->
-            showOptionsDialog = false
-            viewModel.saveEnableSound(enableSound)
-        },
-        onExitClicked = { showOptionsDialog = false }
-    )
-    AboutDialog(
-        isVisible = showAboutDialog,
-        onExitClicked = { showAboutDialog = false }
-    )
-    TutorialDialog(
-        isVisible = showTutorialDialog,
-        onExitClicked = { showTutorialDialog = false }
-    )
+    OptionsDialog(showOptionsDialog, viewModel) { showOptionsDialog = false }
+
+    TutorialDialog(showTutorialDialog) { showTutorialDialog = false }
 
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.pyramid_main_screen),
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop,
-            contentDescription = null,
-        )
-        VignetteInverseEffect(Modifier.fillMaxSize())
-
-        Text(
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(12.dp),
-            text = "v${(context.packageManager.getPackageInfo(context.packageName, 0).versionName)}",
-            color = Color.White,
-            fontFamily = fredokaCondensedSemiBold,
-            fontSize = 18.sp,
+        HomeBackground(
+            context = context,
+            modifierVersion = Modifier.align(Alignment.BottomEnd),
+            modifierAdmob = Modifier.align(Alignment.BottomCenter),
         )
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 24.dp),
+                .sidePadding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Box(modifier = Modifier.weight(.5f)) {
 
-            Box(
-                modifier = Modifier.weight(0.5f)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.logo_no_background_letters),
-                    modifier = Modifier
-                        .height(250.dp)
-                        .fillMaxWidth()
-                        .align(Alignment.TopCenter),
-                    contentScale = ContentScale.Fit,
-                    contentDescription = null,
+                HomeLogoLetters(
+                    modifier = Modifier.align(Alignment.TopCenter)
                 )
-                Column(
-                    modifier = Modifier.align(Alignment.CenterEnd)
-                ) {
-                    if (showNewerVersionButton) {
-                        CircledButtonStart(buttonType = HomeButtonType.NewVersion) {
-                            // todo: real URL from google play
-                            openUrl(context, "https://play.google.com/store/games")
-                        }
-                    }
-                    CircledButtonStart(buttonType = HomeButtonType.Settings) {
-                        showOptionsDialog = true
-                    }
-                }
+                HomeNewVersionAndSettings(
+                    context = context,
+                    viewModel = viewModel,
+                    modifier = Modifier.align(Alignment.BottomEnd),
+                    onSettingsClicked = { showOptionsDialog = true },
+                )
             }
 
             Column(
-                modifier = Modifier.weight(0.5f),
+                modifier = Modifier.weight(.5f),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                ButtonStart(
-                    context = context,
+                HomeYellowButton(
                     buttonType = HomeButtonType.Start,
                     onClick = { onNavigateToPlayScreen() },
                     content = {
-                        Text(
-                            text = "Iniciar",
-                            fontSize = 34.sp,
-                            textAlign = TextAlign.Center,
-                            fontFamily = fredokaCondensedSemiBold,
-                            color = Color.DarkGray,
-                            style = TextStyle(shadow = regularShadow),
-                            modifier = Modifier.padding(vertical = 15.dp, horizontal = 60.dp)
+                        TextHomeYellowButton(
+                            modifier = Modifier.padding(vertical = 15.dp, horizontal = 60.dp),
+                            text = stringResource(R.string.home_start),
+                            fontSize = 34.sp
                         )
                     }
                 )
 
-                ButtonStart(
-                    context = context,
+                HomeYellowButton(
                     buttonType = HomeButtonType.Tutorial,
                     onClick = { showTutorialDialog = true },
                     content = {
-                        Text(
-                            text = "Cómo jugar?",
-                            fontSize = 26.sp,
-                            textAlign = TextAlign.Center,
-                            fontFamily = fredokaCondensedSemiBold,
-                            color = Color.DarkGray,
-                            style = TextStyle(shadow = regularShadow),
-                            modifier = Modifier.padding(vertical = 10.dp, horizontal = 30.dp)
+                        TextHomeYellowButton(
+                            modifier = Modifier.padding(vertical = 10.dp, horizontal = 30.dp),
+                            text = stringResource(R.string.home_how_to_play),
+                            fontSize = 26.sp
                         )
                     }
                 )
 
-                ButtonStart(
-                    context = context,
+                HomeYellowButton(
                     buttonType = HomeButtonType.About,
                     onClick = { showAboutDialog = true },
                     content = {
-                        Text(
-                            text = "Acerca de",
-                            fontSize = 26.sp,
-                            textAlign = TextAlign.Center,
-                            fontFamily = fredokaCondensedSemiBold,
-                            color = Color.DarkGray,
-                            style = TextStyle(shadow = regularShadow),
-                            modifier = Modifier.padding(vertical = 10.dp, horizontal = 30.dp)
+                        TextHomeYellowButton(
+                            modifier = Modifier.padding(vertical = 10.dp, horizontal = 30.dp),
+                            text = stringResource(R.string.home_about),
+                            fontSize = 26.sp
                         )
                     }
                 )
-
             }
-
         }
     }
 }
 
 @Composable
-fun ButtonStart(
-    viewModel: HomeViewModel = hiltViewModel(),
+fun HomeBackground(
+    @SuppressLint("ModifierParameter")
+    modifierVersion: Modifier,
+    modifierAdmob: Modifier,
+    context: Context
+) {
+    Image(
+        painter = painterResource(id = R.drawable.pyramid_main_screen),
+        modifier = Modifier.fillMaxSize(),
+        contentScale = ContentScale.Crop,
+        contentDescription = null,
+    )
+
+    VignetteInverseEffect(Modifier.fillMaxSize())
+
+    Text(
+        modifier = modifierVersion.padding(12.dp),
+        text = stringResource(R.string.home_version_number,
+            context.packageManager.getPackageInfo(context.packageName, 0).versionName
+        ),
+        color = Color.White,
+        fontFamily = fredokaCondensedSemiBold,
+        fontSize = 18.sp,
+    )
+    AdmobBanner(modifier = modifierAdmob)
+}
+
+@Composable
+fun AdmobBanner(modifier: Modifier) {
+    AndroidView(
+        modifier = modifier.fillMaxWidth(),
+        factory = { context ->
+            AdView(context).apply {
+                setAdSize(AdSize.BANNER)
+                adUnitId = "ca-app-pub-3940256099942544/9214589741" // todo: change for the real one
+                loadAd(AdRequest.Builder().build())
+            }
+        }
+    )
+}
+
+@Composable
+fun HomeLogoLetters(modifier: Modifier) {
+    Image(
+        painter = painterResource(R.drawable.logo_no_background_letters),
+        modifier = modifier
+            .height(250.dp)
+            .fillMaxWidth(),
+        contentScale = ContentScale.Fit,
+        contentDescription = null,
+    )
+}
+
+
+@Composable
+fun HomeNewVersionAndSettings(
+    modifier: Modifier,
     context: Context,
+    viewModel: HomeViewModel,
+    onSettingsClicked: () -> Unit,
+) {
+    var showNewerVersionButton by remember { mutableStateOf(false) }
+    verifyNewerVersion(viewModel, context) { showNewerVersionButton = !it }
+
+    Column(modifier = modifier) {
+        if (showNewerVersionButton) {
+            CircledButtonStart(HomeButtonType.NewVersion) {
+                // todo: real URL from google play
+                openUrl(context, "https://play.google.com/store/games")
+            }
+        }
+        CircledButtonStart(HomeButtonType.Settings) {
+            onSettingsClicked()
+        }
+    }
+}
+
+
+@Composable
+fun HomeYellowButton(
+    viewModel: HomeViewModel = hiltViewModel(),
     buttonType: HomeButtonType,
     playSound: Boolean = true,
     onClick: () -> Unit,
     content: @Composable (() -> Unit)
 ) {
+    val context = LocalContext.current
+
     val boxContent = @Composable {
         Box(
             modifier = Modifier
@@ -249,6 +274,23 @@ fun ButtonStart(
 }
 
 @Composable
+fun TextHomeYellowButton(
+    modifier: Modifier,
+    text: String,
+    fontSize: TextUnit,
+) {
+    Text(
+        text = text,
+        fontSize = fontSize,
+        textAlign = TextAlign.Center,
+        fontFamily = fredokaCondensedSemiBold,
+        color = Color.DarkGray,
+        style = TextStyle(shadow = regularShadow),
+        modifier = modifier
+    )
+}
+
+@Composable
 fun CircledButtonStart(
     buttonType: HomeButtonType,
     onClick: () -> Unit
@@ -279,7 +321,7 @@ fun CircledButtonStart(
 
             if (buttonType == HomeButtonType.NewVersion) {
                 Text(
-                    text = "¡Nueva\nversión!",
+                    text = stringResource(R.string.home_new_version),
                     fontSize = 12.sp,
                     textAlign = TextAlign.Center,
                     fontFamily = fredokaCondensedMedium,

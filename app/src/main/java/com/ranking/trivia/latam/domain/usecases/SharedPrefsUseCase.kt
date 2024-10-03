@@ -21,4 +21,10 @@ class SharedPrefsUseCase @Inject constructor(
     fun saveEnableSound(enable: Boolean) = prefsRepository.saveEnableSound(enable)
 
     fun getIsSoundEnabled() = prefsRepository.getIsSoundEnabled()
+
+    fun incrementCounterOfErrors() = prefsRepository.incrementCounterOfErrors()
+
+    fun getTotalErrors() = prefsRepository.getTotalErrors()
+
+    fun resetErrors()  = prefsRepository.resetErrors()
 }

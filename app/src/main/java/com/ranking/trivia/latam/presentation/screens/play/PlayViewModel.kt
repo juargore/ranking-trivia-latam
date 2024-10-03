@@ -42,31 +42,25 @@ class PlayViewModel @Inject constructor(
 
     fun getQuestionToPlay() {
         val lastQuestionIdPlayed: Int = prefsUseCase.getLastQuestionIdPlayed() // questionId (Int) or -1
-        println("AQUI: lastQuestionIdPlayed: $lastQuestionIdPlayed")
         if (lastQuestionIdPlayed > 0) {
             val lastQuestionPlayed: Question = gameUseCase.getQuestionById(lastQuestionIdPlayed)
             val idsAlreadyPlayedByLevel: List<Int> = prefsUseCase.getIdsOfQuestionsAlreadyPlayedByQuestionLevel(lastQuestionPlayed.level)
-            println("AQUI: idsAlreadyPlayedByLevel ===")
-            idsAlreadyPlayedByLevel.forEach {
-                println("AQUI: $it")
-            }
             val nextQuestion: Question? = gameUseCase.getQuestionByLevelAndExcludeTheOnesAlreadyPlayed(lastQuestionPlayed.level, idsAlreadyPlayedByLevel)
             if (nextQuestion != null) {
                 // at this level, there are still pending questions
-                println("AQUI: at this level, there are still pending questions")
                 _question.value = nextQuestion
                 getEmptySpacesByLevel(nextQuestion)
             } else {
                 // the level is complete -> continue to next level if exists
-                println("AQUI: the level is complete -> continue to next level if exists")
+                //println("AQUI: the level is complete -> continue to next level if exists")
                 val nextLevel: QuestionLevel? = gameUseCase.getNextQuestionLevel(lastQuestionPlayed.level)
                 if (nextLevel == null) {
                     // no more levels available -> user has completed the game!!
-                    println("AQUI: no more levels available -> user has completed the game!!")
-                    _gameCompleted.value = true
+                    //println("AQUI: no more levels available -> user has completed the game!!")
+                    _gameCompleted.value = true // todo: show game complete popup
                 } else {
                     // there are still pending levels -> get the first random question of nextLevel
-                    println("AQUI: there are still pending levels -> get the first random question of nextLevel")
+                    //println("AQUI: there are still pending levels -> get the first random question of nextLevel")
                     val newQuestion: Question? = gameUseCase.getQuestionByLevelAndExcludeTheOnesAlreadyPlayed(nextLevel, listOf())
                     _question.value = newQuestion
                     newQuestion?.let { getEmptySpacesByLevel(it) }
@@ -74,7 +68,7 @@ class PlayViewModel @Inject constructor(
             }
         } else {
             // no question stored in shared preferences -> user just started to play!
-            println("AQUI: no question stored in shared preferences -> user just started to play!")
+            //println("AQUI: no question stored in shared preferences -> user just started to play!")
             val newQuestion: Question? = gameUseCase.getQuestionByLevelAndExcludeTheOnesAlreadyPlayed(QuestionLevel.I, listOf())
             _question.value = newQuestion
             newQuestion?.let { getEmptySpacesByLevel(it) }
@@ -135,11 +129,48 @@ class PlayViewModel @Inject constructor(
 
     fun saveQuestionAlreadyPlayed(question: Question?) {
         if (question != null) {
-            println("AQUI: Se guarda ${question.id} como útlima jugada")
+            //println("AQUI: Se guarda ${question.id} como útlima jugada")
             prefsUseCase.saveQuestionAlreadyPlayed(question)
         }
     }
 
-    fun shouldPlaySound() : Boolean = prefsUseCase.getIsSoundEnabled()
-}
+    fun shouldPlaySound(): Boolean = prefsUseCase.getIsSoundEnabled()
 
+    fun incrementCounterOfErrors() {
+        prefsUseCase.incrementCounterOfErrors()
+    }
+
+    fun shouldDisplayAd(): Boolean {
+        val totalErrors = prefsUseCase.getTotalErrors()
+        println("AQUI: TotalErrors stored = $totalErrors")
+        return totalErrors >= 4
+    }
+
+    fun shouldDisplayAdAtStart(): Boolean {
+        val totalErrors = prefsUseCase.getTotalErrors()
+        println("AQUI: TotalErrors stored max = $totalErrors")
+        return totalErrors >= 6
+    }
+
+    fun resetErrors() {
+        prefsUseCase.resetErrors()
+    }
+
+    fun getTimeAccordingLevel(level: QuestionLevel): Long {
+        return when (level) {
+            QuestionLevel.I,
+            QuestionLevel.II,
+            QuestionLevel.III -> 60000L
+            QuestionLevel.IV,
+            QuestionLevel.V -> 50000L
+            QuestionLevel.VI,
+            QuestionLevel.VII -> 45000L
+            QuestionLevel.VIII,
+            QuestionLevel.IX,
+            QuestionLevel.X -> 40000L
+            QuestionLevel.XI -> 30000L
+            QuestionLevel.XII -> 20000L
+            QuestionLevel.XIII -> 15000L
+        }
+    }
+}

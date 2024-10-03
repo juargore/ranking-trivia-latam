@@ -187,9 +187,9 @@ class GameRepositoryImpl(context: Context): IGameRepository {
         Question(12, I, "¿Quién tiene mayor EXTENSIÓN territorial?", listOf(BR, AR, MX)),
         Question(13, I, "¿Qué país tiene mayor POBLACIÓN?", listOf(BR, MX, CO)),
         Question(14, I, "¿Quién tiene más VOLCANES ACTIVOS?", listOf(CL, MX, GT)),
-        Question(15, I, "¿Quién tiene mayor porcentaje de ENERGÍA RENOVABLE?", listOf(UY, CR, PY)),
+        Question(15, I, "¿Donde hay mas VENEZOLANOS fuera de VENEZUELA en Latinoamérica?", listOf(CO, PE, BR)),
         Question(16, I, "¿Quién tiene más sitios declarados PATRIMONIO de la HUMANIDAD en Centroamérica y el Caribe?", listOf(CU, GT, PA)),
-        Question(17, I, "¿Quién produce más cacao, EXCLUYENDO a los gigantes como Brasil y Colombia?", listOf(EC, PE, DO))
+        Question(17, I, "¿Dónde hay más fanáticos de Dragon Ball según Bandai?", listOf(BO, PE, MX))
     )
 
     private val questionsLevelII = listOf(
@@ -203,7 +203,7 @@ class GameRepositoryImpl(context: Context): IGameRepository {
     )
 
     private val questionsLevelIII = listOf(
-        Question(31, III, "¿Quién tiene mayor diversidad ÉTNICA en el CARIBE?", listOf(SR, DO, MQ, GY, HT)),
+        Question(31, III, "¿Qué países buscan más anime en los últimos años en internet?", listOf(BO, SV, PE, CR, PA)),
         Question(32, III, "¿Quién tiene mayor producción de RON en el CARIBE?", listOf(DO, CU, PR, JM, MQ)),
         Question(33, III, "¿Quién tiene mayor densidad poblacional (PAÍSES PEQUEÑOS)?", listOf(MF, HT, PR, SV, JM)),
         Question(34, III, "¿Quién tiene mayor porcentaje de ÁREAS PROTEGIDAS en relación con su tamaño?", listOf(CR, SR, EC, PA, NI)),
@@ -212,15 +212,14 @@ class GameRepositoryImpl(context: Context): IGameRepository {
         Question(37, III, "¿Quién tiene más ISLAS como parte de su territorio?", listOf(CL, VE, CU, DO, PA))
     )
 
-    // TODO: ES EL MISMO QUE EL III
     private val questionsLevelIV = listOf(
-        Question(41, IV, "¿Quién tiene mayor diversidad étnica en el Caribe y Sudamérica?", listOf(SR, DO, MQ, GY, HT)),
-        Question(42, IV, "¿Quién tiene mayor producción de ron en el Caribe?", listOf(DO, CU, PR, JM, MQ)),
-        Question(43, IV, "¿Quién tiene mayor densidad poblacional (países pequeños)?", listOf(MF, HT, PR, SV, JM)),
-        Question(44, IV, "¿Quién tiene mayor porcentaje de áreas protegidas en relación con su tamaño?", listOf(CR, SR, EC, PA, NI)),
-        Question(45, IV, "¿Quién tiene más turismo internacional en el Caribe?", listOf(DO, CU, PR, JM, MQ)),
-        Question(46, IV, "¿Quién mayor biodiversidad marina en el Caribe y Centroamérica?", listOf(SR, MQ, DO, BZ, JM)),
-        Question(47, IV, "¿Quién tiene más islas como parte de su territorio?", listOf(CL, VE, CU, DO, PA))
+        Question(41, IV, "¿A dónde han emigrado mas ECUATORIANOS desde 2021 en Latinoamérica?", listOf(CO, PE, PA, MX, AR)),
+        Question(42, IV, "¿Qué países han ganado más Premios Goya a la Mejor Película Iberoamericana?", listOf(AR, CL, CU, MX, UY, CO)),
+        Question(43, IV, "¿Qué países han tenido más directores galardonados internacionalmente?", listOf(MX, AR, BR, CL, CU, CO)),
+        Question(44, IV, "¿Qué países tienen mayor extensión de costa en Centroamérica y el Caribe?", listOf(CU, PA, CR, DO, JM, NI)),
+        Question(45, IV, "¿Qué países han clasificado más veces a la Copa Mundial de la FIFA?", listOf(BR, AR, MX, UY, CL, PY)),
+        Question(46, IV, "¿Quién EXPORTA más FRUTAS tropicales?", listOf(EC, CR, CO, MX, PE, HN)),
+        Question(47, IV, "¿Donde hay mas CHILENOS fuera de CHILE en Latinoamérica?", listOf(AR, BR, VE, PE, EC)),
     )
 
     // aquí para abajo puro 6
@@ -228,9 +227,9 @@ class GameRepositoryImpl(context: Context): IGameRepository {
     private val questionsLevelV = listOf(
         Question(51, V, "¿Quién tiene la ECONOMÍA más grande según su PIB?", listOf(BR, MX, AR, CL, PE, CO)),
         Question(52, V, "¿Quién tiene la mayor producción de PETRÓLEO?", listOf(VE, BR, MX, AR, CO, EC)),
-        Question(53, V, "¿Quién tiene más VOLCANES ACTIVOS?", listOf(CL, MX, GT, NI, EC, CR)), // TODO: SE REPITE
-        Question(54, V, "¿Quién tiene mayor diversidad de LENGUAS INDÍGENAS?", listOf(MX, PE, BO, GT, CO, BR)),
-        Question(55, V, "¿Quién EXPORTA más frutas tropicales en Latinoamérica?", listOf(EC, CR, CO, MX, PE, HN)),
+        Question(53, V, "¿Donde hay mas PARAGUAYOS fuera de PARAGUAY?", listOf(AR, BR, CL, BO, UY, PE)),
+        Question(54, V, "¿Qué países tuvieron más casos de COVID?", listOf(BR, AR, MX, CO, CL, PE)),
+        Question(55, V, "¿En qué países de la región es más popular el anime One Piece?", listOf(MX, AR, BR, CL, PE, CO)),
         Question(56, V, "¿Quién tiene mayor cantidad de Patrimonios de la Humanidad según la UNESCO?", listOf(MX, BR, PE, AR, CL, CU)),
         Question(57, V, "¿Quién tiene mayor cobertura de INTERNET?", listOf(UY, CL, AR, CR, BR, MX)),
         Question(58, V, "¿Qué países han ganado más veces la COPA AMÉRICA?", listOf(AR, UY, BR, PE, PY, CL))
@@ -240,49 +239,54 @@ class GameRepositoryImpl(context: Context): IGameRepository {
         Question(61, VI, "¿Quién tiene las FUERZAS MILITARES más grandes según el número de efectivos?", listOf(BR, MX, CL, AR, VE, PE)),
         Question(62, VI, "¿Quién tiene mayor EXTENSIÓN DE COSTA en Latinoamérica?", listOf(CL, BR, AR, MX, PE, CL)),
         Question(63, VI, "¿Quién produce más AZÚCAR en Latinoamérica?", listOf(BR, MX, CO, AR, GT, CU)),
-        Question(64, VI, "¿Quién tiene la mayor cantidad de RESERVAS DE COBRE?", listOf(CL, PE, MX, AR, EC, PA)),
-        Question(65, VI, "¿Quién genera más ENERGÍA HIDROELÉCTRICA?", listOf(BR, VE, PY, AR, CO, CR)),
-        Question(66, VI, "¿Quién EXPORTA más FRUTAS tropicales?", listOf(EC, CR, CO, MX, PE, HN)),
-        Question(67, VI, "¿Quién PRODUCE más FLORES en la región?", listOf(CL, EC, MX, BR, CR, GT))
+        Question(64, VI, "Según Taste Atlas, quiénes tienen la MEJOR gastronomía de la región?", listOf(MX, PE, BR, AR, CL, CO)),
+
+        Question(65, VI, "¿Quién genera más ENERGÍA HIDROELÉCTRICA?", listOf(BR, VE, PY, AR, CO, CR)), // todo
+
+        Question(66, VI, "¿Donde hay mas COLOMBIANOS fuera de COLOMBIA en Latinoamérica?", listOf(VE, CL, EC, PA, MX)),
+
+        Question(67, VI, "¿Quién PRODUCE más FLORES en la región?", listOf(CL, EC, MX, BR, CR, GT)) // todo
     )
 
     private val questionsLevelVII = listOf(
         Question(71, VIII, "¿Qué países han ganado más veces el Premio Ariel a la Mejor Película Iberoamericana?", listOf(AR, CL, BR, PE, CO, UY)),
         Question(72, VII, "¿Qué países reciben más turistas internacionales en Centroamérica y el Caribe?", listOf(DO, CU, PR, CR, PA, JM)),
         Question(73, VII, "¿Qué países tienen la mayor producción de café en Centroamérica y el Caribe?", listOf(HN, GT, NI, CR, SV, DO)),
-        Question(74, VII, "¿Qué países tienen mayor extensión de costa en Centroamérica y el Caribe?", listOf(CU, PA, CR, DO, JM, NI)),
+        Question(74, VII, "¿Donde hay mas MEXICANOS fuera de MÉXICO en Latinoamérica?", listOf(GT, BO, CL, AR, PA)),
         Question(75, VII, "¿Qué países han producido más películas de comedia exitosas en Latinoamérica", listOf(MX, AR, BR, CL, CO, PE)),
         Question(76, VII, "¿Qué países han tenido más películas seleccionadas en el Festival de Cine de Berlín?", listOf(AR, BR, CL, MX, CO, VE)),
-        Question(77, VII, "¿Qué países tienen más volcanes activos en Centroamérica y el Caribe?", listOf(GT, NI, SV, CR, HN, PA))
+        Question(77, VII, "Según Taste Atlas, ¿cómo ordenó los países según su PLATO PRINCIPAL (no su gastronomía general)", listOf(AR, BR, CO, CL, MX, PR))
     )
 
     private val questionsLevelVIII = listOf(
-        Question(81, VIII, "¿Qué países han ganado más Premios Goya a la Mejor Película Iberoamericana?", listOf(AR, CL, CU, MX, UY, CO)),
+        Question(81, VIII, "¿Donde hay mas URUGUAYOS fuera de URUGUAY en Latinoamérica?", listOf(AR, BR, CL, VE, MX)),
         Question(82, VIII, "¿Qué países han tenido más nominaciones al Óscar en la categoría de Mejor Película Internacional?", listOf(AR, MX, BR, CL, UY, PE)),
         Question(83, VIII, "¿Qué países tienen más festivales de cine internacionales reconocidos?", listOf(AR, BR, MX, CL, UY, CO)),
         Question(84, VIII, "¿Quién tiene las economías más grandes en Centroamérica y el Caribe según su PIB?", listOf(DO, GT, CR, PA, SV, HN)),
-        Question(85, VIII, "¿Qué países han ganado más Premios Platino del Cine Iberoamericano?", listOf(AR, CL, BR, MX, UY, PE)),
+        Question(85, VIII, "¿Qué países han ganado más Premios Platino del Cine Iberoamericano?", listOf(AR, CL, BR, MX, UY, PE)),  // todo
         Question(86, VIII, "¿Qué países han producido más películas con nominaciones a festivales internacionales?", listOf(AR, BR, CL, MX, UY, CU)),
         Question(87, VIII, "¿Qué países han tenido más actores nominados al Óscar?", listOf(MX, AR, BR, CL, CU, CO))
     )
+
+    // TODO: Blur flags here!!!
 
     private val questionsLevelIX = listOf(
         Question(91, IX, "¿Qué países tienen más producciones animadas reconocidas internacionalmente?", listOf(BR, AR, CL, MX, UY, CO)),
         Question(92, IX, "¿Qué países han tenido más películas seleccionadas en el Festival de Cannes?", listOf(BR, AR, MX, CL, PE, UY)),
         Question(93, IX, "¿Qué países han producido más documentales premiados a nivel internacional?", listOf(AR, BR, CL, MX, CO, PE)),
-        Question(94, IX, "¿Qué países tienen más producciones de cine independiente reconocidas", listOf(AR, BR, CL, MX, CO, PE)),
-        Question(95, IX, "¿Qué países han sido sede del Festival de Cine de Cartagena?", listOf(CO, BR, AR, MX, CL, VE)),
-        Question(96, IX, "¿Qué países tienen más películas basadas en hechos históricos reconocidas internacionalmente?", listOf(AR, BR, CL, MX, CU, PE)),
+        Question(94, IX, "¿Qué países tienen más producciones de cine independiente reconocidas", listOf(AR, BR, CL, MX, CO, PE)), // todo
+        Question(95, IX, "¿Qué países han sido sede del Festival de Cine de Cartagena?", listOf(CO, BR, AR, MX, CL, VE)), // todo
+        Question(96, IX, "¿Qué países tienen más películas basadas en hechos históricos reconocidas internacionalmente?", listOf(AR, BR, CL, MX, CU, PE)), // todo
         Question(97, IX, "¿Qué países han ganado más premios en el Festival de Cine de Mar del Plata?", listOf(AR, BR, MX, UY, CL, PY)),
-        Question(98, IX, "¿Qué países han clasificado más veces a la Copa Mundial de la FIFA?", listOf(BR, AR, MX, UY, CL, PY)),
+        Question(98, IX, "¿A dónde han emigrado mas BRASILEÑOS desde 2022 en Latinoamérica?", listOf(PA, AR, BO, CL, PE)),
     )
 
     private val questionsLevelX = listOf(
-        Question(101, X, "¿Qué países han producido más películas de cine negro?", listOf(MX, AR, BR, CL, CO, PE)),
-        Question(102, X, "¿Qué países han tenido más películas presentadas en el Festival de San Sebastián?", listOf(AR, BR, CL, MX, CO, PE)),
-        Question(103, X, "¿Qué países tienen mayor cantidad de manglares en Centroamérica y el Caribe?", listOf(CU, NI, HN, GT, PA, CR)),
-        Question(104, X, "¿Qué países han producido más películas sobre conflictos sociales en Latinoamérica?", listOf(AR, BR, CL, MX, CO, BO)),
-        Question(105, X, "¿Qué países han tenido más directores galardonados internacionalmente?", listOf(MX, AR, BR, CL, CU, CO)),
+        Question(101, X, "¿Qué países han producido más películas de cine negro?", listOf(MX, AR, BR, CL, CO, PE)), // todo
+        Question(102, X, "¿Qué países han tenido más películas presentadas en el Festival de San Sebastián?", listOf(AR, BR, CL, MX, CO, PE)), // todo
+        Question(103, X, "¿Qué países tienen mayor cantidad de manglares en Centroamérica y el Caribe?", listOf(CU, NI, HN, GT, PA, CR)), // todo
+        Question(104, X, "¿Qué países han producido más películas sobre conflictos sociales en Latinoamérica?", listOf(AR, BR, CL, MX, CO, BO)), // todo
+        Question(105, X, "¿A dónde han emigrado más ARGENTINOS desde 2021 en Latinoamérica?", listOf(CL, PY, BO, BR, UY)),
         Question(106, X, "¿Qué países tienen más películas de animación infantil reconocidas?", listOf(AR, BR, MX, CL, CO, UY)),
         Question(107, X, "¿Qué países producen más caña de azúcar en Centroamérica y el Caribe?", listOf(GT, CU, DO, HN, SV, CR)),
     )
@@ -293,13 +297,13 @@ class GameRepositoryImpl(context: Context): IGameRepository {
         Question(113, XI, "¿Quién tienen los salarios mínimos más altos?", listOf(CR, CL, UY, AR, PA, MX)),
         Question(114, XI, "¿Quién tiene mayor producción de energía geotérmica?", listOf(MX, SV, CR, NI, GT, HN)),
         Question(115, XI, "¿Quién PRODUCE más vino Latinoamérica?", listOf(AR, CL, BR, UY, PE, BO)),
-        Question(116, XI, "¿Quién tiene mayor superficie de tierras agrícolas?", listOf(BR, AR, MX, PY, CO, VE)),
+        Question(116, XI, "¿Quién tiene mayor superficie de tierras agrícolas?", listOf(BR, AR, MX, PY, CO, VE)), // todo
         Question(117, XI, "¿Quién tiene más variedad de especies de aves?", listOf(CL, PE, BR, EC, VE, BO))
     )
 
     private val questionsLevelXII = listOf(
         Question(121, XII, "¿Quién tiene la mayor producción de banano?", listOf(EC, CR, GT, CO, HN, DO)),
-        Question(122, XII, "¿Quién genera más electricidad a partir de fuentes renovables?", listOf(PY, UY, CR, BR, CL, NI)),
+        Question(122, XII, "¿Quién genera más electricidad a partir de fuentes renovables?", listOf(PY, UY, CR, BR, CL, NI)), // todo
         Question(123, XII, "¿Quién tienen la mayor producción de productos lácteos?", listOf(BR, AR, MX, UY, CO, CL)),
         Question(124, XII, "¿Quién tienen la mayor biodiversidad marina?", listOf(BR, MX, CO, CL, VE, PE)),
         Question(125, XII, "¿Quién tiene más líneas de metro?", listOf(MX, BR, CL, VE, AR, PE)),
@@ -309,13 +313,13 @@ class GameRepositoryImpl(context: Context): IGameRepository {
     )
 
     private val questionsLevelXIII = listOf(
-        Question(131, XIII, "¿Quién tiene los puertos más grandes por volumen de carga?", listOf(BR, PA, MX, CL, CO, AR)),
-        Question(132, XIII, "¿Quién tiene la mayor cantidad de producción de camarones?", listOf(EC, MX, VE, BR, CO, HN)),
+        Question(131, XIII, "¿Quién tiene los puertos marítimos más grandes?", listOf(BR, PA, MX, CL, CO, AR)),
+        Question(132, XIII, "¿Quién tiene la mayor cantidad de producción de camarones?", listOf(EC, MX, VE, BR, CO, HN)), // todo
         Question(133, XIII, "¿Quién tiene las tasas de alfabetización más altas?", listOf(CU, UY, CL, AR, CR, PA)),
-        Question(134, XIII, "¿Quién tiene la mayor producción de cacao?", listOf(EC, BR, PE, CO, VE, DO)),
+        Question(134, XIII, "¿Quién tiene la mayor producción de cacao?", listOf(EC, BR, PE, CO, VE, DO)), // todo
         Question(135, XIII, "¿Quién tiene mayor producción de plata?", listOf(MX, PE, CL, BO, AR, GT)),
-        Question(136, XIII, "¿Quién tiene más especies de mamíferos?", listOf(BR, CO, MX, PE, VE, EC)),
-        Question(137, XIII, "¿Quién tiene mayor producción de maíz?", listOf(BR, MX, AR, PY, PE, VE)),
+        Question(136, XIII, "Según Taste Atlas, quiénes tienen la PEOR gastronomía de la región?", listOf(CR, HN, GT, SV, NI, PY)),
+        Question(137, XIII, "¿Quién tiene mayor producción de maíz?", listOf(BR, MX, AR, PY, PE, VE)), // todo
         Question(138, XIII, "¿Qué países tienen más títulos de la Copa Sudamericana?", listOf(AR, BR, EC, CO, CL, MX)),
     )
 

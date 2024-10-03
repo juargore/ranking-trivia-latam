@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.androidx.compose.material)
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.ui)
+    implementation(libs.play.services.ads)
     kapt(libs.hilt.compiler.kapt)
     kapt(libs.hilt.dagger.kapt)
     implementation(platform(libs.firebase.bom))

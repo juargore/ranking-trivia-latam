@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Ranking-Trivia Latam</string>
 
+    <string name="home_start">Iniciar</string>
+    <string name="home_how_to_play">¿Cómo jugar?</string>
+    <string name="home_about">Acerca de</string>
+    <string name="home_new_version">¡Nueva\nversión!</string>
+    <string name="home_version_number">v%s</string>
+
+    <string name="error_loading_ad">Error al cargar anuncio. Conéctese a internet para continuar.</string>
+
+    <string name="game_level">Nivel %s</string>
+    <string name="game_done">Listo!!</string>
+
     <string name="country_name_belize">Belize</string>
     <string name="country_name_costa_rica">Costa Rica</string>
     <string name="country_name_el_salvador">El Salvador</string>

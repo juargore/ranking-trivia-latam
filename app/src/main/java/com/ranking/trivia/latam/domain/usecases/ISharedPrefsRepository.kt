@@ -14,4 +14,10 @@ interface ISharedPrefsRepository {
     fun saveEnableSound(enable: Boolean)
 
     fun getIsSoundEnabled(): Boolean
+
+    fun incrementCounterOfErrors()
+
+    fun getTotalErrors(): Int
+
+    fun resetErrors()
 }

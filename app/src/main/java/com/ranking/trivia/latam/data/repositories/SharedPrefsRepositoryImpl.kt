@@ -7,6 +7,7 @@ import com.ranking.trivia.latam.data.common.ENABLE_SOUND
 import com.ranking.trivia.latam.data.common.FIELD_LIST_OF_IDS_ALREADY_PLAYED
 import com.ranking.trivia.latam.data.common.LAST_QUESTION_PLAYED
 import com.ranking.trivia.latam.data.common.SHARED_PREFS_NAME
+import com.ranking.trivia.latam.data.common.TOTAL_ERRORS
 import com.ranking.trivia.latam.domain.models.Question
 import com.ranking.trivia.latam.domain.models.QuestionLevel
 import com.ranking.trivia.latam.domain.models.QuestionLevel.I
@@ -38,11 +39,9 @@ class SharedPrefsRepositoryImpl(context: Context): ISharedPrefsRepository {
             if (!dataList.any { it == question.id}) {
                 dataList.add(question.id)
             }
-            println("AQUI: Se guarda en lista previa")
             gson.toJson(dataList)
         } else {
             // user hasn't played any level yet
-            println("AQUI: Se guarda solo")
             gson.toJson(arrayOf(question.id))
         }
         sharedPreferences.edit().putString(FIELD_LIST_OF_IDS_ALREADY_PLAYED, newList).apply()
@@ -84,13 +83,24 @@ class SharedPrefsRepositoryImpl(context: Context): ISharedPrefsRepository {
     }
 
     override fun saveEnableSound(enable: Boolean) {
-        println("AQUI: Se guarda enable = $enable")
         sharedPreferences.edit().putBoolean(ENABLE_SOUND, enable).apply()
     }
 
     override fun getIsSoundEnabled(): Boolean {
-        val enable = sharedPreferences.getBoolean(ENABLE_SOUND, true)
-        println("AQUI: Se obtiene enable = $enable")
-        return enable
+        return sharedPreferences.getBoolean(ENABLE_SOUND, true)
+    }
+
+    override fun incrementCounterOfErrors() {
+        val totalErrors = sharedPreferences.getInt(TOTAL_ERRORS, 0)
+        val newTotalErrors = totalErrors + 1
+        sharedPreferences.edit().putInt(TOTAL_ERRORS, newTotalErrors).apply()
+    }
+
+    override fun getTotalErrors(): Int {
+        return sharedPreferences.getInt(TOTAL_ERRORS, 0)
+    }
+
+    override fun resetErrors() {
+        sharedPreferences.edit().putInt(TOTAL_ERRORS, 0).apply()
     }
 }

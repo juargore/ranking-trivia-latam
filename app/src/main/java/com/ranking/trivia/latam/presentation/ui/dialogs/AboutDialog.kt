@@ -4,16 +4,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,22 +25,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextLayoutResult
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ranking.trivia.latam.R
-import com.ranking.trivia.latam.presentation.screens.home.ButtonStart
+import com.ranking.trivia.latam.presentation.screens.home.HomeYellowButton
 import com.ranking.trivia.latam.presentation.screens.home.HomeButtonType
 import com.ranking.trivia.latam.presentation.theme.CustomBlue
-import com.ranking.trivia.latam.presentation.theme.Orange
-import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedMedium
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedSemiBold
-import com.ranking.trivia.latam.presentation.theme.regularShadow
-import com.ranking.trivia.latam.presentation.theme.strongShadow
 
 @Composable
 fun AboutDialog(
@@ -88,8 +80,7 @@ fun AboutDialog(
                         modifier = Modifier.fillMaxWidth(),
                         contentAlignment = Alignment.Center
                     ) {
-                        ButtonStart(
-                            context = context,
+                        HomeYellowButton(
                             playSound = false,
                             buttonType = HomeButtonType.About,
                             onClick = onExitClicked,

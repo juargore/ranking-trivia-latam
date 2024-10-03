@@ -36,6 +36,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -184,7 +185,7 @@ fun HeaderLevel(
             .border(2.dp, Color.Black, RoundedCornerShape(20.dp))
     ) {
         Text(
-            text = "Nivel $level",
+            text = stringResource(R.string.game_level, level),
             fontSize = 18.sp,
             textAlign = TextAlign.Center,
             fontFamily = fredokaCondensedBold,
@@ -294,7 +295,7 @@ fun BottomButton(
             contentAlignment = Alignment.Center,
         ) {
             Text(
-                text = "Listo!!",
+                text = stringResource(R.string.game_done),
                 fontSize = 34.sp,
                 textAlign = TextAlign.Center,
                 fontFamily = fredokaCondensedBold,
