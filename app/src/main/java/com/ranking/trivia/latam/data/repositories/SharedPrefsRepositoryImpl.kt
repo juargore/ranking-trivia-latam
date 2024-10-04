@@ -5,9 +5,11 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.ranking.trivia.latam.data.common.ENABLE_SOUND
 import com.ranking.trivia.latam.data.common.FIELD_LIST_OF_IDS_ALREADY_PLAYED
+import com.ranking.trivia.latam.data.common.GAME_COMPLETED
 import com.ranking.trivia.latam.data.common.LAST_QUESTION_PLAYED
 import com.ranking.trivia.latam.data.common.SHARED_PREFS_NAME
 import com.ranking.trivia.latam.data.common.TOTAL_ERRORS
+import com.ranking.trivia.latam.data.common.TOTAL_SCORE
 import com.ranking.trivia.latam.domain.models.Question
 import com.ranking.trivia.latam.domain.models.QuestionLevel
 import com.ranking.trivia.latam.domain.models.QuestionLevel.I
@@ -102,5 +104,27 @@ class SharedPrefsRepositoryImpl(context: Context): ISharedPrefsRepository {
 
     override fun resetErrors() {
         sharedPreferences.edit().putInt(TOTAL_ERRORS, 0).apply()
+    }
+
+    override fun incrementScore(points: Int) {
+        val storedScore = sharedPreferences.getInt(TOTAL_SCORE, 0)
+        val newTotalScore = storedScore + points
+        sharedPreferences.edit().putInt(TOTAL_SCORE, newTotalScore).apply()
+    }
+
+    override fun getTotalScore(): Int {
+        return sharedPreferences.getInt(TOTAL_SCORE, 0)
+    }
+
+    override fun resetScore() {
+        sharedPreferences.edit().putInt(TOTAL_SCORE, 0).apply()
+    }
+
+    override fun setUserCompletedGame() {
+        sharedPreferences.edit().putBoolean(GAME_COMPLETED, true).apply()
+    }
+
+    override fun getUserCompletedGame(): Boolean {
+        return sharedPreferences.getBoolean(GAME_COMPLETED, false)
     }
 }

@@ -1,6 +1,7 @@
 package com.ranking.trivia.latam.presentation.ui.dialogs
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -62,14 +62,12 @@ fun CorrectDialog(
                     Spacer(modifier = Modifier.height(35.dp))
 
                     Row(
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
                     ) {
-                        ButtonExitOrRetry(
+                        /*ButtonExitOrRetry(
                             modifier = Modifier.weight(0.5f),
-                            onClick = {
-                                onNextOrExitClicked(true)
-                                //onExitClicked()
-                                      },
+                            onClick = { onNextOrExitClicked(true) },
                             content = {
                                 Text(
                                     text = "Salir",
@@ -80,14 +78,12 @@ fun CorrectDialog(
                                     modifier = Modifier.padding(vertical = 6.dp, horizontal = 20.dp)
                                 )
                             }
-                        )
+                        )*/
 
                         ButtonExitOrRetry(
-                            modifier = Modifier.weight(0.5f),
-                            onClick = {
-                                onNextOrExitClicked(false)
-                                //onNextClicked()
-                                      },
+                            //modifier = Modifier.weight(0.5f),
+                            modifier = Modifier,
+                            onClick = { onNextOrExitClicked(false) },
                             content = {
                                 Text(
                                     text = "Siguiente",

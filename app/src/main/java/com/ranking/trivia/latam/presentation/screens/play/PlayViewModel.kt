@@ -1,8 +1,5 @@
 package com.ranking.trivia.latam.presentation.screens.play
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.ranking.trivia.latam.domain.models.EmptySpace
 import com.ranking.trivia.latam.domain.models.FlagId
@@ -15,14 +12,25 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
+import com.ranking.trivia.latam.domain.models.QuestionLevel.I
+import com.ranking.trivia.latam.domain.models.QuestionLevel.II
+import com.ranking.trivia.latam.domain.models.QuestionLevel.III
+import com.ranking.trivia.latam.domain.models.QuestionLevel.IV
+import com.ranking.trivia.latam.domain.models.QuestionLevel.V
+import com.ranking.trivia.latam.domain.models.QuestionLevel.VI
+import com.ranking.trivia.latam.domain.models.QuestionLevel.VII
+import com.ranking.trivia.latam.domain.models.QuestionLevel.VIII
+import com.ranking.trivia.latam.domain.models.QuestionLevel.IX
+import com.ranking.trivia.latam.domain.models.QuestionLevel.X
+import com.ranking.trivia.latam.domain.models.QuestionLevel.XI
+import com.ranking.trivia.latam.domain.models.QuestionLevel.XII
+import com.ranking.trivia.latam.domain.models.QuestionLevel.XIII
 
 @HiltViewModel
 class PlayViewModel @Inject constructor(
     private val gameUseCase: GameUseCase,
     private val prefsUseCase: SharedPrefsUseCase
 ): ViewModel() {
-
-    var currentDropTarget: Int? by mutableStateOf(null)
 
     private val _gameCompleted = MutableStateFlow(false)
     val gameCompleted: StateFlow<Boolean>
@@ -57,7 +65,7 @@ class PlayViewModel @Inject constructor(
                 if (nextLevel == null) {
                     // no more levels available -> user has completed the game!!
                     //println("AQUI: no more levels available -> user has completed the game!!")
-                    _gameCompleted.value = true // todo: show game complete popup
+                    _gameCompleted.value = true
                 } else {
                     // there are still pending levels -> get the first random question of nextLevel
                     //println("AQUI: there are still pending levels -> get the first random question of nextLevel")
@@ -142,13 +150,13 @@ class PlayViewModel @Inject constructor(
 
     fun shouldDisplayAd(): Boolean {
         val totalErrors = prefsUseCase.getTotalErrors()
-        println("AQUI: TotalErrors stored = $totalErrors")
+        //println("AQUI: TotalErrors stored = $totalErrors")
         return totalErrors >= 4
     }
 
     fun shouldDisplayAdAtStart(): Boolean {
         val totalErrors = prefsUseCase.getTotalErrors()
-        println("AQUI: TotalErrors stored max = $totalErrors")
+        //println("AQUI: TotalErrors stored max = $totalErrors")
         return totalErrors >= 6
     }
 
@@ -158,19 +166,13 @@ class PlayViewModel @Inject constructor(
 
     fun getTimeAccordingLevel(level: QuestionLevel): Long {
         return when (level) {
-            QuestionLevel.I,
-            QuestionLevel.II,
-            QuestionLevel.III -> 60000L
-            QuestionLevel.IV,
-            QuestionLevel.V -> 50000L
-            QuestionLevel.VI,
-            QuestionLevel.VII -> 45000L
-            QuestionLevel.VIII,
-            QuestionLevel.IX,
-            QuestionLevel.X -> 40000L
-            QuestionLevel.XI -> 30000L
-            QuestionLevel.XII -> 20000L
-            QuestionLevel.XIII -> 15000L
+            I, II, III -> 60000L
+            IV, V -> 50000L
+            VI, VII -> 45000L
+            VIII, IX, X -> 40000L
+            XI -> 30000L
+            XII -> 20000L
+            XIII -> 15000L
         }
     }
 }

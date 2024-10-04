@@ -5,6 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.ranking.trivia.latam.presentation.screens.hall.HallOfFameScreen
+import com.ranking.trivia.latam.presentation.screens.hall.HallOfFameViewModel
 import com.ranking.trivia.latam.presentation.screens.home.HomeScreen
 import com.ranking.trivia.latam.presentation.screens.play.PlayScreen
 
@@ -24,6 +26,9 @@ fun AppNavHost(
             HomeScreen(
                 onNavigateToPlayScreen = {
                     navController.navigate(NavigationItem.Play.route)
+                },
+                onNavigateToHallOfFameScreen = {
+                    navController.navigate(NavigationItem.HallOfFame.route)
                 }
             )
         }
@@ -34,6 +39,14 @@ fun AppNavHost(
                     navController.popBackStack()
                     navController.navigate(NavigationItem.Play.route)
                 },
+                onBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(NavigationItem.HallOfFame.route) {
+            HallOfFameScreen(
                 onBack = {
                     navController.popBackStack()
                 }

@@ -25,6 +25,12 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40
 )
 
+val lightShadow = Shadow(
+    color = Color.Black,
+    offset = Offset(2f, 2f),
+    blurRadius = 1f
+)
+
 val regularShadow = Shadow(
     color = Color.Black,
     offset = Offset(3f, 3f),

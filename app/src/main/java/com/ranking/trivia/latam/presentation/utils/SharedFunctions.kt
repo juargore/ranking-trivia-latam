@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 import android.net.Uri
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.google.android.gms.ads.AdError
@@ -13,6 +15,7 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.ranking.trivia.latam.MainActivity
 import com.ranking.trivia.latam.R
 import com.ranking.trivia.latam.presentation.screens.home.HomeViewModel
 
@@ -55,7 +58,7 @@ fun loadAndShowAd(
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 println("AQUI: Ad failed to load")
                 onAdFailedToLoad?.invoke()
-                Toast.makeText(context, context.getString(R.string.error_loading_ad), Toast.LENGTH_LONG).show()
+                showToast(context, context.getString(R.string.error_loading_ad), Toast.LENGTH_LONG)
             }
 
             override fun onAdLoaded(interstitialAd: InterstitialAd) {
@@ -89,4 +92,28 @@ fun loadAndShowAd(
             }
         }
     )
+}
+
+fun Context.resetApplication(delay: Long = 0L) {
+    Handler(Looper.getMainLooper()).postDelayed({
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                or Intent.FLAG_ACTIVITY_NEW_TASK
+                or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                or Intent.FLAG_ACTIVITY_NO_ANIMATION
+        )
+
+        startActivity(intent)
+        (this as? MainActivity)?.finishAffinity()
+
+        if (this is Activity) {
+            overridePendingTransition(0, 0)
+        }
+    }, delay)
+}
+
+fun showToast(context: Context, message: String?, duration: Int = Toast.LENGTH_SHORT) {
+    if (!message.isNullOrEmpty()) {
+        Toast.makeText(context, message, duration).show()
+    }
 }

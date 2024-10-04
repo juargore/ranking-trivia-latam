@@ -20,6 +20,7 @@ fun ExoPlayerView() {
     val context = LocalContext.current
     val exoPlayer = ExoPlayer.Builder(context).build()
 
+    // TODO
     val firstVideoUri = Uri.parse("asset:///test_video.mp4")
 
     val mediaSource = remember { MediaItem.fromUri(firstVideoUri) }

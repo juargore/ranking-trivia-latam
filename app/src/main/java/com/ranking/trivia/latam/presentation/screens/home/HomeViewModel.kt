@@ -28,4 +28,6 @@ class HomeViewModel @Inject constructor(
     }
 
     fun shouldPlaySound() : Boolean = prefsUseCase.getIsSoundEnabled()
+
+    fun userCompletedGame() : Boolean = prefsUseCase.getUserCompletedGame()
 }

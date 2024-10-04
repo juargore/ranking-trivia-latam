@@ -31,8 +31,6 @@ fun TutorialDialog(
     isVisible: Boolean,
     onExitClicked: () -> Unit
 ) {
-    val context = LocalContext.current
-
     if (isVisible) {
         BaseDialog(
             title = "Cómo jugar?",
@@ -51,6 +49,8 @@ fun TutorialDialog(
                     Spacer(modifier = Modifier.height(10.dp))
 
                     ExoPlayerView()
+
+                    Spacer(modifier = Modifier.height(10.dp))
 
                     Box(
                         modifier = Modifier.fillMaxWidth(),

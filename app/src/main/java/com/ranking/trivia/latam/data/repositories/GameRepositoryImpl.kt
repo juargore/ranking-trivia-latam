@@ -110,6 +110,10 @@ class GameRepositoryImpl(context: Context): IGameRepository {
         return allFlags.first { it.id == flagId }
     }
 
+    override fun getAllTriviaFlags(): List<TriviaFlag> {
+        return allFlags
+    }
+
     override fun getEmptySpacesByLevel(level: QuestionLevel): List<EmptySpace> {
         val numberOfSpaces = when (level) {
             I -> 3

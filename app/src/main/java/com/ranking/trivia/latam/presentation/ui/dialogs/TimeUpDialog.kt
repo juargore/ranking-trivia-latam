@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -68,10 +69,11 @@ fun TimeUpDialog(
                     Spacer(modifier = Modifier.height(35.dp))
 
                     Row(
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
                     ) {
-                        ButtonExitOrRetry(
-                            modifier = Modifier.weight(0.5f),
+                        /*ButtonExitOrRetry(
+                            modifier = Modifier.weight(0.4f),
                             onClick = { onExitClicked() },
                             content = {
                                 Text(
@@ -83,10 +85,11 @@ fun TimeUpDialog(
                                     modifier = Modifier.padding(vertical = 6.dp, horizontal = 20.dp)
                                 )
                             }
-                        )
+                        )*/
 
                         ButtonExitOrRetry(
-                            modifier = Modifier.weight(0.5f),
+                            //modifier = Modifier.weight(0.6f),
+                            modifier = Modifier,
                             onClick = { onRetryClicked() },
                             content = {
                                 Text(

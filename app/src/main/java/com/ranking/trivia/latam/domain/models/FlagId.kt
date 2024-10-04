@@ -31,3 +31,11 @@ enum class FlagId {
     UY, // Uruguay
     VE, // Venezuela
 }
+
+fun getFlagId(flagCode: String): FlagId? {
+    return try {
+        FlagId.valueOf(flagCode)
+    } catch (e: IllegalArgumentException) {
+        null
+    }
+}

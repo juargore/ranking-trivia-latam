@@ -57,20 +57,14 @@ fun CardEmptySpace(
         modifier = Modifier
     ) { isInBound, flag ->
 
-        val isCurrentTarget = viewModel.currentDropTarget == index
-        val backgroundColor = if (isInBound && isCurrentTarget) Color.Red else Color.White
-        val borderWidth = if (isInBound && isCurrentTarget) 4.dp else 1.5.dp
+        val backgroundColor = if (isInBound && emptySpace.flag == null) Color.Red else Color.White
+        val borderWidth = if (isInBound && emptySpace.flag == null) 4.dp else 1.5.dp
 
         flag?.let {
-            if (isInBound && emptySpace.flag == null && !viewModel.isThisFlagAlreadyUsed(flag) && isCurrentTarget) {
+            if (isInBound && emptySpace.flag == null && !viewModel.isThisFlagAlreadyUsed(flag)) {
                 viewModel.updateEmptySpaceUI(emptySpace.id, flag)
                 viewModel.removeFlagFromList(flag)
-                viewModel.currentDropTarget = null
             }
-        }
-
-        if (isInBound) {
-            viewModel.currentDropTarget = index
         }
 
         Row(
@@ -91,8 +85,9 @@ fun CardEmptySpace(
                 else -> Pair(null, Modifier)
             }
 
+            // medal of honor
             Box(
-                modifier = modifier.size(50.dp),
+                modifier = modifier.size(40.dp),
                 contentAlignment = Alignment.Center
             ) {
                 if (icon != null) {

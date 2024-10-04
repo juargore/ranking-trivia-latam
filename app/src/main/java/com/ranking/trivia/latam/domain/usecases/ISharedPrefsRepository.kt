@@ -20,4 +20,14 @@ interface ISharedPrefsRepository {
     fun getTotalErrors(): Int
 
     fun resetErrors()
+
+    fun incrementScore(points: Int)
+
+    fun getTotalScore(): Int
+
+    fun resetScore()
+
+    fun setUserCompletedGame()
+
+    fun getUserCompletedGame(): Boolean
 }

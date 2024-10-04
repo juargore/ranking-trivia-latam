@@ -44,12 +44,15 @@ import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.ranking.trivia.latam.R
 import com.ranking.trivia.latam.presentation.theme.CustomBlue
+import com.ranking.trivia.latam.presentation.theme.YellowOrange
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedMedium
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedSemiBold
-import com.ranking.trivia.latam.presentation.theme.regularShadow
+import com.ranking.trivia.latam.presentation.theme.lightShadow
 import com.ranking.trivia.latam.presentation.ui.dialogs.AboutDialog
 import com.ranking.trivia.latam.presentation.ui.dialogs.OptionsDialog
 import com.ranking.trivia.latam.presentation.ui.dialogs.TutorialDialog
+import com.ranking.trivia.latam.presentation.utils.GOOGLE_PLAY_GAME_URL
+import com.ranking.trivia.latam.presentation.utils.HOME_BOTTOM_SMALL_BANNER_ID
 import com.ranking.trivia.latam.presentation.utils.Pulsating
 import com.ranking.trivia.latam.presentation.utils.VignetteInverseEffect
 import com.ranking.trivia.latam.presentation.utils.openUrl
@@ -60,7 +63,8 @@ import com.ranking.trivia.latam.presentation.utils.verifyNewerVersion
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
-    onNavigateToPlayScreen: () -> Unit
+    onNavigateToPlayScreen: () -> Unit,
+    onNavigateToHallOfFameScreen: () -> Unit
 ) {
     val context = LocalContext.current
 
@@ -89,27 +93,35 @@ fun HomeScreen(
                 .sidePadding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.weight(.5f)) {
+            Box(modifier = Modifier.weight(.55f)) {
 
                 HomeLogoLetters(
                     modifier = Modifier.align(Alignment.TopCenter)
                 )
-                HomeNewVersionAndSettings(
+                HomeSideButtons(
                     context = context,
                     viewModel = viewModel,
                     modifier = Modifier.align(Alignment.BottomEnd),
                     onSettingsClicked = { showOptionsDialog = true },
+                    onAboutClicked = { showAboutDialog = true },
+                    onTutorialClicked = { showTutorialDialog = true }
                 )
             }
 
             Column(
-                modifier = Modifier.weight(.5f),
+                modifier = Modifier.weight(.45f),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 HomeYellowButton(
                     buttonType = HomeButtonType.Start,
-                    onClick = { onNavigateToPlayScreen() },
+                    onClick = {
+                        if (viewModel.userCompletedGame()) {
+                            // todo: custom popup to reset sharedPrefs
+                        } else {
+                            onNavigateToPlayScreen()
+                        }
+                    },
                     content = {
                         TextHomeYellowButton(
                             modifier = Modifier.padding(vertical = 15.dp, horizontal = 60.dp),
@@ -120,25 +132,13 @@ fun HomeScreen(
                 )
 
                 HomeYellowButton(
-                    buttonType = HomeButtonType.Tutorial,
-                    onClick = { showTutorialDialog = true },
+                    buttonType = HomeButtonType.HallOfFame,
+                    onClick = { onNavigateToHallOfFameScreen() },
                     content = {
                         TextHomeYellowButton(
                             modifier = Modifier.padding(vertical = 10.dp, horizontal = 30.dp),
-                            text = stringResource(R.string.home_how_to_play),
-                            fontSize = 26.sp
-                        )
-                    }
-                )
-
-                HomeYellowButton(
-                    buttonType = HomeButtonType.About,
-                    onClick = { showAboutDialog = true },
-                    content = {
-                        TextHomeYellowButton(
-                            modifier = Modifier.padding(vertical = 10.dp, horizontal = 30.dp),
-                            text = stringResource(R.string.home_about),
-                            fontSize = 26.sp
+                            text = stringResource(R.string.home_hall_of_fame),
+                            fontSize = 25.sp
                         )
                     }
                 )
@@ -172,17 +172,23 @@ fun HomeBackground(
         fontFamily = fredokaCondensedSemiBold,
         fontSize = 18.sp,
     )
-    AdmobBanner(modifier = modifierAdmob)
+    AdmobBanner(
+        modifier = modifierAdmob,
+        adId = HOME_BOTTOM_SMALL_BANNER_ID
+    )
 }
 
 @Composable
-fun AdmobBanner(modifier: Modifier) {
+fun AdmobBanner(
+    modifier: Modifier,
+    adId: String
+) {
     AndroidView(
         modifier = modifier.fillMaxWidth(),
         factory = { context ->
             AdView(context).apply {
                 setAdSize(AdSize.BANNER)
-                adUnitId = "ca-app-pub-3940256099942544/9214589741" // todo: change for the real one
+                adUnitId = adId
                 loadAd(AdRequest.Builder().build())
             }
         }
@@ -203,11 +209,13 @@ fun HomeLogoLetters(modifier: Modifier) {
 
 
 @Composable
-fun HomeNewVersionAndSettings(
+fun HomeSideButtons(
     modifier: Modifier,
     context: Context,
     viewModel: HomeViewModel,
     onSettingsClicked: () -> Unit,
+    onAboutClicked: () -> Unit,
+    onTutorialClicked: () -> Unit,
 ) {
     var showNewerVersionButton by remember { mutableStateOf(false) }
     verifyNewerVersion(viewModel, context) { showNewerVersionButton = !it }
@@ -215,12 +223,17 @@ fun HomeNewVersionAndSettings(
     Column(modifier = modifier) {
         if (showNewerVersionButton) {
             CircledButtonStart(HomeButtonType.NewVersion) {
-                // todo: real URL from google play
-                openUrl(context, "https://play.google.com/store/games")
+                openUrl(context, GOOGLE_PLAY_GAME_URL)
             }
         }
         CircledButtonStart(HomeButtonType.Settings) {
             onSettingsClicked()
+        }
+        CircledButtonStart(HomeButtonType.About) {
+            onAboutClicked()
+        }
+        CircledButtonStart(HomeButtonType.Tutorial) {
+            onTutorialClicked()
         }
     }
 }
@@ -285,7 +298,7 @@ fun TextHomeYellowButton(
         textAlign = TextAlign.Center,
         fontFamily = fredokaCondensedSemiBold,
         color = Color.DarkGray,
-        style = TextStyle(shadow = regularShadow),
+        style = TextStyle(shadow = lightShadow),
         modifier = modifier
     )
 }
@@ -301,20 +314,41 @@ fun CircledButtonStart(
                 .clip(CircleShape)
                 .size(55.dp)
                 .background(CustomBlue.copy(alpha = 0.6f), CircleShape)
-                .border(
-                    width = 2.dp,
-                    color = Color.Black,
-                    shape = CircleShape
-                )
-                .clickable {
-                    onClick()
-                },
+                .clickable { onClick() },
             contentAlignment = Alignment.Center
         ) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_border_circled_button),
+                modifier = Modifier.size(55.dp),
+                contentDescription = null,
+            )
+
             if (buttonType == HomeButtonType.Settings) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_settings),
-                    modifier = Modifier.size(35.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(10.dp),
+                    contentDescription = null,
+                )
+            }
+
+            if (buttonType == HomeButtonType.About) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_info),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(10.dp),
+                    contentDescription = null,
+                )
+            }
+
+            if (buttonType == HomeButtonType.Tutorial) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_question_no_border),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(5.dp),
                     contentDescription = null,
                 )
             }
@@ -326,7 +360,8 @@ fun CircledButtonStart(
                     textAlign = TextAlign.Center,
                     fontFamily = fredokaCondensedMedium,
                     lineHeight = 12.sp,
-                    color = Color.Yellow
+                    style = TextStyle(shadow = lightShadow),
+                    color = YellowOrange
                 )
             }
         }
@@ -349,5 +384,6 @@ enum class HomeButtonType {
     Settings,
     About,
     Tutorial,
-    NewVersion
+    NewVersion,
+    HallOfFame
 }

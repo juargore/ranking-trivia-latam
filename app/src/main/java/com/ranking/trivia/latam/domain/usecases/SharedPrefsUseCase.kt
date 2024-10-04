@@ -26,5 +26,13 @@ class SharedPrefsUseCase @Inject constructor(
 
     fun getTotalErrors() = prefsRepository.getTotalErrors()
 
-    fun resetErrors()  = prefsRepository.resetErrors()
+    fun resetErrors() = prefsRepository.resetErrors()
+
+    fun incrementScore(points: Int) = prefsRepository.incrementScore(points)
+
+    fun getTotalScore(): Int = prefsRepository.getTotalScore()
+
+    fun resetScore() = prefsRepository.resetScore()
+
+    fun getUserCompletedGame() = prefsRepository.getUserCompletedGame()
 }

@@ -21,6 +21,8 @@ class GameUseCase @Inject constructor(
     fun getFlagById(flagId: FlagId) =
         gameRepository.getTriviaFlagById(flagId)
 
+    fun getAllTriviaFlags() = gameRepository.getAllTriviaFlags()
+
     fun getEmptySpacesByLevel(level: QuestionLevel) =
         gameRepository.getEmptySpacesByLevel(level)
 

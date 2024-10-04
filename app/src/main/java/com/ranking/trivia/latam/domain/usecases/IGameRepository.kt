@@ -16,6 +16,8 @@ interface IGameRepository {
 
     fun getTriviaFlagById(flagId: FlagId): TriviaFlag
 
+    fun getAllTriviaFlags(): List<TriviaFlag>
+
     fun getEmptySpacesByLevel(level: QuestionLevel): List<EmptySpace>
 
     fun verifyIfListIsCorrect(userResponse: List<FlagId>, question: Question): Boolean

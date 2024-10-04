@@ -24,6 +24,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ranking.trivia.latam.R
 import com.ranking.trivia.latam.presentation.screens.play.PlayViewModel
@@ -47,7 +48,7 @@ fun LongPressDraggable(
                 Box(modifier = Modifier
                     .graphicsLayer {
                         val offset = (state.dragPosition + state.dragOffset)
-                        scaleX = 0.7f // size of mirror view // todo
+                        scaleX = 0.7f // size of mirror view
                         scaleY = 0.7f // size of mirror view
                         alpha = if (targetSize == IntSize.Zero) 0f else .8f
                         translationX = offset.x
@@ -124,21 +125,22 @@ fun <T> DropTarget(
     val dragOffset = dragInfo.dragOffset
     var isCurrentDropTarget by remember { mutableStateOf(false) }
 
-    // todo
-    Box(modifier = modifier.onGloballyPositioned {
-        it.boundsInWindow().let { rect ->
-            val margin = 10f
-            val expandedRect = Rect(
-                left = rect.left - margin,
-                top = rect.top - margin,
-                right = rect.right + margin,
-                bottom = rect.bottom + margin
-            )
-            //isCurrentDropTarget = expandedRect.contains(dragPosition + dragOffset)
+    Box(
+        modifier = modifier.onGloballyPositioned {
+            it.boundsInWindow().let { rect ->
+                val margin = 50f
+                val expandedRect = Rect(
+                    left = rect.left,
+                    top = rect.top - margin,
+                    right = rect.right,
+                    bottom = rect.bottom - margin
+                )
+                isCurrentDropTarget = expandedRect.contains(dragPosition + dragOffset)
 
-            isCurrentDropTarget = rect.contains(dragPosition + dragOffset)
+                //isCurrentDropTarget = rect.contains(dragPosition + dragOffset)
+            }
         }
-    }) {
+    ) {
         val data = if (isCurrentDropTarget && !dragInfo.isDragging) dragInfo.dataToDrop as T? else null
         content(isCurrentDropTarget, data)
     }
