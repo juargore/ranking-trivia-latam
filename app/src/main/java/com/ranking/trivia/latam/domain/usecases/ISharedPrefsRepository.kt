@@ -30,4 +30,6 @@ interface ISharedPrefsRepository {
     fun setUserCompletedGame()
 
     fun getUserCompletedGame(): Boolean
+
+    fun resetAllData()
 }

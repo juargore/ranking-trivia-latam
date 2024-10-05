@@ -127,4 +127,12 @@ class SharedPrefsRepositoryImpl(context: Context): ISharedPrefsRepository {
     override fun getUserCompletedGame(): Boolean {
         return sharedPreferences.getBoolean(GAME_COMPLETED, false)
     }
+
+    override fun resetAllData() {
+        sharedPreferences.edit().remove(FIELD_LIST_OF_IDS_ALREADY_PLAYED).apply()
+        sharedPreferences.edit().remove(LAST_QUESTION_PLAYED).apply()
+        sharedPreferences.edit().remove(TOTAL_ERRORS).apply()
+        sharedPreferences.edit().remove(TOTAL_SCORE).apply()
+        sharedPreferences.edit().remove(GAME_COMPLETED).apply()
+    }
 }

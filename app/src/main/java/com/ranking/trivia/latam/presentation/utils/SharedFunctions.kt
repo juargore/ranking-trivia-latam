@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
@@ -116,4 +118,10 @@ fun showToast(context: Context, message: String?, duration: Int = Toast.LENGTH_S
     if (!message.isNullOrEmpty()) {
         Toast.makeText(context, message, duration).show()
     }
+}
+
+fun isInternetConnected(context: Context): Boolean {
+    val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+    return activeNetwork?.isConnectedOrConnecting == true
 }

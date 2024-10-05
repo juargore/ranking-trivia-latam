@@ -99,15 +99,17 @@ fun HallOfFameScreen(
             }
         }
 
-        // TODO: Delete for PROD
-        /*FloatingButtonV2(
+        // TODO: Delete FAB for PROD
+        /*
+        FloatingButtonV2(
             iconVector = Icons.Filled.Add,
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(24.dp)
         ) {
             showNewRankingDialog = true
-        }*/
+        }
+        */
     }
 }
 

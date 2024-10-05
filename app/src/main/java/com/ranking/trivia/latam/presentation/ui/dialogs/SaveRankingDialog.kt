@@ -53,6 +53,7 @@ import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedMedium
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedSemiBold
 import com.ranking.trivia.latam.presentation.theme.strongShadow
+import com.ranking.trivia.latam.presentation.utils.isInternetConnected
 import com.ranking.trivia.latam.presentation.utils.showToast
 import com.ranking.trivia.latam.presentation.utils.sidePadding
 
@@ -113,12 +114,20 @@ fun SaveRankingDialog(
                             playSound = false,
                             buttonType = HomeButtonType.About,
                             onClick = {
-                                if (word.isNotEmpty()) {
-                                    viewModel.saveNewRecord(triviaFlag, word)
-                                    showToast(context, "Guardando récord...")
-                                    onDismiss()
+                                if (isInternetConnected(context)) {
+                                    if (word.isNotEmpty()) {
+                                        if (triviaFlag != null) {
+                                            viewModel.saveNewRecord(triviaFlag, word)
+                                            showToast(context, "Guardando récord...")
+                                            onDismiss()
+                                        } else {
+                                            showToast(context, "Selecciona una bandera")
+                                        }
+                                    } else {
+                                        showToast(context, "Ingresa un nombre")
+                                    }
                                 } else {
-                                    showToast(context, "Ingresa un nombre")
+                                    showToast(context, "Necesitas conexión a internet")
                                 }
                             },
                             content = {

@@ -123,9 +123,10 @@ fun OptionsDialog(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    RadioButtonSample()
+                    // TODO: Language implementation in V2
+                    //RadioButtonSample()
 
-                    Spacer(modifier = Modifier.height(18.dp))
+                    //Spacer(modifier = Modifier.height(18.dp))
 
                     Row(
                         modifier = Modifier.fillMaxWidth()

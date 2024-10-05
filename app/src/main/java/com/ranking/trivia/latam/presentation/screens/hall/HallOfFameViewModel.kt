@@ -126,8 +126,8 @@ class HallOfFameViewModel @Inject constructor(
         flag?.id?.name?.let { countryId ->
             viewModelScope.launch(Dispatchers.IO) {
                 firebaseUseCase.saveNewRecord(getTotalScore(), name, countryId)
+                resetScore()
             }
         }
-        resetScore()
     }
 }

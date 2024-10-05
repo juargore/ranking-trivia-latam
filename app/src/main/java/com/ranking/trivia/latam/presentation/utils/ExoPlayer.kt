@@ -14,16 +14,15 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import androidx.media3.common.MediaItem
+import androidx.media3.ui.PlayerControlView
 
 @Composable
-fun ExoPlayerView() {
+fun ExoPlayerView(
+    videoUri: Uri
+) {
     val context = LocalContext.current
     val exoPlayer = ExoPlayer.Builder(context).build()
-
-    // TODO
-    val firstVideoUri = Uri.parse("asset:///test_video.mp4")
-
-    val mediaSource = remember { MediaItem.fromUri(firstVideoUri) }
+    val mediaSource = remember { MediaItem.fromUri(videoUri) }
 
     LaunchedEffect(mediaSource) {
         exoPlayer.setMediaItem(mediaSource)
@@ -44,6 +43,6 @@ fun ExoPlayerView() {
         },
         modifier = Modifier
             .fillMaxWidth()
-            .height(200.dp) // Set your desired height
+            .height(250.dp) // Set your desired height
     )
 }

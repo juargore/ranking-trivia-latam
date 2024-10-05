@@ -50,6 +50,7 @@ import com.ranking.trivia.latam.presentation.theme.fredokaCondensedSemiBold
 import com.ranking.trivia.latam.presentation.theme.lightShadow
 import com.ranking.trivia.latam.presentation.ui.dialogs.AboutDialog
 import com.ranking.trivia.latam.presentation.ui.dialogs.OptionsDialog
+import com.ranking.trivia.latam.presentation.ui.dialogs.ResetPrefsDialog
 import com.ranking.trivia.latam.presentation.ui.dialogs.TutorialDialog
 import com.ranking.trivia.latam.presentation.utils.GOOGLE_PLAY_GAME_URL
 import com.ranking.trivia.latam.presentation.utils.HOME_BOTTOM_SMALL_BANNER_ID
@@ -57,6 +58,7 @@ import com.ranking.trivia.latam.presentation.utils.Pulsating
 import com.ranking.trivia.latam.presentation.utils.VignetteInverseEffect
 import com.ranking.trivia.latam.presentation.utils.openUrl
 import com.ranking.trivia.latam.presentation.utils.playSound
+import com.ranking.trivia.latam.presentation.utils.resetApplication
 import com.ranking.trivia.latam.presentation.utils.sidePadding
 import com.ranking.trivia.latam.presentation.utils.verifyNewerVersion
 
@@ -71,12 +73,19 @@ fun HomeScreen(
     var showAboutDialog by remember { mutableStateOf(false) }
     var showOptionsDialog by remember { mutableStateOf(false) }
     var showTutorialDialog by remember { mutableStateOf(false) }
+    var showResetDialog by remember { mutableStateOf(false) }
 
     AboutDialog(showAboutDialog) { showAboutDialog = false }
 
     OptionsDialog(showOptionsDialog, viewModel) { showOptionsDialog = false }
 
     TutorialDialog(showTutorialDialog) { showTutorialDialog = false }
+
+    ResetPrefsDialog(showResetDialog) {
+        viewModel.resetAllData()
+        showResetDialog = false
+        onNavigateToPlayScreen()
+    }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -117,7 +126,7 @@ fun HomeScreen(
                     buttonType = HomeButtonType.Start,
                     onClick = {
                         if (viewModel.userCompletedGame()) {
-                            // todo: custom popup to reset sharedPrefs
+                            showResetDialog = true
                         } else {
                             onNavigateToPlayScreen()
                         }
@@ -183,6 +192,7 @@ fun AdmobBanner(
     modifier: Modifier,
     adId: String
 ) {
+    ///*
     AndroidView(
         modifier = modifier.fillMaxWidth(),
         factory = { context ->
@@ -193,6 +203,7 @@ fun AdmobBanner(
             }
         }
     )
+    //*/
 }
 
 @Composable

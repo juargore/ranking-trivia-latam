@@ -35,4 +35,6 @@ class SharedPrefsUseCase @Inject constructor(
     fun resetScore() = prefsRepository.resetScore()
 
     fun getUserCompletedGame() = prefsRepository.getUserCompletedGame()
+
+    fun resetAllData() = prefsRepository.resetAllData()
 }

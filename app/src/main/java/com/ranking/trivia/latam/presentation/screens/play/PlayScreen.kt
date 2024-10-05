@@ -9,12 +9,12 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -42,7 +42,6 @@ import com.ranking.trivia.latam.R
 import com.ranking.trivia.latam.domain.models.Question
 import com.ranking.trivia.latam.presentation.screens.hall.HallOfFameViewModel
 import com.ranking.trivia.latam.presentation.screens.home.AdmobBanner
-import com.ranking.trivia.latam.presentation.theme.CustomBlue
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
 import com.ranking.trivia.latam.presentation.theme.strongShadow
 import com.ranking.trivia.latam.presentation.ui.dialogs.CorrectDialog
@@ -151,7 +150,7 @@ fun PlayScreen(
 
             Row(
                 modifier = Modifier
-                    .padding(top = 160.dp, bottom = 180.dp)
+                    .padding(top = 160.dp, bottom = 150.dp)
             ) {
                 LazyColumn(
                     modifier = Modifier
@@ -178,71 +177,69 @@ fun PlayScreen(
                 }
             }
 
-            Box(
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(180.dp)
-                    .align(Alignment.BottomCenter)
+                    .height(130.dp)
+                    .align(Alignment.BottomCenter),
+                verticalAlignment = Alignment.Top
             ) {
-                Row(
-                    modifier = Modifier.align(Alignment.TopCenter),
-                    verticalAlignment = Alignment.CenterVertically
+                BottomButton(
+                    modifier = Modifier
+                        .weight(.4f)
+                        .wrapContentHeight(),
+                    timeUp = timeUp,
+                    emptySpaces = spaces.filter { it.flag == null }
                 ) {
-                    BottomButton(
-                        modifier = Modifier
-                            .weight(.4f)
-                            .fillMaxHeight(),
-                        timeUp = timeUp,
-                        emptySpaces = spaces.filter { it.flag == null }
-                    ) {
-                        val responseIsCorrect = viewModel.verifyIfListIsCorrect(spaces.map { it.flag?.id!! }, question!!)
-                        if (responseIsCorrect) {
-                            if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_success)
-                            animateScore = Triple(true, true, question!!)
-                            vmh.incrementScore(question!!, true)
-                            showCorrectDialog = true
-                        } else {
-                            if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_error)
-                            viewModel.incrementCounterOfErrors()
-                            animateScore = Triple(true, false, question!!)
-                            vmh.incrementScore(question!!, false)
-                            showIncorrectDialog = true
-                        }
-                    }
-
-                    question?.let {
-                        CountdownTimer(
-                            modifier = Modifier
-                                .weight(.4f)
-                                .fillMaxHeight(),
-                            totalTime = viewModel.getTimeAccordingLevel(it.level),
-                            isPaused = (showCorrectDialog || showIncorrectDialog)
-                        ) {
-                            timeUp = true
-                            showTimeUpDialog = true
-                            if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_error)
-                            animateScore = Triple(true, false, it)
-                            vmh.incrementScore(it, false)
-                            viewModel.incrementCounterOfErrors()
-                        }
-                    }
-
-                    Box(
-                        modifier = Modifier.weight(.2f),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        ScoreUI(score = vmh.getTotalScore())
-                        animateScore?.let { sc ->
-                            AnimateScoreNumber(sc.first, vmh.getPointsToAnimate(sc.third, sc.second))
-                        }
+                    val responseIsCorrect = viewModel.verifyIfListIsCorrect(spaces.map { it.flag?.id!! }, question!!)
+                    if (responseIsCorrect) {
+                        if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_success)
+                        animateScore = Triple(true, true, question!!)
+                        vmh.incrementScore(question!!, true)
+                        showCorrectDialog = true
+                    } else {
+                        if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_error)
+                        viewModel.incrementCounterOfErrors()
+                        animateScore = Triple(true, false, question!!)
+                        vmh.incrementScore(question!!, false)
+                        showIncorrectDialog = true
                     }
                 }
 
-                AdmobBanner(
-                    modifier = Modifier.align(Alignment.BottomCenter),
-                    adId = PLAY_BOTTOM_SMALL_BANNER_ID
-                )
+                question?.let {
+                    CountdownTimer(
+                        modifier = Modifier
+                            .weight(.4f)
+                            .wrapContentHeight(),
+                        totalTime = viewModel.getTimeAccordingLevel(it.level),
+                        isPaused = (showCorrectDialog || showIncorrectDialog)
+                    ) {
+                        timeUp = true
+                        showTimeUpDialog = true
+                        if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_error)
+                        animateScore = Triple(true, false, it)
+                        vmh.incrementScore(it, false)
+                        viewModel.incrementCounterOfErrors()
+                    }
+                }
+
+                Box(
+                    modifier = Modifier
+                        .weight(.2f)
+                        .padding(vertical = 8.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    ScoreUI(score = vmh.getTotalScore())
+                    animateScore?.let { sc ->
+                        AnimateScoreNumber(sc.first, vmh.getPointsToAnimate(sc.third, sc.second))
+                    }
+                }
             }
+
+            AdmobBanner(
+                modifier = Modifier.align(Alignment.BottomCenter),
+                adId = PLAY_BOTTOM_SMALL_BANNER_ID
+            )
         }
     }
 }
