@@ -14,8 +14,11 @@ android {
         applicationId = "com.ranking.trivia.latam"
         minSdk = 25
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0.1"
+        versionCode = 2
+        versionName = "1.0.2"
+
+        // Keystore pass = RankingTrivia2024
+        // Alias = Key0
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

@@ -272,7 +272,7 @@ class GameRepositoryImpl(context: Context): IGameRepository {
         Question(87, VIII, "¿Qué países han tenido más actores nominados al Óscar?", listOf(MX, AR, BR, CL, CU, CO))
     )
 
-    // TODO: Blur flags here!!!
+    // TODO: Blur flags here!!! V2
 
     private val questionsLevelIX = listOf(
         Question(91, IX, "¿Qué países tienen más producciones animadas reconocidas internacionalmente?", listOf(BR, AR, CL, MX, UY, CO)),

@@ -34,5 +34,3 @@ enum class QuestionLevel {
     XII ->  6 banderas | 3 slots | 2 blur | 8 turnos | 30s
     XIII -> 6 banderas | 3 slots | 3 blur | 8 turnos | 20s
 */
-
-// 95

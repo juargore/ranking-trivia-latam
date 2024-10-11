@@ -58,9 +58,14 @@ fun loadAndShowAd(
         AdRequest.Builder().build(),
         object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
-                println("AQUI: Ad failed to load")
-                onAdFailedToLoad?.invoke()
-                showToast(context, context.getString(R.string.error_loading_ad), Toast.LENGTH_LONG)
+                println("AQUI: Ad failed to load: $adError")
+                if (isInternetConnected(context) && adError.code == 3) {
+                    // user has internet but failed to load ad
+                    onAdDismissed()
+                } else {
+                    onAdFailedToLoad?.invoke()
+                    showToast(context, context.getString(R.string.error_loading_ad), Toast.LENGTH_LONG)
+                }
             }
 
             override fun onAdLoaded(interstitialAd: InterstitialAd) {

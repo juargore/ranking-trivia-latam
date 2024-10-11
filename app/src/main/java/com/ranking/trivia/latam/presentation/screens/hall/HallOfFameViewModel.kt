@@ -108,7 +108,7 @@ class HallOfFameViewModel @Inject constructor(
             X -> 9
             XI -> 10
             XII -> 11
-            XIII -> 12
+            XIII -> 12 // -> Max 700 pts
         }
     }
 
