@@ -30,7 +30,7 @@ import com.ranking.trivia.latam.presentation.theme.strongShadow
 @Composable
 fun CorrectDialog(
     isVisible: Boolean,
-    onNextOrExitClicked: (Boolean) -> Unit
+    onNextClicked: () -> Unit
 ) {
     if (isVisible) {
         BaseDialog(
@@ -65,25 +65,10 @@ fun CorrectDialog(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        /*ButtonExitOrRetry(
-                            modifier = Modifier.weight(0.5f),
-                            onClick = { onNextOrExitClicked(true) },
-                            content = {
-                                Text(
-                                    text = "Salir",
-                                    fontSize = 24.sp,
-                                    textAlign = TextAlign.Center,
-                                    fontFamily = fredokaCondensedSemiBold,
-                                    color = Color.DarkGray,
-                                    modifier = Modifier.padding(vertical = 6.dp, horizontal = 20.dp)
-                                )
-                            }
-                        )*/
-
                         ButtonExitOrRetry(
                             //modifier = Modifier.weight(0.5f),
                             modifier = Modifier,
-                            onClick = { onNextOrExitClicked(false) },
+                            onClick = { onNextClicked() },
                             content = {
                                 Text(
                                     text = "Siguiente",
@@ -108,8 +93,8 @@ fun CorrectDialog(
 fun CorrectDialogPreview() {
     CorrectDialog(
         isVisible = true,
-        onNextOrExitClicked = {}
-        //onNextClicked = {},
-        //onExitClicked = {}
+        onNextClicked = {
+
+        }
     )
 }

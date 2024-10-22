@@ -35,19 +35,23 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.ranking.trivia.latam.R
 import com.ranking.trivia.latam.domain.models.EmptySpace
 import com.ranking.trivia.latam.domain.models.QuestionLevel
+import com.ranking.trivia.latam.presentation.screens.home.HomeViewModel
 import com.ranking.trivia.latam.presentation.theme.CustomBlue
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
 import com.ranking.trivia.latam.presentation.theme.regularShadow
 import com.ranking.trivia.latam.presentation.utils.VignetteInverseEffect
+import com.ranking.trivia.latam.presentation.utils.playSound
 
 @Composable
 fun MainBackground() {
@@ -136,8 +140,11 @@ fun HeaderDivisions(
 
 @Composable
 fun HeaderBackAndCategory(
+    viewModel: HomeViewModel = hiltViewModel(),
     onBack: () -> Unit
 ) {
+    val context = LocalContext.current
+
     Spacer(modifier = Modifier.height(10.dp))
     Box(
         modifier = Modifier
@@ -151,7 +158,12 @@ fun HeaderBackAndCategory(
                 .background(Color.White)
                 .align(Alignment.CenterStart)
                 .border(1.dp, Color.Black, CircleShape)
-                .clickable { onBack() },
+                .clickable {
+                    if (viewModel.shouldPlaySound()) {
+                        playSound(context, R.raw.sound_click)
+                    }
+                    onBack()
+                           },
             contentAlignment = Alignment.Center
         ) {
             Image(

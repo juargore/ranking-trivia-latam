@@ -85,13 +85,13 @@ fun <T> DragTarget(
                 currentPosition = it.localToWindow(Offset.Zero)
             }
             .pointerInput(Unit) {
+             // detectDragGesturesAfterLongPress(
                 detectDragGestures(
-                //detectDragGesturesAfterLongPress(
                     onDragStart = {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         currentState.dataToDrop = dataToDrop
                         currentState.isDragging = true
-                        currentState.dragPosition = currentPosition// + cOffset
+                        currentState.dragPosition = currentPosition
                         currentState.draggableComposable = content
                     },
                     onDrag = { change, dragAmount ->

@@ -42,8 +42,6 @@ fun AboutDialog(
     isVisible: Boolean,
     onExitClicked: () -> Unit
 ) {
-    val context = LocalContext.current
-
     if (isVisible) {
         BaseDialog(
             title = "Acerca de",
@@ -52,8 +50,7 @@ fun AboutDialog(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .verticalScroll(rememberScrollState()),
-                    //horizontalAlignment = Alignment.CenterHorizontally
+                        .verticalScroll(rememberScrollState())
                 ) {
                     Box(
                         modifier = Modifier.fillMaxWidth(),

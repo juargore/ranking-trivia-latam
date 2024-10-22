@@ -58,7 +58,6 @@ import com.ranking.trivia.latam.presentation.utils.Pulsating
 import com.ranking.trivia.latam.presentation.utils.VignetteInverseEffect
 import com.ranking.trivia.latam.presentation.utils.openUrl
 import com.ranking.trivia.latam.presentation.utils.playSound
-import com.ranking.trivia.latam.presentation.utils.resetApplication
 import com.ranking.trivia.latam.presentation.utils.sidePadding
 import com.ranking.trivia.latam.presentation.utils.verifyNewerVersion
 
@@ -181,10 +180,10 @@ fun HomeBackground(
         fontFamily = fredokaCondensedSemiBold,
         fontSize = 18.sp,
     )
-    /*AdmobBanner(
+    AdmobBanner(
         modifier = modifierAdmob,
         adId = HOME_BOTTOM_SMALL_BANNER_ID
-    )*/
+    )
 }
 
 @Composable
@@ -233,17 +232,17 @@ fun HomeSideButtons(
 
     Column(modifier = modifier) {
         if (showNewerVersionButton) {
-            CircledButtonStart(HomeButtonType.NewVersion) {
+            CircledButtonStart(HomeButtonType.NewVersion, viewModel) {
                 openUrl(context, GOOGLE_PLAY_GAME_URL)
             }
         }
-        CircledButtonStart(HomeButtonType.Settings) {
+        CircledButtonStart(HomeButtonType.Settings, viewModel) {
             onSettingsClicked()
         }
-        CircledButtonStart(HomeButtonType.About) {
+        CircledButtonStart(HomeButtonType.About, viewModel) {
             onAboutClicked()
         }
-        CircledButtonStart(HomeButtonType.Tutorial) {
+        CircledButtonStart(HomeButtonType.Tutorial, viewModel) {
             onTutorialClicked()
         }
     }
@@ -317,15 +316,23 @@ fun TextHomeYellowButton(
 @Composable
 fun CircledButtonStart(
     buttonType: HomeButtonType,
+    viewModel: HomeViewModel,
     onClick: () -> Unit
 ) {
+    val context = LocalContext.current
+
     val boxContent = @Composable {
         Box(
             modifier = Modifier
                 .clip(CircleShape)
                 .size(55.dp)
                 .background(CustomBlue.copy(alpha = 0.6f), CircleShape)
-                .clickable { onClick() },
+                .clickable {
+                    if (viewModel.shouldPlaySound()) {
+                        playSound(context, R.raw.sound_click)
+                    }
+                    onClick()
+                           },
             contentAlignment = Alignment.Center
         ) {
             Image(

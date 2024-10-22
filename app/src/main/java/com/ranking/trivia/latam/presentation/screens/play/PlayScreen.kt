@@ -39,7 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ranking.trivia.latam.R
-import com.ranking.trivia.latam.domain.models.Question
+import com.ranking.trivia.latam.domain.models.AnimatedScoreData
 import com.ranking.trivia.latam.presentation.screens.hall.HallOfFameViewModel
 import com.ranking.trivia.latam.presentation.screens.home.AdmobBanner
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
@@ -73,7 +73,7 @@ fun PlayScreen(
     var showTimeUpDialog by remember { mutableStateOf(false) }
     var showIncorrectDialog by remember { mutableStateOf(false) }
     var showCorrectDialog by remember { mutableStateOf(false) }
-    var animateScore: Triple<Boolean, Boolean, Question>? by remember { mutableStateOf(null) }
+    var animateScore: AnimatedScoreData? by remember { mutableStateOf(null) }
 
     SaveRankingDialog(gameCompleted, vmh) {
         context.resetApplication()
@@ -81,7 +81,6 @@ fun PlayScreen(
 
     TimeUpDialog(
         isVisible = showTimeUpDialog,
-        onExitClicked = { showTimeUpDialog = false; onBack() },
         onRetryClicked = {
             if (viewModel.shouldDisplayAd()) {
                 loadAndShowAd(context, PLAY_FULL_SCREEN_BANNER_ID,
@@ -117,11 +116,11 @@ fun PlayScreen(
 
     CorrectDialog(
         isVisible = showCorrectDialog,
-        onNextOrExitClicked = { isExit ->
+        onNextClicked = {
             showCorrectDialog = false
             viewModel.saveQuestionAlreadyPlayed(question)
             Handler(Looper.getMainLooper()).postDelayed({
-                if (isExit) onBack() else onResetScreen()
+                onResetScreen()
             },500L)
         }
     )
@@ -194,13 +193,21 @@ fun PlayScreen(
                     val responseIsCorrect = viewModel.verifyIfListIsCorrect(spaces.map { it.flag?.id!! }, question!!)
                     if (responseIsCorrect) {
                         if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_success)
-                        animateScore = Triple(true, true, question!!)
+                        animateScore = AnimatedScoreData(
+                            visible = true,
+                            isCorrect = true,
+                            question = question!!
+                        )
                         vmh.incrementScore(question!!, true)
                         showCorrectDialog = true
                     } else {
                         if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_error)
                         viewModel.incrementCounterOfErrors()
-                        animateScore = Triple(true, false, question!!)
+                        animateScore = AnimatedScoreData(
+                            visible = true,
+                            isCorrect = false,
+                            question = question!!
+                        )
                         vmh.incrementScore(question!!, false)
                         showIncorrectDialog = true
                     }
@@ -217,7 +224,11 @@ fun PlayScreen(
                         timeUp = true
                         showTimeUpDialog = true
                         if (viewModel.shouldPlaySound()) playSound(context, R.raw.sound_error)
-                        animateScore = Triple(true, false, it)
+                        animateScore = AnimatedScoreData(
+                            visible = true,
+                            isCorrect = false,
+                            question = it
+                        )
                         vmh.incrementScore(it, false)
                         viewModel.incrementCounterOfErrors()
                     }
@@ -231,7 +242,7 @@ fun PlayScreen(
                 ) {
                     ScoreUI(score = vmh.getTotalScore())
                     animateScore?.let { sc ->
-                        AnimateScoreNumber(sc.first, vmh.getPointsToAnimate(sc.third, sc.second))
+                        AnimateScoreNumber(sc.visible, vmh.getPointsToAnimate(sc.question, sc.isCorrect))
                     }
                 }
             }
