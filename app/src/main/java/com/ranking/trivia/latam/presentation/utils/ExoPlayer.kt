@@ -14,7 +14,6 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import androidx.media3.common.MediaItem
-import androidx.media3.ui.PlayerControlView
 
 @Composable
 fun ExoPlayerView(
@@ -43,6 +42,6 @@ fun ExoPlayerView(
         },
         modifier = Modifier
             .fillMaxWidth()
-            .height(250.dp) // Set your desired height
+            .height(250.dp)
     )
 }

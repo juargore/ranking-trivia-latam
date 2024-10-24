@@ -1,7 +1,6 @@
 package com.ranking.trivia.latam.presentation.utils
 
 import androidx.compose.foundation.gestures.detectDragGestures
-import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,7 +23,6 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.IntSize
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ranking.trivia.latam.R
 import com.ranking.trivia.latam.presentation.screens.play.PlayViewModel
@@ -136,8 +134,6 @@ fun <T> DropTarget(
                     bottom = rect.bottom - margin
                 )
                 isCurrentDropTarget = expandedRect.contains(dragPosition + dragOffset)
-
-                //isCurrentDropTarget = rect.contains(dragPosition + dragOffset)
             }
         }
     ) {

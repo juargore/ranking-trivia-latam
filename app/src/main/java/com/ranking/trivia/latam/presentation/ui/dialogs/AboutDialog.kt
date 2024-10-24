@@ -21,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextLayoutResult
@@ -44,7 +43,7 @@ fun AboutDialog(
 ) {
     if (isVisible) {
         BaseDialog(
-            title = "Acerca de",
+            title = stringResource(R.string.about_title),
             onDismiss = { },
             content = {
                 Column(
@@ -83,7 +82,7 @@ fun AboutDialog(
                             onClick = onExitClicked,
                             content = {
                                 Text(
-                                    text = "Salir",
+                                    text = stringResource(id = R.string.general_exit),
                                     fontSize = 16.sp,
                                     textAlign = TextAlign.Center,
                                     fontFamily = fredokaCondensedSemiBold,
@@ -106,8 +105,8 @@ fun ExpandableText(text: String) {
     var textLayoutResult by remember { mutableStateOf<TextLayoutResult?>(null) }
 
     Column(modifier = Modifier.fillMaxWidth()) {
-        val readMore = "Leer más"
-        val readLess = "Leer menos"
+        val readMore = stringResource(id = R.string.about_read_more)
+        val readLess = stringResource(id = R.string.about_read_less)
         Text(
             text = text,
             maxLines = if (expandedState) Int.MAX_VALUE else maxLines,

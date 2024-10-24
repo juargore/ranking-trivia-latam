@@ -191,7 +191,6 @@ fun AdmobBanner(
     modifier: Modifier,
     adId: String
 ) {
-    ///*
     AndroidView(
         modifier = modifier.fillMaxWidth(),
         factory = { context ->
@@ -202,7 +201,6 @@ fun AdmobBanner(
             }
         }
     )
-    //*/
 }
 
 @Composable

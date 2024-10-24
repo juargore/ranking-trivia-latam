@@ -187,144 +187,141 @@ class GameRepositoryImpl(context: Context): IGameRepository {
     )
 
     private val questionsLevelI = listOf(
-        Question(11, I, "¿Qué país ha ganado más MUNDIALES en su historia?", listOf(BR, AR, UY)),
-        Question(12, I, "¿Quién tiene mayor EXTENSIÓN territorial?", listOf(BR, AR, MX)),
-        Question(13, I, "¿Qué país tiene mayor POBLACIÓN?", listOf(BR, MX, CO)),
-        Question(14, I, "¿Quién tiene más VOLCANES ACTIVOS?", listOf(CL, MX, GT)),
-        Question(15, I, "¿Donde hay mas VENEZOLANOS fuera de VENEZUELA en Latinoamérica?", listOf(CO, PE, BR)),
-        Question(16, I, "¿Quién tiene más sitios declarados PATRIMONIO de la HUMANIDAD en Centroamérica y el Caribe?", listOf(CU, GT, PA)),
-        Question(17, I, "¿Dónde hay más fanáticos de Dragon Ball según Bandai?", listOf(BO, PE, MX))
+        Question(11, I, context.getString(R.string.question_i_11), listOf(BR, AR, UY)),
+        Question(12, I, context.getString(R.string.question_i_12), listOf(BR, AR, MX)),
+        Question(13, I, context.getString(R.string.question_i_13), listOf(BR, MX, CO)),
+        Question(14, I, context.getString(R.string.question_i_14), listOf(CL, MX, GT)),
+        Question(15, I, context.getString(R.string.question_i_15), listOf(CO, PE, BR)),
+        Question(16, I, context.getString(R.string.question_i_16), listOf(CU, GT, PA)),
+        Question(17, I, context.getString(R.string.question_i_17), listOf(BO, PE, MX))
     )
 
     private val questionsLevelII = listOf(
-        Question(21, II, "¿Quién tiene mayor SUPERFICIE de selva AMAZÓNICA?", listOf(BR, PE, BO, VE)),
-        Question(22, II, "¿Qué países tienen la MAYOR tasa de CRÍMENES?", listOf(CO, MX, PY, EC)),
-        Question(23, II, "¿Quién tiene los RÍOS más LARGOS de Latinoamérica?", listOf(BR, VE, BO, PY)),
-        Question(24, II, "¿Quién produce más PLATA en la región?", listOf(MX, PE, BO, CL)),
-        Question(25, II, "¿Quién tiene más medallas olímpicas en ATLETISMO?", listOf(CU, JM, PR, VE)),
-        Question(26, II, "¿Quién tiene más hectáreas para el cultivo del CAFÉ en Centroamérica?", listOf(HN, GT, NI, SV)),
-        Question(27, II, "¿Quién tiene la mayor cantidad de sitios arqueológicos MAYAS?", listOf(GT, MX, BZ, HN))
+        Question(21, II, context.getString(R.string.question_ii_21), listOf(BR, PE, BO, VE)),
+        Question(22, II, context.getString(R.string.question_ii_22), listOf(CO, MX, PY, EC)),
+        Question(23, II, context.getString(R.string.question_ii_23), listOf(BR, VE, BO, PY)),
+        Question(24, II, context.getString(R.string.question_ii_24), listOf(MX, PE, BO, CL)),
+        Question(25, II, context.getString(R.string.question_ii_25), listOf(CU, JM, PR, VE)),
+        Question(26, II, context.getString(R.string.question_ii_26), listOf(HN, GT, NI, SV)),
+        Question(27, II, context.getString(R.string.question_ii_27), listOf(GT, MX, BZ, HN))
     )
 
     private val questionsLevelIII = listOf(
-        Question(31, III, "¿Qué países buscan más anime en los últimos años en internet?", listOf(BO, SV, PE, CR, PA)),
-        Question(32, III, "¿Quién tiene mayor producción de RON en el CARIBE?", listOf(DO, CU, PR, JM, MQ)),
-        Question(33, III, "¿Quién tiene mayor densidad poblacional (PAÍSES PEQUEÑOS)?", listOf(MF, HT, PR, SV, JM)),
-        Question(34, III, "¿Quién tiene mayor porcentaje de ÁREAS PROTEGIDAS en relación con su tamaño?", listOf(CR, SR, EC, PA, NI)),
-        Question(35, III, "¿Quién tiene más TURISMO internacional en el caribe?", listOf(DO, CU, PR, JM, MQ)),
-        Question(36, III, "¿Quién mayor BIODIVERSIDAD marina en el Caribe y Centroamérica?", listOf(SR, MQ, DO, BZ, JM)),
-        Question(37, III, "¿Quién tiene más ISLAS como parte de su territorio?", listOf(CL, VE, CU, DO, PA))
+        Question(31, III, context.getString(R.string.question_iii_31), listOf(BO, SV, PE, CR, PA)),
+        Question(32, III, context.getString(R.string.question_iii_32), listOf(DO, CU, PR, JM, MQ)),
+        Question(33, III, context.getString(R.string.question_iii_33), listOf(MF, HT, PR, SV, JM)),
+        Question(34, III, context.getString(R.string.question_iii_34), listOf(CR, SR, EC, PA, NI)),
+        Question(35, III, context.getString(R.string.question_iii_35), listOf(DO, CU, PR, JM, MQ)),
+        Question(36, III, context.getString(R.string.question_iii_36), listOf(SR, MQ, DO, BZ, JM)),
+        Question(37, III, context.getString(R.string.question_iii_37), listOf(CL, VE, CU, DO, PA))
     )
 
     private val questionsLevelIV = listOf(
-        Question(41, IV, "¿A dónde han emigrado mas ECUATORIANOS desde 2021 en Latinoamérica?", listOf(CO, PE, PA, MX, AR)),
-        Question(42, IV, "¿Qué países han ganado más Premios Goya a la Mejor Película Iberoamericana?", listOf(AR, CL, CU, MX, UY, CO)),
-        Question(43, IV, "¿Qué países han tenido más directores galardonados internacionalmente?", listOf(MX, AR, BR, CL, CU, CO)),
-        Question(44, IV, "¿Qué países tienen mayor extensión de costa en Centroamérica y el Caribe?", listOf(CU, PA, CR, DO, JM, NI)),
-        Question(45, IV, "¿Qué países han clasificado más veces a la Copa Mundial de la FIFA?", listOf(BR, AR, MX, UY, CL, PY)),
-        Question(46, IV, "¿Quién EXPORTA más FRUTAS tropicales?", listOf(EC, CR, CO, MX, PE, HN)),
-        Question(47, IV, "¿Donde hay mas CHILENOS fuera de CHILE en Latinoamérica?", listOf(AR, BR, VE, PE, EC)),
+        Question(41, IV, context.getString(R.string.question_iv_41), listOf(CO, PE, PA, MX, AR, BR)),
+        Question(42, IV, context.getString(R.string.question_iv_42), listOf(AR, CL, CU, MX, UY, CO)),
+        Question(43, IV, context.getString(R.string.question_iv_43), listOf(MX, AR, BR, CL, CU, CO)),
+        Question(44, IV, context.getString(R.string.question_iv_44), listOf(CU, PA, CR, DO, JM, NI)),
+        Question(45, IV, context.getString(R.string.question_iv_45), listOf(BR, AR, MX, UY, CL, PY)),
+        Question(46, IV, context.getString(R.string.question_iv_46), listOf(EC, CR, CO, MX, PE, HN)),
+        Question(47, IV, context.getString(R.string.question_iv_47), listOf(AR, BR, VE, PE, EC, MX))
     )
 
     // aquí para abajo puro 6
 
     private val questionsLevelV = listOf(
-        Question(51, V, "¿Quién tiene la ECONOMÍA más grande según su PIB?", listOf(BR, MX, AR, CL, PE, CO)),
-        Question(52, V, "¿Quién tiene la mayor producción de PETRÓLEO?", listOf(VE, BR, MX, AR, CO, EC)),
-        Question(53, V, "¿Donde hay mas PARAGUAYOS fuera de PARAGUAY?", listOf(AR, BR, CL, BO, UY, PE)),
-        Question(54, V, "¿Qué países tuvieron más casos de COVID?", listOf(BR, AR, MX, CO, CL, PE)),
-        Question(55, V, "¿En qué países de la región es más popular el anime One Piece?", listOf(MX, AR, BR, CL, PE, CO)),
-        Question(56, V, "¿Quién tiene mayor cantidad de Patrimonios de la Humanidad según la UNESCO?", listOf(MX, BR, PE, AR, CL, CU)),
-        Question(57, V, "¿Quién tiene mayor cobertura de INTERNET?", listOf(UY, CL, AR, CR, BR, MX)),
-        Question(58, V, "¿Qué países han ganado más veces la COPA AMÉRICA?", listOf(AR, UY, BR, PE, PY, CL))
+        Question(51, V, context.getString(R.string.question_v_51), listOf(BR, MX, AR, CL, PE, CO)),
+        Question(52, V, context.getString(R.string.question_v_52), listOf(VE, BR, MX, AR, CO, EC)),
+        Question(53, V, context.getString(R.string.question_v_53), listOf(AR, BR, CL, BO, UY, PE)),
+        Question(54, V, context.getString(R.string.question_v_54), listOf(BR, AR, MX, CO, CL, PE)),
+        Question(55, V, context.getString(R.string.question_v_55), listOf(MX, AR, BR, CL, PE, CO)),
+        Question(56, V, context.getString(R.string.question_v_56), listOf(MX, BR, PE, AR, CL, CU)),
+        Question(57, V, context.getString(R.string.question_v_57), listOf(UY, CL, AR, CR, BR, MX)),
+        Question(58, V, context.getString(R.string.question_v_58), listOf(AR, UY, BR, PE, PY, CL))
     )
 
     private val questionsLevelVI = listOf(
-        Question(61, VI, "¿Quién tiene las FUERZAS MILITARES más grandes según el número de efectivos?", listOf(BR, MX, CL, AR, VE, PE)),
-        Question(62, VI, "¿Quién tiene mayor EXTENSIÓN DE COSTA en Latinoamérica?", listOf(CL, BR, AR, MX, PE, CL)),
-        Question(63, VI, "¿Quién produce más AZÚCAR en Latinoamérica?", listOf(BR, MX, CO, AR, GT, CU)),
-        Question(64, VI, "Según Taste Atlas, quiénes tienen la MEJOR gastronomía de la región?", listOf(MX, PE, BR, AR, CL, CO)),
-
-        Question(65, VI, "¿Quién genera más ENERGÍA HIDROELÉCTRICA?", listOf(BR, VE, PY, AR, CO, CR)), // todo
-
-        Question(66, VI, "¿Donde hay mas COLOMBIANOS fuera de COLOMBIA en Latinoamérica?", listOf(VE, CL, EC, PA, MX)),
-
-        Question(67, VI, "¿Quién PRODUCE más FLORES en la región?", listOf(CL, EC, MX, BR, CR, GT)) // todo
+        Question(61, VI, context.getString(R.string.question_vi_61), listOf(BR, MX, CL, AR, VE, PE)),
+        Question(62, VI, context.getString(R.string.question_vi_62), listOf(CL, BR, AR, MX, PE, CL)),
+        Question(63, VI, context.getString(R.string.question_vi_63), listOf(BR, MX, CO, AR, GT, CU)),
+        Question(64, VI, context.getString(R.string.question_vi_64), listOf(MX, PE, BR, AR, CL, CO)),
+        Question(65, VI, context.getString(R.string.question_vi_65), listOf(BR, VE, PY, AR, CO, CR)), // todo
+        Question(66, VI, context.getString(R.string.question_vi_66), listOf(VE, CL, EC, PA, MX, AR)),
+        Question(67, VI, context.getString(R.string.question_vi_67), listOf(CL, EC, MX, BR, CR, GT)) // todo
     )
 
     private val questionsLevelVII = listOf(
-        Question(71, VIII, "¿Qué países han ganado más veces el Premio Ariel a la Mejor Película Iberoamericana?", listOf(AR, CL, BR, PE, CO, UY)),
-        Question(72, VII, "¿Qué países reciben más turistas internacionales en Centroamérica y el Caribe?", listOf(DO, CU, PR, CR, PA, JM)),
-        Question(73, VII, "¿Qué países tienen la mayor producción de café en Centroamérica y el Caribe?", listOf(HN, GT, NI, CR, SV, DO)),
-        Question(74, VII, "¿Donde hay mas MEXICANOS fuera de MÉXICO en Latinoamérica?", listOf(GT, BO, CL, AR, PA)),
-        Question(75, VII, "¿Qué países han producido más películas de comedia exitosas en Latinoamérica", listOf(MX, AR, BR, CL, CO, PE)),
-        Question(76, VII, "¿Qué países han tenido más películas seleccionadas en el Festival de Cine de Berlín?", listOf(AR, BR, CL, MX, CO, VE)),
-        Question(77, VII, "Según Taste Atlas, ¿cómo ordenó los países según su PLATO PRINCIPAL (no su gastronomía general)", listOf(AR, BR, CO, CL, MX, PR))
+        Question(71, VII, context.getString(R.string.question_vii_71), listOf(AR, CL, BR, PE, CO, UY)),
+        Question(72, VII, context.getString(R.string.question_vii_72), listOf(DO, CU, PR, CR, PA, JM)),
+        Question(73, VII, context.getString(R.string.question_vii_73), listOf(HN, GT, NI, CR, SV, DO)),
+        Question(74, VII, context.getString(R.string.question_vii_74), listOf(GT, BO, CL, AR, PA, HN)),
+        Question(75, VII, context.getString(R.string.question_vii_75), listOf(MX, AR, BR, CL, CO, PE)),
+        Question(76, VII, context.getString(R.string.question_vii_76), listOf(AR, BR, CL, MX, CO, VE)),
+        Question(77, VII, context.getString(R.string.question_vii_77), listOf(AR, BR, CO, CL, MX, PR))
     )
 
     private val questionsLevelVIII = listOf(
-        Question(81, VIII, "¿Donde hay mas URUGUAYOS fuera de URUGUAY en Latinoamérica?", listOf(AR, BR, CL, VE, MX)),
-        Question(82, VIII, "¿Qué países han tenido más nominaciones al Óscar en la categoría de Mejor Película Internacional?", listOf(AR, MX, BR, CL, UY, PE)),
-        Question(83, VIII, "¿Qué países tienen más festivales de cine internacionales reconocidos?", listOf(AR, BR, MX, CL, UY, CO)),
-        Question(84, VIII, "¿Quién tiene las economías más grandes en Centroamérica y el Caribe según su PIB?", listOf(DO, GT, CR, PA, SV, HN)),
-        Question(85, VIII, "¿Qué países han ganado más Premios Platino del Cine Iberoamericano?", listOf(AR, CL, BR, MX, UY, PE)),  // todo
-        Question(86, VIII, "¿Qué países han producido más películas con nominaciones a festivales internacionales?", listOf(AR, BR, CL, MX, UY, CU)),
-        Question(87, VIII, "¿Qué países han tenido más actores nominados al Óscar?", listOf(MX, AR, BR, CL, CU, CO))
+        Question(81, VIII, context.getString(R.string.question_viii_81), listOf(AR, BR, CL, VE, MX, CO)),
+        Question(82, VIII, context.getString(R.string.question_viii_82), listOf(AR, MX, BR, CL, UY, PE)),
+        Question(83, VIII, context.getString(R.string.question_viii_83), listOf(AR, BR, MX, CL, UY, CO)),
+        Question(84, VIII, context.getString(R.string.question_viii_84), listOf(DO, GT, CR, PA, SV, HN)),
+        Question(85, VIII, context.getString(R.string.question_viii_85), listOf(AR, CL, BR, MX, UY, PE)),  // todo
+        Question(86, VIII, context.getString(R.string.question_viii_86), listOf(AR, BR, CL, MX, UY, CU)),
+        Question(87, VIII, context.getString(R.string.question_viii_87), listOf(MX, AR, BR, CL, CU, CO))
     )
 
     // TODO: Blur flags here!!! V2
 
     private val questionsLevelIX = listOf(
-        Question(91, IX, "¿Qué países tienen más producciones animadas reconocidas internacionalmente?", listOf(BR, AR, CL, MX, UY, CO)),
-        Question(92, IX, "¿Qué países han tenido más películas seleccionadas en el Festival de Cannes?", listOf(BR, AR, MX, CL, PE, UY)),
-        Question(93, IX, "¿Qué países han producido más documentales premiados a nivel internacional?", listOf(AR, BR, CL, MX, CO, PE)),
-        Question(94, IX, "¿Qué países tienen más producciones de cine independiente reconocidas", listOf(AR, BR, CL, MX, CO, PE)), // todo
-        Question(95, IX, "¿Qué países han sido sede del Festival de Cine de Cartagena?", listOf(CO, BR, AR, MX, CL, VE)), // todo
-        Question(96, IX, "¿Qué países tienen más películas basadas en hechos históricos reconocidas internacionalmente?", listOf(AR, BR, CL, MX, CU, PE)), // todo
-        Question(97, IX, "¿Qué países han ganado más premios en el Festival de Cine de Mar del Plata?", listOf(AR, BR, MX, UY, CL, PY)),
-        Question(98, IX, "¿A dónde han emigrado mas BRASILEÑOS desde 2022 en Latinoamérica?", listOf(PA, AR, BO, CL, PE)),
+        Question(91, IX, context.getString(R.string.question_ix_91), listOf(BR, AR, CL, MX, UY, CO)),
+        Question(92, IX, context.getString(R.string.question_ix_92), listOf(BR, AR, MX, CL, PE, UY)),
+        Question(93, IX, context.getString(R.string.question_ix_93), listOf(AR, BR, CL, MX, CO, PE)),
+        Question(94, IX, context.getString(R.string.question_ix_94), listOf(AR, BR, CL, MX, CO, PE)), // todo
+        Question(95, IX, context.getString(R.string.question_ix_95), listOf(CO, BR, AR, MX, CL, VE)), // todo
+        Question(96, IX, context.getString(R.string.question_ix_96), listOf(AR, BR, CL, MX, CU, PE)), // todo
+        Question(97, IX, context.getString(R.string.question_ix_97), listOf(AR, BR, MX, UY, CL, PY)),
+        Question(98, IX, context.getString(R.string.question_ix_98), listOf(PA, AR, BO, CL, PE, MX))
     )
 
     private val questionsLevelX = listOf(
-        Question(101, X, "¿Qué países han producido más películas de cine negro?", listOf(MX, AR, BR, CL, CO, PE)), // todo
-        Question(102, X, "¿Qué países han tenido más películas presentadas en el Festival de San Sebastián?", listOf(AR, BR, CL, MX, CO, PE)), // todo
-        Question(103, X, "¿Qué países tienen mayor cantidad de manglares en Centroamérica y el Caribe?", listOf(CU, NI, HN, GT, PA, CR)), // todo
-        Question(104, X, "¿Qué países han producido más películas sobre conflictos sociales en Latinoamérica?", listOf(AR, BR, CL, MX, CO, BO)), // todo
-        Question(105, X, "¿A dónde han emigrado más ARGENTINOS desde 2021 en Latinoamérica?", listOf(CL, PY, BO, BR, UY)),
-        Question(106, X, "¿Qué países tienen más películas de animación infantil reconocidas?", listOf(AR, BR, MX, CL, CO, UY)),
-        Question(107, X, "¿Qué países producen más caña de azúcar en Centroamérica y el Caribe?", listOf(GT, CU, DO, HN, SV, CR)),
+        Question(101, X, context.getString(R.string.question_x_101), listOf(MX, AR, BR, CL, CO, PE)), // todo
+        Question(102, X, context.getString(R.string.question_x_102), listOf(AR, BR, CL, MX, CO, PE)), // todo
+        Question(103, X, context.getString(R.string.question_x_103), listOf(CU, NI, HN, GT, PA, CR)), // todo
+        Question(104, X, context.getString(R.string.question_x_104), listOf(AR, BR, CL, MX, CO, BO)), // todo
+        Question(105, X, context.getString(R.string.question_x_105), listOf(CL, PY, BO, BR, UY, MX)),
+        Question(106, X, context.getString(R.string.question_x_106), listOf(AR, BR, MX, CL, CO, UY)),
+        Question(107, X, context.getString(R.string.question_x_107), listOf(GT, CU, DO, HN, SV, CR)),
     )
 
     private val questionsLevelXI = listOf(
-        Question(111, XI, "¿Quién tiene la mayor producción de carne vacuna?", listOf(BR, AR, MX, UY, PY, CO)),
-        Question(112, XI, "¿Quién tiene mayor extensión de selva tropical?", listOf(BR, PE, CO, VE, BO, EC)),
-        Question(113, XI, "¿Quién tienen los salarios mínimos más altos?", listOf(CR, CL, UY, AR, PA, MX)),
-        Question(114, XI, "¿Quién tiene mayor producción de energía geotérmica?", listOf(MX, SV, CR, NI, GT, HN)),
-        Question(115, XI, "¿Quién PRODUCE más vino Latinoamérica?", listOf(AR, CL, BR, UY, PE, BO)),
-        Question(116, XI, "¿Quién tiene mayor superficie de tierras agrícolas?", listOf(BR, AR, MX, PY, CO, VE)), // todo
-        Question(117, XI, "¿Quién tiene más variedad de especies de aves?", listOf(CL, PE, BR, EC, VE, BO))
+        Question(111, XI, context.getString(R.string.question_xi_111), listOf(BR, AR, MX, UY, PY, CO)),
+        Question(112, XI, context.getString(R.string.question_xi_112), listOf(BR, PE, CO, VE, BO, EC)),
+        Question(113, XI, context.getString(R.string.question_xi_113), listOf(CR, CL, UY, AR, PA, MX)),
+        Question(114, XI, context.getString(R.string.question_xi_114), listOf(MX, SV, CR, NI, GT, HN)),
+        Question(115, XI, context.getString(R.string.question_xi_115), listOf(AR, CL, BR, UY, PE, BO)),
+        Question(116, XI, context.getString(R.string.question_xi_116), listOf(BR, AR, MX, PY, CO, VE)), // todo
+        Question(117, XI, context.getString(R.string.question_xi_117), listOf(CL, PE, BR, EC, VE, BO))
     )
 
     private val questionsLevelXII = listOf(
-        Question(121, XII, "¿Quién tiene la mayor producción de banano?", listOf(EC, CR, GT, CO, HN, DO)),
-        Question(122, XII, "¿Quién genera más electricidad a partir de fuentes renovables?", listOf(PY, UY, CR, BR, CL, NI)), // todo
-        Question(123, XII, "¿Quién tienen la mayor producción de productos lácteos?", listOf(BR, AR, MX, UY, CO, CL)),
-        Question(124, XII, "¿Quién tienen la mayor biodiversidad marina?", listOf(BR, MX, CO, CL, VE, PE)),
-        Question(125, XII, "¿Quién tiene más líneas de metro?", listOf(MX, BR, CL, VE, AR, PE)),
-        Question(126, XII, "¿Quién tiene mayor superficie de áreas protegidas?", listOf(BR, CO, VE, AR, CL, PE)),
-        Question(127, XII, "¿Quién tiene más selvas tropicales protegidas?", listOf(BR, CO, VE, PE, BO, EC)),
-        Question(128, XII, "¿Qué países han tenido más equipos ganadores de la Copa Libertadores?", listOf(AR, BR, UY, CO, PY, CL)),
+        Question(121, XII, context.getString(R.string.question_xii_121), listOf(EC, CR, GT, CO, HN, DO)),
+        Question(122, XII, context.getString(R.string.question_xii_122), listOf(PY, UY, CR, BR, CL, NI)), // todo
+        Question(123, XII, context.getString(R.string.question_xii_123), listOf(BR, AR, MX, UY, CO, CL)),
+        Question(124, XII, context.getString(R.string.question_xii_124), listOf(BR, MX, CO, CL, VE, PE)),
+        Question(125, XII, context.getString(R.string.question_xii_125), listOf(MX, BR, CL, VE, AR, PE)),
+        Question(126, XII, context.getString(R.string.question_xii_126), listOf(BR, CO, VE, AR, CL, PE)),
+        Question(127, XII, context.getString(R.string.question_xii_127), listOf(BR, CO, VE, PE, BO, EC)),
+        Question(128, XII, context.getString(R.string.question_xii_128), listOf(AR, BR, UY, CO, PY, CL)),
     )
 
     private val questionsLevelXIII = listOf(
-        Question(131, XIII, "¿Quién tiene los puertos marítimos más grandes?", listOf(BR, PA, MX, CL, CO, AR)),
-        Question(132, XIII, "¿Quién tiene la mayor cantidad de producción de camarones?", listOf(EC, MX, VE, BR, CO, HN)), // todo
-        Question(133, XIII, "¿Quién tiene las tasas de alfabetización más altas?", listOf(CU, UY, CL, AR, CR, PA)),
-        Question(134, XIII, "¿Quién tiene la mayor producción de cacao?", listOf(EC, BR, PE, CO, VE, DO)), // todo
-        Question(135, XIII, "¿Quién tiene mayor producción de plata?", listOf(MX, PE, CL, BO, AR, GT)),
-        Question(136, XIII, "Según Taste Atlas, quiénes tienen la PEOR gastronomía de la región?", listOf(CR, HN, GT, SV, NI, PY)),
-        Question(137, XIII, "¿Quién tiene mayor producción de maíz?", listOf(BR, MX, AR, PY, PE, VE)), // todo
-        Question(138, XIII, "¿Qué países tienen más títulos de la Copa Sudamericana?", listOf(AR, BR, EC, CO, CL, MX)),
+        Question(131, XIII, context.getString(R.string.question_xiii_131), listOf(BR, PA, MX, CL, CO, AR)),
+        Question(132, XIII, context.getString(R.string.question_xiii_132), listOf(EC, MX, VE, BR, CO, HN)), // todo
+        Question(133, XIII, context.getString(R.string.question_xiii_133), listOf(CU, UY, CL, AR, CR, PA)),
+        Question(134, XIII, context.getString(R.string.question_xiii_134), listOf(EC, BR, PE, CO, VE, DO)), // todo
+        Question(135, XIII, context.getString(R.string.question_xiii_135), listOf(MX, PE, CL, BO, AR, GT)),
+        Question(136, XIII, context.getString(R.string.question_xiii_136), listOf(CR, HN, GT, SV, NI, PY)),
+        Question(137, XIII, context.getString(R.string.question_xiii_137), listOf(BR, MX, AR, PY, PE, VE)), // todo
+        Question(138, XIII, context.getString(R.string.question_xiii_138), listOf(AR, BR, EC, CO, CL, MX)),
     )
 
     private val allQuestions = questionsLevelI + questionsLevelII + questionsLevelIII + questionsLevelIV +

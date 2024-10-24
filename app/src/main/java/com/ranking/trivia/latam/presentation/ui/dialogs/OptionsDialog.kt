@@ -35,6 +35,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -69,7 +70,7 @@ fun OptionsDialog(
 
     if (isVisible) {
         BaseDialog(
-            title = "Opciones",
+            title = stringResource(id = R.string.options_title),
             onDismiss = { },
             content = {
                 Column(
@@ -106,7 +107,7 @@ fun OptionsDialog(
                         )
                         Spacer(modifier = Modifier.width(15.dp))
                         Text(
-                            text = "Sonido",
+                            text = stringResource(id = R.string.options_sound),
                             fontSize = 28.sp,
                             textAlign = TextAlign.Start,
                             fontFamily = fredokaCondensedBold,
@@ -136,7 +137,7 @@ fun OptionsDialog(
                             onClick = { onExitClicked() },
                             content = {
                                 Text(
-                                    text = "Salir",
+                                    text = stringResource(id = R.string.general_exit),
                                     fontSize = 20.sp,
                                     textAlign = TextAlign.Center,
                                     fontFamily = fredokaCondensedSemiBold,
@@ -151,11 +152,10 @@ fun OptionsDialog(
                             onClick = {
                                 viewModel?.saveEnableSound(soundEnabled)
                                 onExitClicked()
-                                //onSaveClicked(soundEnabled)
-                                      },
+                            },
                             content = {
                                 Text(
-                                    text = "Guardar",
+                                    text = stringResource(id = R.string.general_save),
                                     fontSize = 20.sp,
                                     textAlign = TextAlign.Center,
                                     fontFamily = fredokaCondensedSemiBold,
@@ -183,6 +183,10 @@ fun CustomSwitch(
     initialValue: Int,
     onCheckedChanged: (checked: Boolean) -> Unit
 ) {
+    val sizePx = with(LocalDensity.current) { (width - height).toPx() }
+    val anchors = mapOf(0f to stateOff, sizePx to stateOn)
+    val scope = rememberCoroutineScope()
+
     val swipeableState = rememberSwipeableState(
         initialValue = initialValue,
         confirmStateChange = { newState ->
@@ -194,11 +198,6 @@ fun CustomSwitch(
             true
         }
     )
-
-    val sizePx = with(LocalDensity.current) { (width - height).toPx() }
-    val anchors = mapOf(0f to stateOff, sizePx to stateOn)
-
-    val scope = rememberCoroutineScope()
 
     Row(
         modifier = Modifier
@@ -247,9 +246,9 @@ fun CustomSwitch(
         ) {
             Text(
                 text = if (swipeableState.currentValue == stateOff) {
-                    "Off"
+                    stringResource(id = R.string.options_off)
                 } else {
-                    "On"
+                    stringResource(id = R.string.options_on)
                 },
                 fontSize = 16.sp,
                 textAlign = TextAlign.Center,
@@ -266,18 +265,24 @@ fun CustomSwitch(
 @Composable
 fun RadioButtonSample() {
 
-    val radioOptions = listOf("Español", "Inglés", "Portugés")
+    val radioOptions = listOf(
+        stringResource(id = R.string.options_spanish),
+        stringResource(id = R.string.options_english),
+        stringResource(id = R.string.options_portuguese)
+    )
     val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[1] ) }
 
     Column {
         Text(
-            text = "Idioma",
+            text = stringResource(id = R.string.options_language),
             fontSize = 28.sp,
             textAlign = TextAlign.Start,
             fontFamily = fredokaCondensedBold,
             color = Color.White,
             style = TextStyle(shadow = strongShadow),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 22.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 22.dp)
         )
         radioOptions.forEach { text ->
             Row(

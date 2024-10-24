@@ -118,16 +118,16 @@ fun SaveRankingDialog(
                                     if (word.isNotEmpty()) {
                                         if (triviaFlag != null) {
                                             viewModel.saveNewRecord(triviaFlag, word)
-                                            showToast(context, "Guardando récord...")
+                                            showToast(context, context.getString(R.string.new_record_saving))
                                             onDismiss()
                                         } else {
-                                            showToast(context, "Selecciona una bandera")
+                                            showToast(context, context.getString(R.string.new_record_select_flag))
                                         }
                                     } else {
-                                        showToast(context, "Ingresa un nombre")
+                                        showToast(context, context.getString(R.string.new_record_write_a_name))
                                     }
                                 } else {
-                                    showToast(context, "Necesitas conexión a internet")
+                                    showToast(context, context.getString(R.string.new_record_need_internet))
                                 }
                             },
                             content = {
@@ -168,7 +168,7 @@ fun ScoreUI(score: Int) {
                 .background(Color.Red, CircleShape)
                 .clickable {
                     Toast
-                        .makeText(context, "Tu puntuación actual", Toast.LENGTH_SHORT)
+                        .makeText(context, context.getString(R.string.new_record_your_current_score), Toast.LENGTH_SHORT)
                         .show()
                 }
             ,
@@ -281,7 +281,9 @@ fun FlagsDropDownMenu(
                 DropdownMenuItem(
                     text = {
                         Image(
-                            modifier = Modifier.size(45.dp).clip(RoundedCornerShape(12.dp)),
+                            modifier = Modifier
+                                .size(45.dp)
+                                .clip(RoundedCornerShape(12.dp)),
                             painter = painterResource(flag.image),
                             contentDescription = null
                         )

@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,7 +35,7 @@ fun CorrectDialog(
 ) {
     if (isVisible) {
         BaseDialog(
-            title = "Correcto!",
+            title = stringResource(id = R.string.correct_title),
             onDismiss = { },
             content = {
                 Column(
@@ -49,7 +50,7 @@ fun CorrectDialog(
                     )
                     Spacer(modifier = Modifier.height(10.dp))
                     Text(
-                        text = "Excelente trabajo! Lo estás haciendo muy bien!!\n\nPasemos a algo más retador!",
+                        text = stringResource(id = R.string.correct_description),
                         fontSize = 22.sp,
                         textAlign = TextAlign.Center,
                         fontFamily = fredokaCondensedBold,
@@ -66,12 +67,11 @@ fun CorrectDialog(
                         horizontalArrangement = Arrangement.Center
                     ) {
                         ButtonExitOrRetry(
-                            //modifier = Modifier.weight(0.5f),
                             modifier = Modifier,
                             onClick = { onNextClicked() },
                             content = {
                                 Text(
-                                    text = "Siguiente",
+                                    text = stringResource(id = R.string.general_next),
                                     fontSize = 24.sp,
                                     textAlign = TextAlign.Center,
                                     fontFamily = fredokaCondensedSemiBold,

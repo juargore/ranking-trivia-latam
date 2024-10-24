@@ -98,7 +98,6 @@ fun PlayScreen(
 
     IncorrectDialog(
         isVisible = showIncorrectDialog,
-        onExitClicked = { showIncorrectDialog = false; onBack() },
         onRetryClicked = {
             if (viewModel.shouldDisplayAd()) {
                 loadAndShowAd(context, PLAY_FULL_SCREEN_BANNER_ID,

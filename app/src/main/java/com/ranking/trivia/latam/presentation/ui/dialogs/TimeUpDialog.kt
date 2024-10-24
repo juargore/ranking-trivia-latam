@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -41,7 +42,7 @@ fun TimeUpDialog(
     if (isVisible) {
         BaseDialog(
             onDismiss = { },
-            title = "Se terminó el tiempo!",
+            title = stringResource(id = R.string.time_up_title),
             content = {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
@@ -55,7 +56,7 @@ fun TimeUpDialog(
                     )
                     Spacer(modifier = Modifier.height(10.dp))
                     Text(
-                        text = "Necesitas apresurarte para lograr acomodar correctamente las banderas en el orden correcto.\n\nVenga! Tú puedes!!",
+                        text = stringResource(id = R.string.time_up_description),
                         fontSize = 22.sp,
                         textAlign = TextAlign.Center,
                         fontFamily = fredokaCondensedBold,
@@ -76,7 +77,7 @@ fun TimeUpDialog(
                             onClick = { onRetryClicked() },
                             content = {
                                 Text(
-                                    text = "Reintentar",
+                                    text = stringResource(id = R.string.general_retry),
                                     fontSize = 24.sp,
                                     textAlign = TextAlign.Center,
                                     fontFamily = fredokaCondensedSemiBold,
@@ -111,9 +112,7 @@ fun ButtonExitOrRetry(
                 color = Color.Black,
                 shape = RoundedCornerShape(16.dp)
             )
-            .clickable {
-                onClick()
-            },
+            .clickable { onClick() },
         contentAlignment = Alignment.Center,
     ) {
         content()

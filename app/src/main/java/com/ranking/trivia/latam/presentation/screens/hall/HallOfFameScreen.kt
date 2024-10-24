@@ -100,7 +100,7 @@ fun HallOfFameScreen(
         }
 
         // TODO: Delete FAB for PROD
-        ///*
+        /*
         FloatingButtonV2(
             iconVector = Icons.Filled.Add,
             modifier = Modifier
@@ -109,7 +109,7 @@ fun HallOfFameScreen(
         ) {
             showNewRankingDialog = true
         }
-        //*/
+        */
     }
 }
 

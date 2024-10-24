@@ -77,7 +77,7 @@ class PlayViewModel @Inject constructor(
         } else {
             // no question stored in shared preferences -> user just started to play!
             //println("AQUI: no question stored in shared preferences -> user just started to play!")
-            val newQuestion: Question? = gameUseCase.getQuestionByLevelAndExcludeTheOnesAlreadyPlayed(QuestionLevel.I, listOf())
+            val newQuestion: Question? = gameUseCase.getQuestionByLevelAndExcludeTheOnesAlreadyPlayed(I, listOf())
             _question.value = newQuestion
             newQuestion?.let { getEmptySpacesByLevel(it) }
         }

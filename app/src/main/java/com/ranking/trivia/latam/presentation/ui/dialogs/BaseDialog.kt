@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.DialogWindowProvider
+import com.ranking.trivia.latam.R
 import com.ranking.trivia.latam.presentation.theme.CustomBlue
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
 
@@ -61,7 +63,10 @@ fun BaseDialog(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(Color.White.copy(alpha = 0.8f), shape = allRoundedCornerShape)
+                            .background(
+                                Color.White.copy(alpha = 0.8f),
+                                shape = allRoundedCornerShape
+                            )
                             .padding(horizontal = 12.dp)
                             .padding(bottom = 10.dp, top = 10.dp)
                     ) {
@@ -101,7 +106,7 @@ fun BaseDialog(
 @Composable
 fun BaseDialogPreview() {
     BaseDialog(
-        title = "Opciones",
+        title = stringResource(id = R.string.options_title),
         content = {
 
         },

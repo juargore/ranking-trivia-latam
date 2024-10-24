@@ -34,7 +34,7 @@ fun ResetPrefsDialog(
 ) {
     if (isVisible) {
         BaseDialog(
-            title = "Juego completado",
+            title = stringResource(id = R.string.reset_prefs_title),
             onDismiss = { },
             content = {
                 Column(
@@ -77,7 +77,7 @@ fun ResetPrefsDialog(
                             onClick = onResetClicked,
                             content = {
                                 Text(
-                                    text = "Comenzar nueva partida",
+                                    text = stringResource(id = R.string.reset_prefs_start_again),
                                     fontSize = 16.sp,
                                     textAlign = TextAlign.Center,
                                     fontFamily = fredokaCondensedSemiBold,

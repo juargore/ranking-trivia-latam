@@ -39,7 +39,7 @@ fun TutorialDialog(
         val tutorialCorrectVideoUri = Uri.parse("asset:///tutorial_correct_incorrect.mp4")
 
         BaseDialog(
-            title = "Cómo jugar?",
+            title = stringResource(id = R.string.tutorial_title),
             onDismiss = { },
             content = {
                 Column(
@@ -57,7 +57,7 @@ fun TutorialDialog(
                     Spacer(modifier = Modifier.height(10.dp))
 
                     Text(
-                        text = stringResource(R.string.how_to_play_top),
+                        text = stringResource(R.string.tutorial_description_top),
                         fontSize = 15.sp,
                         lineHeight = 18.sp,
                         textAlign = TextAlign.Center,
@@ -69,7 +69,7 @@ fun TutorialDialog(
                     Spacer(modifier = Modifier.height(10.dp))
 
                     Text(
-                        text = stringResource(R.string.how_to_play_bottom),
+                        text = stringResource(R.string.tutorial_description_bottom),
                         fontSize = 15.sp,
                         lineHeight = 18.sp,
                         textAlign = TextAlign.Center,
@@ -81,7 +81,7 @@ fun TutorialDialog(
                     Spacer(modifier = Modifier.height(10.dp))
 
                     Text(
-                        text = stringResource(R.string.how_to_play_final),
+                        text = stringResource(R.string.tutorial_description_final),
                         fontSize = 15.sp,
                         lineHeight = 18.sp,
                         textAlign = TextAlign.Center,
@@ -101,7 +101,7 @@ fun TutorialDialog(
                             onClick = onExitClicked,
                             content = {
                                 Text(
-                                    text = "Salir",
+                                    text = stringResource(id = R.string.general_exit),
                                     fontSize = 16.sp,
                                     textAlign = TextAlign.Center,
                                     fontFamily = fredokaCondensedSemiBold,

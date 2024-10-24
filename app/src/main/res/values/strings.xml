@@ -1,87 +1,253 @@
 <resources>
     <string name="app_name">Ranking-Trivia Latam</string>
+    <string name="general_exit">Exit</string>
+    <string name="general_save">Save</string>
+    <string name="general_next">Next</string>
+    <string name="general_retry">Retry</string>
 
-    <string name="home_start">Iniciar</string>
-    <string name="home_how_to_play">¿Cómo jugar?</string>
-    <string name="home_about">Acerca de</string>
-    <string name="home_hall_of_fame">Salón de la Fama ✧✧</string>
-    <string name="home_new_version">¡Nueva\nversión!</string>
+    <string name="home_start">Start</string>
+    <string name="home_how_to_play">How to play?</string>
+    <string name="home_about">About</string>
+    <string name="home_hall_of_fame">Hall of Fame ✧✧</string>
+    <string name="home_new_version">¡New\nversion!</string>
     <string name="home_version_number">v%s</string>
 
-    <string name="error_loading_ad">Error al cargar anuncio. Conéctese a internet para continuar.</string>
+    <string name="error_loading_ad">Error loading ad. Connect to internet to continue.</string>
 
-    <string name="game_level">Nivel %s</string>
-    <string name="game_done">Listo!!</string>
+    <string name="game_level">Level %s</string>
+    <string name="game_done">Done!!</string>
 
-    <string name="hof_title">Salón de la Fama</string>
-    <string name="hof_description">Top 20 jugadores con mejor puntuación</string>
+    <string name="hof_title">Hall of Fame</string>
+    <string name="hof_description">Top 20 Players - Highest Score</string>
 
+    <!-- Country name -->
     <string name="country_name_belize">Belize</string>
     <string name="country_name_costa_rica">Costa Rica</string>
     <string name="country_name_el_salvador">El Salvador</string>
     <string name="country_name_guatemala">Guatemala</string>
     <string name="country_name_honduras">Honduras</string>
-    <string name="country_name_mexico">México</string>
+    <string name="country_name_mexico">Mexico</string>
     <string name="country_name_nicaragua">Nicaragua</string>
-    <string name="country_name_panama">Panamá</string>
+    <string name="country_name_panama">Panama</string>
     <string name="country_name_argentina">Argentina</string>
     <string name="country_name_bolivia">Bolivia</string>
-    <string name="country_name_brasil">Brasil</string>
+    <string name="country_name_brasil">Brazil</string>
     <string name="country_name_chile">Chile</string>
     <string name="country_name_colombia">Colombia</string>
     <string name="country_name_ecuador">Ecuador</string>
     <string name="country_name_jamaica">Jamaica</string>
-    <string name="country_name_guayana_francesa">Guayana Francesa</string>
+    <string name="country_name_guayana_francesa">French Guiana</string>
     <string name="country_name_guyana">Guyana</string>
     <string name="country_name_paraguay">Paraguay</string>
-    <string name="country_name_peru">Perú</string>
+    <string name="country_name_peru">Peru</string>
     <string name="country_name_surinam">Surinam</string>
     <string name="country_name_uruguay">Uruguay</string>
     <string name="country_name_venezuela">Venezuela</string>
     <string name="country_name_cuba">Cuba</string>
-    <string name="country_name_republica_dominicana">República Dominicana</string>
-    <string name="country_name_haiti">Haití</string>
-    <string name="country_name_guadalupe">Guadalupe</string>
-    <string name="country_name_martinica">Martinica</string>
+    <string name="country_name_republica_dominicana">Dominican Republic</string>
+    <string name="country_name_haiti">Haiti</string>
+    <string name="country_name_guadalupe">Guadaloupe</string>
+    <string name="country_name_martinica">Martinique</string>
     <string name="country_name_puerto_rico">Puerto Rico</string>
-    <string name="country_name_isla_san_martin">Isla San Martín</string>
+    <string name="country_name_isla_san_martin">Saint Martin Island</string>
 
+    <!-- About dialog -->
+    <string name="about_title">About</string>
+    <string name="about_read_more">Read more</string>
+    <string name="about_read_less">Read less</string>
     <string name="about_disclaimer">
-        Sobre la veracidad de la información.\n\n
-        La información presentada en este juego sobre rankings y datos de países de América Latina ha sido recopilada de fuentes que consideramos confiables. Sin embargo, no garantizamos la exactitud, exhaustividad o actualidad de dicha información. Los datos proporcionados son solo para fines informativos y de entretenimiento, y no deben ser utilizados como referencia oficial o para la toma de decisiones importantes.
-        \nTe recomendamos consultar fuentes oficiales o actualizadas si necesitas información precisa o verificable.
+        About the accuracy of the information.\n\n
+        The information presented in this game regarding rankings and data of Latin American countries has been gathered from sources we consider reliable. However, we do not guarantee the accuracy, completeness, or timeliness of this information. The data provided is for informational and entertainment purposes only and should not be used as an official reference or for making important decisions.
+        \nWe recommend consulting official or updated sources if you need precise or verifiable information.
     </string>
     <string name="about_ads">
-        Sobre el uso de anuncios.\n\n
-        Los anuncios que se presentan a lo largo de esta aplicación son gestionados por terceros y, por lo tanto, no tenemos control directo sobre el tipo de contenido que se muestra. La finalidad de estos anuncios es ayudarnos a cubrir los costos asociados con el desarrollo de la app, incluyendo el trabajo del equipo de diseño, desarrollo, alojamiento y mantenimiento.
-        \nAgradecemos tu comprensión y apoyo, ya que estos anuncios nos permiten seguir mejorando la aplicación y ofrecerte una mejor experiencia.
+        About the use of ads.\n\n
+        The ads displayed throughout this app are managed by third parties, and therefore, we have no direct control over the type of content shown. The purpose of these ads is to help us cover the costs associated with app development, including the work of the design, development, hosting, and maintenance teams.
+        \nWe appreciate your understanding and support, as these ads allow us to continue improving the app and provide you with a better experience.
     </string>
     <string name="about_ui_and_sounds">
-        Sobre diseños y contenido multimedia.\n\n
-        La mayoría del diseño, arte gráfico, sonidos y demás elementos visuales y auditivos de esta aplicación han sido generados mediante herramientas de inteligencia artificial y retocados o editados por el equipo de desarrollo. Si en algún caso alguno de estos elementos coincide o es similar a otros ya existentes, esto es una mera coincidencia y no nos hacemos responsables por dichas similitudes.
-        \nAgradecemos tu comprensión y te aseguramos que nuestra intención es ofrecer una experiencia única e innovadora en la creación de esta app.
+        About designs and multimedia content.\n\n
+        Most of the design, graphics, sounds, and other visual and auditory elements in this app have been generated using artificial intelligence tools and retouched or edited by the development team. If any of these elements coincidentally resemble or are similar to existing ones, this is purely coincidental, and we are not responsible for such similarities.
+        \nWe appreciate your understanding and assure you that our goal is to offer a unique and innovative experience in creating this app.
     </string>
 
-    <string name="new_record_title">¡¡Nuevo Récord!!</string>
 
-    <string name="new_record_description_top">
-        Wow! Has terminado con todas las preguntas que Ranking-Trivia Latinoamérica tiene por ahora. Pero no te preocupes, estamos trabajando día a día para ofrecer más y mejores rankings de Latam, así que, espera una actualización de la App para que puedas continuar con esta excelente aventura!
-        \n\nPor ahora, graba tu récord (necesitas conexión a internet) y si estás en el Top 20, éste aparecerá en la sección = Salón de la Fama = en el menú inicial.
-    </string>
+    <!-- Options dialog -->
+    <string name="options_title">Options</string>
+    <string name="options_sound">Sound</string>
+    <string name="options_off">Off</string>
+    <string name="options_on">On</string>
+    <string name="options_language">Language</string>
+    <string name="options_spanish">Spanish</string>
+    <string name="options_english">English</string>
+    <string name="options_portuguese">Portuguese</string>
 
-    <string name="new_record_description_bottom">Todo el equipo que participó en la realización de este juego te agradecemos inmensamente por jugarlo. Espera cosas nuevas!</string>
 
-    <string name="new_record_save">Guardar mi récord</string>
+    <!-- Tutorial dialog -->
+    <string name="tutorial_title">How to play?</string>
+    <string name="tutorial_description_top">Very simple! Drag the flags on the left with your finger and place them where you think they go in the ranking on the right. If you make a mistake or want to change, press the orange button and the flag will return to its original position.</string>
+    <string name="tutorial_description_bottom">If you get the ranking right, a dialog will pop up, and points will be added to your score in the bottom right. If you get the ranking wrong, a different dialog will appear, and points will be deducted from the same score.</string>
+    <string name="tutorial_description_final">Try to get as many rankings right as you can to boost your final score. With a good score, the Hall of Fame awaits you. Have fun!!</string>
 
 
-    <string name="how_to_play_top">Muy sencillo! Arrastra las banderas de la izquierda con tu dedo y colócalas donde creas que van en el ranking de la derecha. Si te equivocas o quieres cambiar, presiona el botón naranja y la bandera volverá a su lugar de origen.</string>
-    <string name="how_to_play_bottom">Si aciertas en el ranking, de desplegará un diálogo y se sumarán puntos a tu score abajo a la derecha. Si fallas en el ranking, se desplegará otro diálogo y se restarán puntos a ese mismo score.</string>
-    <string name="how_to_play_final">Intenta acertar la mayor cantidad de rankings para sumar a tu score final. Con un buen score el Salón de la Fama te espera. Que te diviertas!!</string>
-
+    <!-- ResetPrefs dialog -->
+    <string name="reset_prefs_title">Game has been completed</string>
+    <string name="reset_prefs_start_again">Start new game</string>
     <string name="reset_prefs_description">
-        Parece ser que ya has completado el juego una vez, pero veo que quieres mejorar ese ranking, eh? Pues excelente, no se diga más!!
-        \n\nPresiona el botón aquí abajo y eso borrará cualquier avance que tengas guardado de tu partida anterior. No te preocupes, si estás en el Salón de la Fama, ese récord seguirá ahí.
-        \n\nMuchas gracias por jugarlo nuevamente y buena suerte!!
+        It seems you\'ve already completed the game once, but I see you\'re looking to improve that ranking, huh? Well, excellent, say no more!!
+        \n\nPress the button below, and it will erase any progress saved from your previous game. Don't worry, if you're in the Hall of Fame, that record will stay there.
+        \n\nThank you so much for playing again, and good luck!!
     </string>
+
+
+    <!-- Correct dialog -->
+    <string name="correct_title">Correct!</string>
+    <string name="correct_description">Great job! You\'re doing really well!!\n\nLet's move on to something more challenging!</string>
+
+
+    <!-- Correct dialog -->
+    <string name="incorrect_title">Incorrect!</string>
+    <string name="incorrect_description">You\'ve arranged the flag ranking incorrectly.\nBut don\'t worry, you're very close to getting it right!!\n\nTry again!</string>
+
+    <!-- Save Ranging dialog -->
+    <string name="new_record_title">¡¡New Record!!</string>
+    <string name="new_record_description_top">
+        Wow! You\'ve finished all the questions Ranking-Trivia Latin America has for now. But don\'t worry, we\'re working day by day to offer more and better rankings from Latam, so look out for an app update to continue this amazing adventure!
+        \n\nFor now, save your record (internet connection required), and if you're in the Top 20, it will appear in the = Hall of Fame = section on the main menu.
+    </string>
+    <string name="new_record_description_bottom">The entire team involved in creating this game thanks you immensely for playing it. Expect new things to come!</string>
+    <string name="new_record_save">Save my record</string>
+    <string name="new_record_saving">Saving record…</string>
+    <string name="new_record_select_flag">Select a flag</string>
+    <string name="new_record_write_a_name">Write a name</string>
+    <string name="new_record_need_internet">Internet connection required</string>
+    <string name="new_record_your_current_score">Your current score</string>
+
+
+    <!-- TimeUp dialog -->
+    <string name="time_up_title">Time\'s up!</string>
+    <string name="time_up_description">You need to hurry up to correctly arrange the flags in the right order.\n\nCome on! You can do it!!</string>
+
+
+    <!-- Questions Level I -->
+    <string name="question_i_11">Which country has won the most WORLD CUPS in its history?</string>
+    <string name="question_i_12">Which country has the largest TERRITORY?</string>
+    <string name="question_i_13">Which country has the largest POPULATION?</string>
+    <string name="question_i_14">Which country has the most ACTIVE VOLCANOES?</string>
+    <string name="question_i_15">Where are there more VENEZUELANS outside of VENEZUELA in Latin America?</string>
+    <string name="question_i_16">Which country has the most UNESCO WORLD HERITAGE SITES in Central America and the Caribbean?</string>
+    <string name="question_i_17">Where are the most Dragon Ball fans according to Bandai?</string>
+
+    <!-- Questions Level II -->
+    <string name="question_ii_21">Which country has the largest area of AMAZONIAN RAINFOREST?</string>
+    <string name="question_ii_22">Which countries have the HIGHEST crime rates?</string>
+    <string name="question_ii_23">Which country has the LONGEST RIVERS in Latin America?</string>
+    <string name="question_ii_24">Which country produces the most SILVER in the region?</string>
+    <string name="question_ii_25">Which country has the most Olympic medals in ATHLETICS?</string>
+    <string name="question_ii_26">Which country has the most hectares for COFFEE cultivation in Central America?</string>
+    <string name="question_ii_27">Which country has the largest number of MAYAN archaeological sites?</string>
+
+    <!-- Questions Level III -->
+    <string name="question_iii_31">Which countries have searched for ANIME the most in recent years on the internet?</string>
+    <string name="question_iii_32">Which country produces the most RUM in the CARIBBEAN?</string>
+    <string name="question_iii_33">Which country has the highest population density (SMALL COUNTRIES)?</string>
+    <string name="question_iii_34">Which country has the highest percentage of PROTECTED AREAS relative to its size?</string>
+    <string name="question_iii_35">Which country has the most international TOURISM in the Caribbean?</string>
+    <string name="question_iii_36">Which country has the greatest MARINE BIODIVERSITY in the Caribbean and Central America?</string>
+    <string name="question_iii_37">Which country has the most ISLANDS as part of its territory?</string>
+
+    <!-- Questions Level IV -->
+    <string name="question_iv_41">Where have most ECUADORIANS migrated to in Latin America since 2021?</string>
+    <string name="question_iv_42">Which countries have won the most GOYA Awards for Best Ibero-American Film?</string>
+    <string name="question_iv_43">Which countries have had the most internationally awarded DIRECTORS?</string>
+    <string name="question_iv_44">Which countries have the longest coastlines in Central America and the Caribbean?</string>
+    <string name="question_iv_45">Which countries have qualified the most times for the FIFA World Cup?</string>
+    <string name="question_iv_46">Which country EXPORTS the most tropical FRUITS?</string>
+    <string name="question_iv_47">Where are there more CHILEANS outside of CHILE in Latin America?</string>
+
+    <!-- Questions Level V -->
+    <string name="question_v_51">Which country has the largest ECONOMY based on its GDP?</string>
+    <string name="question_v_52">Which country has the highest PETROLEUM production?</string>
+    <string name="question_v_53">Where are there more PARAGUAYANS outside of PARAGUAY?</string>
+    <string name="question_v_54">Which countries had the most COVID cases?</string>
+    <string name="question_v_55">In which countries in the region is the anime One Piece most popular?</string>
+    <string name="question_v_56">Who has the greatest number of UNESCO World Heritage Sites?</string>
+    <string name="question_v_57">Who has the greatest INTERNET coverage?</string>
+    <string name="question_v_58">Which countries have won the COPA AMÉRICA the most times?</string>
+
+    <!-- Questions Level VI -->
+    <string name="question_vi_61">Who has the largest MILITARY FORCES based on the number of personnel?</string>
+    <string name="question_vi_62">Who has the longest COASTLINE in Latin America?</string>
+    <string name="question_vi_63">Who produces the most SUGAR in Latin America?</string>
+    <string name="question_vi_64">According to Taste Atlas, who has the BEST gastronomy in the region?</string>
+    <string name="question_vi_65">Who generates the most HYDROELECTRIC POWER?</string>
+    <string name="question_vi_66">Where are there more COLOMBIANS outside of COLOMBIA in Latin America?</string>
+    <string name="question_vi_67">Who PRODUCES the most FLOWERS in the region?</string>
+
+    <!-- Questions Level VII -->
+    <string name="question_vii_71">Which countries have won the Ariel Award for Best Ibero-American Film the most times?</string>
+    <string name="question_vii_72">Which countries receive the most international tourists in Central America and the Caribbean?</string>
+    <string name="question_vii_73">Which countries have the highest coffee production in Central America and the Caribbean?</string>
+    <string name="question_vii_74">Where are there more MEXICANS outside of MEXICO in Latin America?</string>
+    <string name="question_vii_75">Which countries have produced the most successful comedy films in Latin America?</string>
+    <string name="question_vii_76">Which countries have had the most films selected at the Berlin Film Festival?</string>
+    <string name="question_vii_77">According to Taste Atlas, how did it rank countries based on their MAIN DISH (not their overall gastronomy)?</string>
+
+    <!-- Questions Level VIII -->
+    <string name="question_viii_81">Where are there more URUGUAYANS outside of URUGUAY in Latin America?</string>
+    <string name="question_viii_82">Which countries have had the most Oscar nominations in the Best International Feature Film category?</string>
+    <string name="question_viii_83">Which countries have the most recognized international film festivals?</string>
+    <string name="question_viii_84">Who has the largest economies in Central America and the Caribbean based on their GDP?</string>
+    <string name="question_viii_85">Which countries have won the most Platino Awards for Ibero-American Cinema?</string>
+    <string name="question_viii_86">Which countries have produced the most films with nominations at international festivals?</string>
+    <string name="question_viii_87">Which countries have had the most actors nominated for an Oscar?</string>
+
+    <!-- Questions Level IX -->
+    <string name="question_ix_91">Which countries have the most internationally recognized animated productions?</string>
+    <string name="question_ix_92">Which countries have had the most films selected at the Cannes Film Festival?</string>
+    <string name="question_ix_93">Which countries have produced the most internationally award-winning documentaries?</string>
+    <string name="question_ix_94">Which countries have the most recognized independent film productions?</string>
+    <string name="question_ix_95">Which countries have hosted the Cartagena Film Festival?</string>
+    <string name="question_ix_96">Which countries have the most internationally recognized films based on historical events?</string>
+    <string name="question_ix_97">Which countries have won the most awards at the Mar del Plata Film Festival?</string>
+    <string name="question_ix_98">Where have most BRAZILIANS emigrated since 2022 in Latin America?</string>
+
+    <!-- Questions Level X -->
+    <string name="question_x_101">Which countries have produced the most film noir movies?</string>
+    <string name="question_x_102">Which countries have had the most films presented at the San Sebastián Film Festival?</string>
+    <string name="question_x_103">Which countries have the largest amount of mangroves in Central America and the Caribbean?</string>
+    <string name="question_x_104">Which countries have produced the most films about social conflicts in Latin America?</string>
+    <string name="question_x_105">Where have most ARGENTINIANS emigrated since 2021 in Latin America?</string>
+    <string name="question_x_106">Which countries have the most recognized children\'s animated films?</string>
+    <string name="question_x_107">Which countries produce the most sugarcane in Central America and the Caribbean?</string>
+
+    <!-- Questions Level XI -->
+    <string name="question_xi_111">Who has the largest BEEF production?</string>
+    <string name="question_xi_112">Who has the largest extent of tropical RAINFOREST?</string>
+    <string name="question_xi_113">Who has the highest minimum WAGES?</string>
+    <string name="question_xi_114">Who has the highest GEOTHERMAL energy production?</string>
+    <string name="question_xi_115">Who PRODUCES the most wine in Latin America?</string>
+    <string name="question_xi_116">Who has the largest area of agricultural land?</string>
+    <string name="question_xi_117">Who has the greatest variety of BIRD species?</string>
+
+    <!-- Questions Level XII -->
+    <string name="question_xii_121">Who has the largest BANANA production?</string>
+    <string name="question_xii_122">Who generates the most electricity from renewable sources?</string>
+    <string name="question_xii_123">Who has the largest dairy production?</string>
+    <string name="question_xii_124">Who has the greatest marine biodiversity?</string>
+    <string name="question_xii_125">Who has the most metro lines?</string>
+    <string name="question_xii_126">Who has the largest area of protected areas?</string>
+    <string name="question_xii_127">Who has the most protected tropical rainforests?</string>
+    <string name="question_xii_128">Which countries have had the most teams win the Copa Libertadores?</string>
+
+    <!-- Questions Level XIII -->
+    <string name="question_xiii_131">Who has the largest seaports?</string>
+    <string name="question_xiii_132">Who has the largest SHRIMP production?</string>
+    <string name="question_xiii_133">Who has the highest literacy rates?</string>
+    <string name="question_xiii_134">Who has the largest COCOA production?</string>
+    <string name="question_xiii_135">Who has the largest SILVER production?</string>
+    <string name="question_xiii_136">According to Taste Atlas, who has the WORST gastronomy in the region?</string>
+    <string name="question_xiii_137">Who has the largest CORN production?</string>
+    <string name="question_xiii_138">Which countries have the most Copa Sudamericana titles?</string>
 
 </resources>

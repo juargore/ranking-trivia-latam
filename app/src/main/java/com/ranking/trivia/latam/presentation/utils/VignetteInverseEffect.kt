@@ -32,8 +32,6 @@ fun VignetteInverseEffect(modifier: Modifier = Modifier) {
                     intArrayOf(
                         centerColor.copy(alpha = 0.7f).toArgb(), // center color
                         edgeColor.copy(alpha = 0.2f).toArgb() // edge color
-                        //centerColor.toArgb(), // center color
-                        //edgeColor.toArgb() // edge color
                     ),
                     floatArrayOf(0.0f, 1.0f), // transition between colors
                     Shader.TileMode.CLAMP // stop gradient on borders
