@@ -95,25 +95,25 @@
     <string name="reset_prefs_start_again">Start new game</string>
     <string name="reset_prefs_description">
         It seems you\'ve already completed the game once, but I see you\'re looking to improve that ranking, huh? Well, excellent, say no more!!
-        \n\nPress the button below, and it will erase any progress saved from your previous game. Don't worry, if you're in the Hall of Fame, that record will stay there.
+        \n\nPress the button below, and it will erase any progress saved from your previous game. Don\'t worry, if you\'re in the Hall of Fame, that record will stay there.
         \n\nThank you so much for playing again, and good luck!!
     </string>
 
 
     <!-- Correct dialog -->
     <string name="correct_title">Correct!</string>
-    <string name="correct_description">Great job! You\'re doing really well!!\n\nLet's move on to something more challenging!</string>
+    <string name="correct_description">Great job! You\'re doing really well!!\n\nLet\'s move on to something more challenging!</string>
 
 
     <!-- Correct dialog -->
     <string name="incorrect_title">Incorrect!</string>
-    <string name="incorrect_description">You\'ve arranged the flag ranking incorrectly.\nBut don\'t worry, you're very close to getting it right!!\n\nTry again!</string>
+    <string name="incorrect_description">You\'ve arranged the flag ranking incorrectly.\nBut don\'t worry, you\'re very close to getting it right!!\n\nTry again!</string>
 
     <!-- Save Ranging dialog -->
     <string name="new_record_title">¡¡New Record!!</string>
     <string name="new_record_description_top">
         Wow! You\'ve finished all the questions Ranking-Trivia Latin America has for now. But don\'t worry, we\'re working day by day to offer more and better rankings from Latam, so look out for an app update to continue this amazing adventure!
-        \n\nFor now, save your record (internet connection required), and if you're in the Top 20, it will appear in the = Hall of Fame = section on the main menu.
+        \n\nFor now, save your record (internet connection required), and if you\'re in the Top 20, it will appear in the = Hall of Fame = section on the main menu.
     </string>
     <string name="new_record_description_bottom">The entire team involved in creating this game thanks you immensely for playing it. Expect new things to come!</string>
     <string name="new_record_save">Save my record</string>

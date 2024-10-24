@@ -2,6 +2,7 @@ package com.ranking.trivia.latam.domain.usecases
 
 import com.ranking.trivia.latam.domain.models.Question
 import com.ranking.trivia.latam.domain.models.QuestionLevel
+import com.ranking.trivia.latam.presentation.ui.dialogs.AppLanguage
 import javax.inject.Inject
 
 class SharedPrefsUseCase @Inject constructor(
@@ -37,4 +38,8 @@ class SharedPrefsUseCase @Inject constructor(
     fun getUserCompletedGame() = prefsRepository.getUserCompletedGame()
 
     fun resetAllData() = prefsRepository.resetAllData()
+
+    fun saveAppLanguage(appLanguage: AppLanguage) = prefsRepository.saveAppLanguage(appLanguage)
+
+    fun getAppLanguage() = prefsRepository.getAppLanguage()
 }

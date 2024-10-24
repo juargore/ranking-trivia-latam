@@ -2,6 +2,7 @@ package com.ranking.trivia.latam.domain.usecases
 
 import com.ranking.trivia.latam.domain.models.Question
 import com.ranking.trivia.latam.domain.models.QuestionLevel
+import com.ranking.trivia.latam.presentation.ui.dialogs.AppLanguage
 
 interface ISharedPrefsRepository {
 
@@ -32,4 +33,8 @@ interface ISharedPrefsRepository {
     fun getUserCompletedGame(): Boolean
 
     fun resetAllData()
+
+    fun saveAppLanguage(appLanguage: AppLanguage)
+
+    fun getAppLanguage(): AppLanguage
 }

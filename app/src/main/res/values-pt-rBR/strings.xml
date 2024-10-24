@@ -15,7 +15,7 @@
     <string name="error_loading_ad">Erro ao carregar o anúncio. Conecte-se à internet para continuar.</string>
 
     <string name="game_level">Nível %s</string>
-    <string name="game_done">Concluído!!</string>
+    <string name="game_done">Pronto!!</string>
 
     <string name="hof_title">Salão da Fama</string>
     <string name="hof_description">Top 20 Jogadores - Maior Pontuação</string>
@@ -75,8 +75,8 @@
     <!-- Options dialog -->
     <string name="options_title">Opções</string>
     <string name="options_sound">Som</string>
-    <string name="options_off">Desligado</string>
-    <string name="options_on">Ligado</string>
+    <string name="options_off">Off</string>
+    <string name="options_on">On</string>
     <string name="options_language">Idioma</string>
     <string name="options_spanish">Espanhol</string>
     <string name="options_english">Inglês</string>

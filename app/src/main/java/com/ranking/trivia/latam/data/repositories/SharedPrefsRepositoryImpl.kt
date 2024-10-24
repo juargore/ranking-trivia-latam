@@ -7,6 +7,7 @@ import com.ranking.trivia.latam.data.common.ENABLE_SOUND
 import com.ranking.trivia.latam.data.common.FIELD_LIST_OF_IDS_ALREADY_PLAYED
 import com.ranking.trivia.latam.data.common.GAME_COMPLETED
 import com.ranking.trivia.latam.data.common.LAST_QUESTION_PLAYED
+import com.ranking.trivia.latam.data.common.SELECTED_LANGUAGE
 import com.ranking.trivia.latam.data.common.SHARED_PREFS_NAME
 import com.ranking.trivia.latam.data.common.TOTAL_ERRORS
 import com.ranking.trivia.latam.data.common.TOTAL_SCORE
@@ -26,6 +27,7 @@ import com.ranking.trivia.latam.domain.models.QuestionLevel.XI
 import com.ranking.trivia.latam.domain.models.QuestionLevel.XII
 import com.ranking.trivia.latam.domain.models.QuestionLevel.XIII
 import com.ranking.trivia.latam.domain.usecases.ISharedPrefsRepository
+import com.ranking.trivia.latam.presentation.ui.dialogs.AppLanguage
 
 class SharedPrefsRepositoryImpl(context: Context): ISharedPrefsRepository {
 
@@ -128,6 +130,24 @@ class SharedPrefsRepositoryImpl(context: Context): ISharedPrefsRepository {
         return sharedPreferences.getBoolean(GAME_COMPLETED, false)
     }
 
+    override fun saveAppLanguage(appLanguage: AppLanguage) {
+        val selectedLanguage = when (appLanguage) {
+            AppLanguage.ES -> "es"
+            AppLanguage.EN -> "en"
+            AppLanguage.BR -> "br"
+        }
+        sharedPreferences.edit().putString(SELECTED_LANGUAGE, selectedLanguage).apply()
+    }
+
+    override fun getAppLanguage(): AppLanguage {
+        val storedLanguage = sharedPreferences.getString(SELECTED_LANGUAGE, "es")
+        return when (storedLanguage) {
+            "en" -> AppLanguage.EN
+            "br" -> AppLanguage.BR
+            else -> AppLanguage.ES
+        }
+    }
+
     override fun resetAllData() {
         sharedPreferences.edit().remove(FIELD_LIST_OF_IDS_ALREADY_PLAYED).apply()
         sharedPreferences.edit().remove(LAST_QUESTION_PLAYED).apply()
@@ -135,4 +155,5 @@ class SharedPrefsRepositoryImpl(context: Context): ISharedPrefsRepository {
         sharedPreferences.edit().remove(TOTAL_SCORE).apply()
         sharedPreferences.edit().remove(GAME_COMPLETED).apply()
     }
+
 }

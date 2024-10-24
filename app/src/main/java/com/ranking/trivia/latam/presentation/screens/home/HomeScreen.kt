@@ -2,6 +2,7 @@ package com.ranking.trivia.latam.presentation.screens.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -38,6 +39,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.os.LocaleListCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
@@ -56,6 +58,7 @@ import com.ranking.trivia.latam.presentation.utils.GOOGLE_PLAY_GAME_URL
 import com.ranking.trivia.latam.presentation.utils.HOME_BOTTOM_SMALL_BANNER_ID
 import com.ranking.trivia.latam.presentation.utils.Pulsating
 import com.ranking.trivia.latam.presentation.utils.VignetteInverseEffect
+import com.ranking.trivia.latam.presentation.utils.getActivity
 import com.ranking.trivia.latam.presentation.utils.openUrl
 import com.ranking.trivia.latam.presentation.utils.playSound
 import com.ranking.trivia.latam.presentation.utils.sidePadding
@@ -76,7 +79,15 @@ fun HomeScreen(
 
     AboutDialog(showAboutDialog) { showAboutDialog = false }
 
-    OptionsDialog(showOptionsDialog, viewModel) { showOptionsDialog = false }
+    OptionsDialog(showOptionsDialog, viewModel) { locale ->
+        showOptionsDialog = false
+        if (locale != null) {
+            context.getActivity()?.runOnUiThread {
+                println("AQUI: Debe actualizar con: $locale")
+                AppCompatDelegate.setApplicationLocales(locale)
+            }
+        }
+    }
 
     TutorialDialog(showTutorialDialog) { showTutorialDialog = false }
 

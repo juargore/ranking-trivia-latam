@@ -1,5 +1,6 @@
 package com.ranking.trivia.latam.presentation.ui.dialogs
 
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -33,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -43,6 +45,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.os.LocaleListCompat
 import androidx.wear.compose.material.ExperimentalWearMaterialApi
 import androidx.wear.compose.material.FractionalThreshold
 import androidx.wear.compose.material.rememberSwipeableState
@@ -55,6 +58,7 @@ import com.ranking.trivia.latam.presentation.theme.Orange
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedSemiBold
 import com.ranking.trivia.latam.presentation.theme.strongShadow
+import com.ranking.trivia.latam.presentation.utils.getActivity
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
@@ -62,10 +66,18 @@ import kotlin.math.roundToInt
 fun OptionsDialog(
     isVisible: Boolean,
     viewModel: HomeViewModel?,
-    onExitClicked: () -> Unit
+    onExitClicked: (LocaleListCompat?) -> Unit
 ) {
-    var soundEnabled by remember { mutableStateOf(
-        viewModel?.shouldPlaySound() ?: false)
+    val context = LocalContext.current
+    var soundEnabled by remember {
+        mutableStateOf(
+            viewModel?.shouldPlaySound() ?: false
+        )
+    }
+    var selectedLanguage by remember {
+        mutableStateOf(
+            viewModel?.getStoredLocaleListCompat() ?: LocaleListCompat.forLanguageTags("es")
+        )
     }
 
     if (isVisible) {
@@ -124,17 +136,24 @@ fun OptionsDialog(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    // TODO: Language implementation in V2
-                    //RadioButtonSample()
+                    RadioButtonSample(
+                        initialOption = viewModel?.getInitialOptionForRB() ?: 0
+                    ) { string ->
+                        selectedLanguage = when (string) {
+                            context.getString(R.string.options_spanish) -> LocaleListCompat.forLanguageTags("es")
+                            context.getString(R.string.options_portuguese) -> LocaleListCompat.forLanguageTags("pt-BR")
+                            else -> LocaleListCompat.forLanguageTags("en")
+                        }
+                    }
 
-                    //Spacer(modifier = Modifier.height(18.dp))
+                    Spacer(modifier = Modifier.height(18.dp))
 
                     Row(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         ButtonExitOrRetry(
                             modifier = Modifier.weight(0.5f),
-                            onClick = { onExitClicked() },
+                            onClick = { onExitClicked(null) },
                             content = {
                                 Text(
                                     text = stringResource(id = R.string.general_exit),
@@ -151,7 +170,8 @@ fun OptionsDialog(
                             modifier = Modifier.weight(0.5f),
                             onClick = {
                                 viewModel?.saveEnableSound(soundEnabled)
-                                onExitClicked()
+                                viewModel?.saveAppLanguage(selectedLanguage)
+                                onExitClicked(selectedLanguage)
                             },
                             content = {
                                 Text(
@@ -263,14 +283,18 @@ fun CustomSwitch(
 }
 
 @Composable
-fun RadioButtonSample() {
+fun RadioButtonSample(
+    initialOption: Int,
+    onSelected: (String) -> Unit
+) {
 
     val radioOptions = listOf(
         stringResource(id = R.string.options_spanish),
         stringResource(id = R.string.options_english),
         stringResource(id = R.string.options_portuguese)
     )
-    val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[1] ) }
+
+    val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[initialOption] ) }
 
     Column {
         Text(
@@ -292,6 +316,7 @@ fun RadioButtonSample() {
                         selected = (text == selectedOption),
                         onClick = {
                             onOptionSelected(text)
+                            onSelected(text)
                         }
                     )
                     .padding(horizontal = 16.dp),
@@ -305,7 +330,10 @@ fun RadioButtonSample() {
                         disabledSelectedColor = Color.Gray,
                         disabledUnselectedColor = Color.Black
                     ),
-                    onClick = { onOptionSelected(text) },
+                    onClick = {
+                        onOptionSelected(text)
+                        onSelected(text)
+                    },
                 )
                 Text(
                     text = text,
@@ -318,6 +346,12 @@ fun RadioButtonSample() {
             }
         }
     }
+}
+
+enum class AppLanguage {
+    ES,
+    EN,
+    BR
 }
 
 @Preview
