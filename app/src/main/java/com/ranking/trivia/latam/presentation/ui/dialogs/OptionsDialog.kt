@@ -1,11 +1,11 @@
 package com.ranking.trivia.latam.presentation.ui.dialogs
 
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -58,7 +58,6 @@ import com.ranking.trivia.latam.presentation.theme.Orange
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedSemiBold
 import com.ranking.trivia.latam.presentation.theme.strongShadow
-import com.ranking.trivia.latam.presentation.utils.getActivity
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
@@ -104,8 +103,26 @@ fun OptionsDialog(
 
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.padding(horizontal = 18.dp)
+                        horizontalArrangement = Arrangement.End,
+                        modifier = Modifier
+                            .padding(horizontal = 18.dp)
+                            .fillMaxWidth()
                     ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.ic_sound_ii),
+                            contentDescription = null,
+                            modifier = Modifier.size(30.dp)
+                        )
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(
+                            text = stringResource(id = R.string.options_sound),
+                            fontSize = 28.sp,
+                            textAlign = TextAlign.Start,
+                            fontFamily = fredokaCondensedBold,
+                            color = Color.White,
+                            style = TextStyle(shadow = strongShadow)
+                        )
+                        Spacer(modifier = Modifier.width(25.dp))
                         CustomSwitch(
                             height = 40.dp,
                             width = 70.dp,
@@ -117,26 +134,11 @@ fun OptionsDialog(
                                 soundEnabled = checked
                             }
                         )
-                        Spacer(modifier = Modifier.width(15.dp))
-                        Text(
-                            text = stringResource(id = R.string.options_sound),
-                            fontSize = 28.sp,
-                            textAlign = TextAlign.Start,
-                            fontFamily = fredokaCondensedBold,
-                            color = Color.White,
-                            style = TextStyle(shadow = strongShadow)
-                        )
-                        Spacer(modifier = Modifier.width(10.dp))
-                        Image(
-                            painter = painterResource(id = R.drawable.ic_sound_ii),
-                            contentDescription = null,
-                            modifier = Modifier.size(30.dp)
-                        )
                     }
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    RadioButtonSample(
+                    RadioButtonLanguage(
                         initialOption = viewModel?.getInitialOptionForRB() ?: 0
                     ) { string ->
                         selectedLanguage = when (string) {
@@ -283,7 +285,7 @@ fun CustomSwitch(
 }
 
 @Composable
-fun RadioButtonSample(
+fun RadioButtonLanguage(
     initialOption: Int,
     onSelected: (String) -> Unit
 ) {

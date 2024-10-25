@@ -105,11 +105,11 @@
     <string name="correct_description">Excelente trabajo! Lo estás haciendo muy bien!!\n\nPasemos a algo más retador!</string>
 
 
-    <!-- Correct dialog -->
+    <!-- Incorrect dialog -->
     <string name="incorrect_title">Incorrecto!</string>
     <string name="incorrect_description">Haz ordenado de forma incorrecta el ranking de las banderas.\nPero no te preocupes, estás muy cerca de lograrlo!!\n\nInténtalo nuevamente!</string>
 
-    <!-- Save Ranging dialog -->
+    <!-- Save Ranking dialog -->
     <string name="new_record_title">¡¡Nuevo Récord!!</string>
     <string name="new_record_description_top">
         Wow! Has terminado con todas las preguntas que Ranking-Trivia Latinoamérica tiene por ahora. Pero no te preocupes, estamos trabajando día a día para ofrecer más y mejores rankings de Latam, así que, espera una actualización de la App para que puedas continuar con esta excelente aventura!

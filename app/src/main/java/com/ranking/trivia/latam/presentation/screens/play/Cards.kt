@@ -71,23 +71,22 @@ fun CardEmptySpace(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(horizontal = 8.dp)
         ) {
-            val background = Modifier
-                .background(
-                    color = CustomBlue.copy(alpha = 0.4f),
-                    shape = RoundedCornerShape(12.dp)
-                )
-                .border(1.dp, Color.Black, RoundedCornerShape(12.dp))
-
-            val (icon, modifier) = when (index) {
-                0 -> Pair(R.drawable.ic_medal_gold, background)
-                1 -> Pair(R.drawable.ic_medal_silver, background)
-                2 -> Pair(R.drawable.ic_medal_bronze, background)
-                else -> Pair(null, Modifier)
+            val icon = when (index) {
+                0 -> R.drawable.ic_medal_gold
+                1 -> R.drawable.ic_medal_silver
+                2 -> R.drawable.ic_medal_bronze
+                else -> null
             }
 
             // medal of honor
             Box(
-                modifier = modifier.size(40.dp),
+                modifier = Modifier
+                    .background(
+                        color = CustomBlue.copy(alpha = 0.4f),
+                        shape = RoundedCornerShape(12.dp)
+                    )
+                    .border(1.dp, Color.Black, RoundedCornerShape(12.dp))
+                    .size(40.dp),
                 contentAlignment = Alignment.Center
             ) {
                 if (icon != null) {
