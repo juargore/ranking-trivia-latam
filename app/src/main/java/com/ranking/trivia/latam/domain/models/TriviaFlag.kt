@@ -4,5 +4,7 @@ data class TriviaFlag(
     val id: FlagId,
     val name: String,
     val image: Int,
-    val alreadyPlayed: Boolean = false
+    var position: Int? = null,
+    var showPosition: Boolean = false,
+    var alreadyPlayed: Boolean = false
 )

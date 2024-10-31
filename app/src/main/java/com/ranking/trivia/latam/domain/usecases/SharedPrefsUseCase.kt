@@ -42,4 +42,8 @@ class SharedPrefsUseCase @Inject constructor(
     fun saveAppLanguage(appLanguage: AppLanguage) = prefsRepository.saveAppLanguage(appLanguage)
 
     fun getAppLanguage() = prefsRepository.getAppLanguage()
+
+    fun saveShowHintDialog(show: Boolean) = prefsRepository.saveShowHintDialog(show)
+
+    fun getShowHintDialog() = prefsRepository.getShowHintDialog()
 }

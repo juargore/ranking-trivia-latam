@@ -4,8 +4,11 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.rememberTransition
+import androidx.compose.animation.core.repeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
@@ -67,7 +70,7 @@ fun getSwingAnimation(
     return angle.value
 }
 
-@Suppress("InfiniteTransitionLabel", "InfinitePropertiesLabel")
+/*@Suppress("InfiniteTransitionLabel", "InfinitePropertiesLabel")
 @Composable
 fun Pulsating(
     duration: Int = 1000,
@@ -86,6 +89,43 @@ fun Pulsating(
     )
 
     Box(modifier = Modifier.scale(scale)) {
+        content()
+    }
+}*/
+
+@Composable
+fun Pulsating(
+    duration: Int = 1000,
+    pulseFraction: Float = 1.2f,
+    infinite: Boolean = true,
+    content: @Composable () -> Unit
+) {
+    val scale = remember { Animatable(1f) }
+
+    LaunchedEffect(infinite) {
+        if (infinite) {
+            scale.animateTo(
+                targetValue = pulseFraction,
+                animationSpec = infiniteRepeatable(
+                    animation = tween(duration),
+                    repeatMode = RepeatMode.Reverse
+                )
+            )
+        } else {
+            repeat(2) {
+                scale.animateTo(
+                    targetValue = pulseFraction,
+                    animationSpec = tween(duration)
+                )
+                scale.animateTo(
+                    targetValue = 1f,
+                    animationSpec = tween(duration)
+                )
+            }
+        }
+    }
+
+    Box(modifier = Modifier.scale(scale.value)) {
         content()
     }
 }

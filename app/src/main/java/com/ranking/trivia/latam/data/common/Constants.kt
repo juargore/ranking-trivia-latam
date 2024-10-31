@@ -10,6 +10,7 @@ const val SELECTED_LANGUAGE = "selected_language"
 const val TOTAL_ERRORS = "total_errors"
 const val TOTAL_SCORE = "total_score"
 const val GAME_COMPLETED = "game_completed"
+const val SHOW_HINT_DIALOG = "show_hint_dialog"
 
 // firebase constant values
 const val SETTINGS = "settings"

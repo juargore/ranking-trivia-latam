@@ -37,4 +37,8 @@ interface ISharedPrefsRepository {
     fun saveAppLanguage(appLanguage: AppLanguage)
 
     fun getAppLanguage(): AppLanguage
+
+    fun saveShowHintDialog(show: Boolean)
+
+    fun getShowHintDialog(): Boolean
 }

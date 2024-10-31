@@ -40,6 +40,7 @@ import com.ranking.trivia.latam.presentation.theme.CustomBlue
 import com.ranking.trivia.latam.presentation.theme.CustomGreen
 import com.ranking.trivia.latam.presentation.theme.Orange
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
+import com.ranking.trivia.latam.presentation.theme.fredokaCondensedSemiBold
 import com.ranking.trivia.latam.presentation.theme.regularShadow
 import com.ranking.trivia.latam.presentation.utils.DragTarget
 import com.ranking.trivia.latam.presentation.utils.DropTarget
@@ -165,7 +166,7 @@ fun CardFlag(
             modifier = Modifier
                 .fillMaxSize()
                 .background(
-                    color = if (flag.alreadyPlayed) Color.Transparent else CustomGreen.copy(alpha = 0.5f),
+                    color = if (flag.alreadyPlayed) Color.Transparent else Color.Gray.copy(alpha = 0.7f),
                     shape = RoundedCornerShape(12.dp)
                 )
                 .border(1.5.dp, Color.Black, RoundedCornerShape(12.dp))
@@ -201,18 +202,30 @@ fun CardFlag(
                     )
                 }
             }
-            // lock icon at right|bottom
-            /*Box(
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .padding(4.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.icon_lock),
-                    contentDescription = null,
-                    modifier = Modifier.size(16.dp)
-                )
-            }*/
+            if (flag.showPosition && !flag.alreadyPlayed && flag.position != 0) {
+                // place position at top|right
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .size(24.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .background(Color.Yellow, shape = CircleShape)
+                            .border(1.dp, Color.Black, CircleShape)
+                            .size(22.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "${flag.position}°",
+                            fontSize = 12.sp,
+                            fontFamily = fredokaCondensedSemiBold,
+                            color = Color.Black
+                        )
+                    }
+                }
+            }
         }
     }
 

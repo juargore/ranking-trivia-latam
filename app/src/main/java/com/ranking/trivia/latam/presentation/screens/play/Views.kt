@@ -1,6 +1,8 @@
 package com.ranking.trivia.latam.presentation.screens.play
 
 import android.annotation.SuppressLint
+import android.os.Handler
+import android.os.Looper
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -50,6 +52,7 @@ import com.ranking.trivia.latam.presentation.screens.home.HomeViewModel
 import com.ranking.trivia.latam.presentation.theme.CustomBlue
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
 import com.ranking.trivia.latam.presentation.theme.regularShadow
+import com.ranking.trivia.latam.presentation.utils.Pulsating
 import com.ranking.trivia.latam.presentation.utils.VignetteInverseEffect
 import com.ranking.trivia.latam.presentation.utils.playSound
 
@@ -69,8 +72,13 @@ fun MainBackground() {
 fun PlayScreenHeader(
     level: QuestionLevel,
     question: String,
+    isHintEnabled: Boolean,
+    onHintClicked: () -> Unit,
     onBack: () -> Unit
 ) {
+
+    var enableClicking by remember { mutableStateOf(true) }
+
     Box(
         modifier = Modifier
             .height(160.dp)
@@ -111,8 +119,41 @@ fun PlayScreenHeader(
             modifier = Modifier.align(Alignment.BottomCenter),
             level = level.ordinal + 1
         )
-    }
 
+        if (isHintEnabled) {
+            Box(
+                modifier = Modifier
+                    .padding(end = 20.dp)
+                    .size(35.dp)
+                    .align(Alignment.BottomEnd)
+                    .clickable {
+                        if (enableClicking) {
+                            enableClicking = false
+                            onHintClicked()
+                            Handler(Looper.getMainLooper()).postDelayed({
+                                enableClicking = true
+                            }, 1200)
+                        }
+                    }
+            ) {
+                Pulsating(duration = 1000, pulseFraction = 1.3f, infinite = false) {
+                    Box(modifier = Modifier
+                        .size(35.dp)
+                        .background(Color.White, shape = CircleShape)
+                        .border(1.5.dp, Color.Black, CircleShape)
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.ic_bulb),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(5.dp)
+                        )
+                    }
+                }
+            }
+        }
+    }
 }
 
 @Composable
@@ -163,7 +204,7 @@ fun HeaderBackAndCategory(
                         playSound(context, R.raw.sound_click)
                     }
                     onBack()
-                           },
+                },
             contentAlignment = Alignment.Center
         ) {
             Image(

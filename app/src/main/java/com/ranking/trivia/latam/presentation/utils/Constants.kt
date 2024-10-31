@@ -18,5 +18,4 @@ const val HALL_BOTTOM_SMALL_BANNER_ID = "ca-app-pub-3990823026049090/2870810221"
 const val PLAY_FULL_SCREEN_BANNER_ID = "ca-app-pub-3990823026049090/2454805421"
 */
 
-// TODO: App URL on Google Play
-const val GOOGLE_PLAY_GAME_URL = "https://play.google.com/store/games"
+const val GOOGLE_PLAY_GAME_URL = "https://play.google.com/store/apps/details?id=com.ranking.trivia.latam"

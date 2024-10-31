@@ -191,10 +191,11 @@ fun HomeBackground(
         fontFamily = fredokaCondensedSemiBold,
         fontSize = 18.sp,
     )
-    AdmobBanner(
+    // TODO
+    /*AdmobBanner(
         modifier = modifierAdmob,
         adId = HOME_BOTTOM_SMALL_BANNER_ID
-    )
+    )*/
 }
 
 @Composable

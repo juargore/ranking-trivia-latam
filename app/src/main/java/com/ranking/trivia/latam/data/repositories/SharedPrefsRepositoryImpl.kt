@@ -9,6 +9,7 @@ import com.ranking.trivia.latam.data.common.GAME_COMPLETED
 import com.ranking.trivia.latam.data.common.LAST_QUESTION_PLAYED
 import com.ranking.trivia.latam.data.common.SELECTED_LANGUAGE
 import com.ranking.trivia.latam.data.common.SHARED_PREFS_NAME
+import com.ranking.trivia.latam.data.common.SHOW_HINT_DIALOG
 import com.ranking.trivia.latam.data.common.TOTAL_ERRORS
 import com.ranking.trivia.latam.data.common.TOTAL_SCORE
 import com.ranking.trivia.latam.domain.models.Question
@@ -148,12 +149,21 @@ class SharedPrefsRepositoryImpl(context: Context): ISharedPrefsRepository {
         }
     }
 
+    override fun saveShowHintDialog(show: Boolean) {
+        sharedPreferences.edit().putBoolean(SHOW_HINT_DIALOG, show).apply()
+    }
+
+    override fun getShowHintDialog(): Boolean {
+        return sharedPreferences.getBoolean(SHOW_HINT_DIALOG, true)
+    }
+
     override fun resetAllData() {
         sharedPreferences.edit().remove(FIELD_LIST_OF_IDS_ALREADY_PLAYED).apply()
         sharedPreferences.edit().remove(LAST_QUESTION_PLAYED).apply()
         sharedPreferences.edit().remove(TOTAL_ERRORS).apply()
         sharedPreferences.edit().remove(TOTAL_SCORE).apply()
         sharedPreferences.edit().remove(GAME_COMPLETED).apply()
+        sharedPreferences.edit().remove(SHOW_HINT_DIALOG).apply()
     }
 
 }

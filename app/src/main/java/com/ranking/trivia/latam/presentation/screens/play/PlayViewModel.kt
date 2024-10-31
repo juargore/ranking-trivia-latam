@@ -89,12 +89,12 @@ class PlayViewModel @Inject constructor(
     }
 
     private fun getFlagsByQuestion(question: Question) {
-        val mQuestions = mutableListOf<TriviaFlag>()
+        val mFlags = mutableListOf<TriviaFlag>()
         question.gameFlags?.forEach {
             val flag: TriviaFlag = gameUseCase.getFlagById(it)
-            mQuestions.add(flag)
+            mFlags.add(flag)
         }
-        _flags.value = mQuestions
+        _flags.value = mFlags
     }
 
     fun verifyIfListIsCorrect(userResponse: List<FlagId>, question: Question): Boolean {
@@ -162,6 +162,40 @@ class PlayViewModel @Inject constructor(
 
     fun resetErrors() {
         prefsUseCase.resetErrors()
+    }
+
+    fun shouldShowHintDialog(): Boolean {
+        val showDialog = prefsUseCase.getShowHintDialog()
+        println("AQUI: shouldShowHintDialog = $showDialog")
+        return showDialog
+    }
+
+    fun saveShouldShowHintDialog(show: Boolean) {
+        prefsUseCase.saveShowHintDialog(show)
+    }
+
+    fun discoverPositionOnFlag() {
+        var updated = false
+        _flags.value = _flags.value.map {
+            if (!updated && !it.alreadyPlayed && !it.showPosition) {
+                updated = true
+                it.copy(
+                    showPosition = true,
+                    position = getFlagPosition(it)
+                )
+            } else {
+                it
+            }
+        }
+    }
+
+    private fun getFlagPosition(flag: TriviaFlag): Int {
+        _question.value?.answerFlags?.forEachIndexed { index, flagId ->
+            if (flag.id == flagId) {
+                return index + 1
+            }
+        }
+        return 0
     }
 
     fun getTimeAccordingLevel(level: QuestionLevel): Long {

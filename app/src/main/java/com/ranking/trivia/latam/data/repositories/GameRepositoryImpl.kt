@@ -187,141 +187,141 @@ class GameRepositoryImpl(context: Context): IGameRepository {
     )
 
     private val questionsLevelI = listOf(
-        Question(11, I, context.getString(R.string.question_i_11), listOf(BR, AR, UY)),
-        Question(12, I, context.getString(R.string.question_i_12), listOf(BR, AR, MX)),
-        Question(13, I, context.getString(R.string.question_i_13), listOf(BR, MX, CO)),
-        Question(14, I, context.getString(R.string.question_i_14), listOf(CL, MX, GT)),
-        Question(15, I, context.getString(R.string.question_i_15), listOf(CO, PE, BR)),
-        Question(16, I, context.getString(R.string.question_i_16), listOf(CU, GT, PA)),
-        Question(17, I, context.getString(R.string.question_i_17), listOf(BO, PE, MX))
+        Question(11, I, context.getString(R.string.question_i_11), listOf(BR, AR, UY), context.getString(R.string.info_i_11)),
+        Question(12, I, context.getString(R.string.question_i_12), listOf(BR, AR, MX), context.getString(R.string.info_i_12)),
+        Question(13, I, context.getString(R.string.question_i_13), listOf(BR, MX, CO), context.getString(R.string.info_i_13)),
+        Question(14, I, context.getString(R.string.question_i_14), listOf(CL, MX, GT), context.getString(R.string.info_i_14)),
+        Question(15, I, context.getString(R.string.question_i_15), listOf(CO, PE, BR), context.getString(R.string.info_i_15)),
+        Question(16, I, context.getString(R.string.question_i_16), listOf(CU, GT, PA), context.getString(R.string.info_i_16)),
+        Question(17, I, context.getString(R.string.question_i_17), listOf(BO, PE, MX), context.getString(R.string.info_i_17))
     )
 
     private val questionsLevelII = listOf(
-        Question(21, II, context.getString(R.string.question_ii_21), listOf(BR, PE, BO, VE)),
-        Question(22, II, context.getString(R.string.question_ii_22), listOf(CO, MX, PY, EC)),
-        Question(23, II, context.getString(R.string.question_ii_23), listOf(BR, VE, BO, PY)),
-        Question(24, II, context.getString(R.string.question_ii_24), listOf(MX, PE, BO, CL)),
-        Question(25, II, context.getString(R.string.question_ii_25), listOf(CU, JM, PR, VE)),
-        Question(26, II, context.getString(R.string.question_ii_26), listOf(HN, GT, NI, SV)),
-        Question(27, II, context.getString(R.string.question_ii_27), listOf(GT, MX, BZ, HN))
+        Question(21, II, context.getString(R.string.question_ii_21), listOf(BR, PE, BO, VE), context.getString(R.string.info_ii_21)),
+        Question(22, II, context.getString(R.string.question_ii_22), listOf(CO, MX, PY, EC), context.getString(R.string.info_ii_22)),
+        Question(23, II, context.getString(R.string.question_ii_23), listOf(BR, VE, BO, PY), context.getString(R.string.info_ii_23)),
+        Question(24, II, context.getString(R.string.question_ii_24), listOf(MX, PE, BO, CL), context.getString(R.string.info_ii_24)),
+        Question(25, II, context.getString(R.string.question_ii_25), listOf(CU, JM, PR, VE), context.getString(R.string.info_ii_25)),
+        Question(26, II, context.getString(R.string.question_ii_26), listOf(HN, GT, NI, SV), context.getString(R.string.info_ii_26)),
+        Question(27, II, context.getString(R.string.question_ii_27), listOf(GT, MX, BZ, HN), context.getString(R.string.info_ii_27))
     )
 
     private val questionsLevelIII = listOf(
-        Question(31, III, context.getString(R.string.question_iii_31), listOf(BO, SV, PE, CR, PA)),
-        Question(32, III, context.getString(R.string.question_iii_32), listOf(DO, CU, PR, JM, MQ)),
-        Question(33, III, context.getString(R.string.question_iii_33), listOf(MF, HT, PR, SV, JM)),
-        Question(34, III, context.getString(R.string.question_iii_34), listOf(CR, SR, EC, PA, NI)),
-        Question(35, III, context.getString(R.string.question_iii_35), listOf(DO, CU, PR, JM, MQ)),
-        Question(36, III, context.getString(R.string.question_iii_36), listOf(SR, MQ, DO, BZ, JM)),
-        Question(37, III, context.getString(R.string.question_iii_37), listOf(CL, VE, CU, DO, PA))
+        Question(31, III, context.getString(R.string.question_iii_31), listOf(BO, SV, PE, CR, PA), context.getString(R.string.info_iii_31)),
+        Question(32, III, context.getString(R.string.question_iii_32), listOf(DO, CU, PR, JM, MQ), context.getString(R.string.info_iii_32)),
+        Question(33, III, context.getString(R.string.question_iii_33), listOf(MF, HT, PR, SV, JM), context.getString(R.string.info_iii_33)),
+        Question(34, III, context.getString(R.string.question_iii_34), listOf(CR, SR, EC, PA, NI), context.getString(R.string.info_iii_34)),
+        Question(35, III, context.getString(R.string.question_iii_35), listOf(DO, CU, PR, JM, MQ), context.getString(R.string.info_iii_35)),
+        Question(36, III, context.getString(R.string.question_iii_36), listOf(SR, MQ, DO, BZ, JM), context.getString(R.string.info_iii_36)),
+        Question(37, III, context.getString(R.string.question_iii_37), listOf(CL, VE, CU, DO, PA), context.getString(R.string.info_iii_37))
     )
 
     private val questionsLevelIV = listOf(
-        Question(41, IV, context.getString(R.string.question_iv_41), listOf(CO, PE, PA, MX, AR, BR)),
-        Question(42, IV, context.getString(R.string.question_iv_42), listOf(AR, CL, CU, MX, UY, CO)),
-        Question(43, IV, context.getString(R.string.question_iv_43), listOf(MX, AR, BR, CL, CU, CO)),
-        Question(44, IV, context.getString(R.string.question_iv_44), listOf(CU, PA, CR, DO, JM, NI)),
-        Question(45, IV, context.getString(R.string.question_iv_45), listOf(BR, AR, MX, UY, CL, PY)),
-        Question(46, IV, context.getString(R.string.question_iv_46), listOf(EC, CR, CO, MX, PE, HN)),
-        Question(47, IV, context.getString(R.string.question_iv_47), listOf(AR, BR, VE, PE, EC, MX))
+        Question(41, IV, context.getString(R.string.question_iv_41), listOf(CO, PE, PA, MX, AR, BR), context.getString(R.string.info_iv_41)),
+        Question(42, IV, context.getString(R.string.question_iv_42), listOf(AR, CL, CU, MX, UY, CO), context.getString(R.string.info_iv_42)),
+        Question(43, IV, context.getString(R.string.question_iv_43), listOf(MX, AR, BR, CL, CU, CO), context.getString(R.string.info_iv_43)),
+        Question(44, IV, context.getString(R.string.question_iv_44), listOf(CU, PA, CR, DO, JM, NI), context.getString(R.string.info_iv_44)),
+        Question(45, IV, context.getString(R.string.question_iv_45), listOf(BR, AR, MX, UY, CL, PY), context.getString(R.string.info_iv_45)),
+        Question(46, IV, context.getString(R.string.question_iv_46), listOf(EC, CR, CO, MX, PE, HN), context.getString(R.string.info_iv_46)),
+        Question(47, IV, context.getString(R.string.question_iv_47), listOf(AR, BR, VE, PE, EC, MX), context.getString(R.string.info_iv_47))
     )
 
     // aquí para abajo puro 6
 
     private val questionsLevelV = listOf(
-        Question(51, V, context.getString(R.string.question_v_51), listOf(BR, MX, AR, CL, PE, CO)),
-        Question(52, V, context.getString(R.string.question_v_52), listOf(VE, BR, MX, AR, CO, EC)),
-        Question(53, V, context.getString(R.string.question_v_53), listOf(AR, BR, CL, BO, UY, PE)),
-        Question(54, V, context.getString(R.string.question_v_54), listOf(BR, AR, MX, CO, CL, PE)),
-        Question(55, V, context.getString(R.string.question_v_55), listOf(MX, AR, BR, CL, PE, CO)),
-        Question(56, V, context.getString(R.string.question_v_56), listOf(MX, BR, PE, AR, CL, CU)),
-        Question(57, V, context.getString(R.string.question_v_57), listOf(UY, CL, AR, CR, BR, MX)),
-        Question(58, V, context.getString(R.string.question_v_58), listOf(AR, UY, BR, PE, PY, CL))
+        Question(51, V, context.getString(R.string.question_v_51), listOf(BR, MX, AR, CL, PE, CO), context.getString(R.string.info_v_51)),
+        Question(52, V, context.getString(R.string.question_v_52), listOf(VE, BR, MX, AR, CO, EC), context.getString(R.string.info_v_52)),
+        Question(53, V, context.getString(R.string.question_v_53), listOf(AR, BR, CL, BO, UY, PE), context.getString(R.string.info_v_53)),
+        Question(54, V, context.getString(R.string.question_v_54), listOf(BR, AR, MX, CO, CL, PE), context.getString(R.string.info_v_54)),
+        Question(55, V, context.getString(R.string.question_v_55), listOf(MX, AR, BR, CL, PE, CO), context.getString(R.string.info_v_55)),
+        Question(56, V, context.getString(R.string.question_v_56), listOf(MX, BR, PE, AR, CL, CU), context.getString(R.string.info_v_56)),
+        Question(57, V, context.getString(R.string.question_v_57), listOf(UY, CL, AR, CR, BR, MX), context.getString(R.string.info_v_57)),
+        Question(58, V, context.getString(R.string.question_v_58), listOf(AR, UY, BR, PE, PY, CL), context.getString(R.string.info_v_58))
     )
 
     private val questionsLevelVI = listOf(
-        Question(61, VI, context.getString(R.string.question_vi_61), listOf(BR, MX, CL, AR, VE, PE)),
-        Question(62, VI, context.getString(R.string.question_vi_62), listOf(CL, BR, AR, MX, PE, CL)),
-        Question(63, VI, context.getString(R.string.question_vi_63), listOf(BR, MX, CO, AR, GT, CU)),
-        Question(64, VI, context.getString(R.string.question_vi_64), listOf(MX, PE, BR, AR, CL, CO)),
-        Question(65, VI, context.getString(R.string.question_vi_65), listOf(BR, VE, PY, AR, CO, CR)), // todo
-        Question(66, VI, context.getString(R.string.question_vi_66), listOf(VE, CL, EC, PA, MX, AR)),
-        Question(67, VI, context.getString(R.string.question_vi_67), listOf(CL, EC, MX, BR, CR, GT)) // todo
+        Question(61, VI, context.getString(R.string.question_vi_61), listOf(BR, MX, CL, AR, VE, PE), context.getString(R.string.info_vi_61)),
+        Question(62, VI, context.getString(R.string.question_vi_62), listOf(CL, BR, AR, MX, PE, CL), context.getString(R.string.info_vi_62)),
+        Question(63, VI, context.getString(R.string.question_vi_63), listOf(BR, MX, CO, AR, GT, CU), context.getString(R.string.info_vi_63)),
+        Question(64, VI, context.getString(R.string.question_vi_64), listOf(MX, PE, BR, AR, CL, CO), context.getString(R.string.info_vi_64)),
+        Question(65, VI, context.getString(R.string.question_vi_65), listOf(BR, VE, PY, AR, CO, CR), context.getString(R.string.info_vi_65)),
+        Question(66, VI, context.getString(R.string.question_vi_66), listOf(VE, CL, EC, PA, MX, AR), context.getString(R.string.info_vi_66)),
+        Question(67, VI, context.getString(R.string.question_vi_67), listOf(CL, EC, MX, BR, CR, GT), context.getString(R.string.info_vi_67))
     )
 
     private val questionsLevelVII = listOf(
-        Question(71, VII, context.getString(R.string.question_vii_71), listOf(AR, CL, BR, PE, CO, UY)),
-        Question(72, VII, context.getString(R.string.question_vii_72), listOf(DO, CU, PR, CR, PA, JM)),
-        Question(73, VII, context.getString(R.string.question_vii_73), listOf(HN, GT, NI, CR, SV, DO)),
-        Question(74, VII, context.getString(R.string.question_vii_74), listOf(GT, BO, CL, AR, PA, HN)),
-        Question(75, VII, context.getString(R.string.question_vii_75), listOf(MX, AR, BR, CL, CO, PE)),
-        Question(76, VII, context.getString(R.string.question_vii_76), listOf(AR, BR, CL, MX, CO, VE)),
-        Question(77, VII, context.getString(R.string.question_vii_77), listOf(AR, BR, CO, CL, MX, PR))
+        Question(71, VII, context.getString(R.string.question_vii_71), listOf(AR, CL, BR, PE, CO, UY), context.getString(R.string.info_vii_71)),
+        Question(72, VII, context.getString(R.string.question_vii_72), listOf(DO, CU, PR, CR, PA, JM), context.getString(R.string.info_vii_72)),
+        Question(73, VII, context.getString(R.string.question_vii_73), listOf(HN, GT, NI, CR, SV, DO), context.getString(R.string.info_vii_73)),
+        Question(74, VII, context.getString(R.string.question_vii_74), listOf(GT, CL, BO, AR, PA, HN), context.getString(R.string.info_vii_74)),
+        Question(75, VII, context.getString(R.string.question_vii_75), listOf(MX, AR, BR, CL, CO, PE), context.getString(R.string.info_vii_75)),
+        Question(76, VII, context.getString(R.string.question_vii_76), listOf(AR, BR, CL, MX, CO, VE), context.getString(R.string.info_vii_76)),
+        Question(77, VII, context.getString(R.string.question_vii_77), listOf(AR, BR, CO, CL, MX, PR), context.getString(R.string.info_vii_77))
     )
 
     private val questionsLevelVIII = listOf(
-        Question(81, VIII, context.getString(R.string.question_viii_81), listOf(AR, BR, CL, VE, MX, CO)),
-        Question(82, VIII, context.getString(R.string.question_viii_82), listOf(AR, MX, BR, CL, UY, PE)),
-        Question(83, VIII, context.getString(R.string.question_viii_83), listOf(AR, BR, MX, CL, UY, CO)),
-        Question(84, VIII, context.getString(R.string.question_viii_84), listOf(DO, GT, CR, PA, SV, HN)),
-        Question(85, VIII, context.getString(R.string.question_viii_85), listOf(AR, CL, BR, MX, UY, PE)),  // todo
-        Question(86, VIII, context.getString(R.string.question_viii_86), listOf(AR, BR, CL, MX, UY, CU)),
-        Question(87, VIII, context.getString(R.string.question_viii_87), listOf(MX, AR, BR, CL, CU, CO))
+        Question(81, VIII, context.getString(R.string.question_viii_81), listOf(AR, BR, CL, VE, MX, CO), context.getString(R.string.info_viii_81)),
+        Question(82, VIII, context.getString(R.string.question_viii_82), listOf(AR, MX, BR, CL, UY, PE), context.getString(R.string.info_viii_82)),
+        Question(83, VIII, context.getString(R.string.question_viii_83), listOf(AR, BR, MX, CL, UY, CO), context.getString(R.string.info_viii_83)),
+        Question(84, VIII, context.getString(R.string.question_viii_84), listOf(DO, GT, CR, PA, SV, HN), context.getString(R.string.info_viii_84)),
+        Question(85, VIII, context.getString(R.string.question_viii_85), listOf(AR, CL, BR, MX, UY, PE), context.getString(R.string.info_viii_85)),
+        Question(86, VIII, context.getString(R.string.question_viii_86), listOf(AR, BR, CL, MX, UY, CU), context.getString(R.string.info_viii_86)),
+        Question(87, VIII, context.getString(R.string.question_viii_87), listOf(MX, AR, BR, CL, CU, CO), context.getString(R.string.info_viii_87))
     )
 
     // TODO: Blur flags here!!! V2
 
     private val questionsLevelIX = listOf(
-        Question(91, IX, context.getString(R.string.question_ix_91), listOf(BR, AR, CL, MX, UY, CO)),
-        Question(92, IX, context.getString(R.string.question_ix_92), listOf(BR, AR, MX, CL, PE, UY)),
-        Question(93, IX, context.getString(R.string.question_ix_93), listOf(AR, BR, CL, MX, CO, PE)),
-        Question(94, IX, context.getString(R.string.question_ix_94), listOf(AR, BR, CL, MX, CO, PE)), // todo
-        Question(95, IX, context.getString(R.string.question_ix_95), listOf(CO, BR, AR, MX, CL, VE)), // todo
-        Question(96, IX, context.getString(R.string.question_ix_96), listOf(AR, BR, CL, MX, CU, PE)), // todo
-        Question(97, IX, context.getString(R.string.question_ix_97), listOf(AR, BR, MX, UY, CL, PY)),
-        Question(98, IX, context.getString(R.string.question_ix_98), listOf(PA, AR, BO, CL, PE, MX))
+        Question(91, IX, context.getString(R.string.question_ix_91), listOf(BR, AR, CL, MX, UY, CO), context.getString(R.string.info_ix_91)),
+        Question(92, IX, context.getString(R.string.question_ix_92), listOf(BR, AR, MX, CL, PE, UY), context.getString(R.string.info_ix_92)),
+        Question(93, IX, context.getString(R.string.question_ix_93), listOf(AR, BR, CL, MX, CO, PE), context.getString(R.string.info_ix_93)),
+        Question(94, IX, context.getString(R.string.question_ix_94), listOf(AR, BR, CL, MX, CO, PE), context.getString(R.string.info_ix_94)),
+        Question(95, IX, context.getString(R.string.question_ix_95), listOf(CO, BR, AR, MX, CL, VE), context.getString(R.string.info_ix_95)),
+        Question(96, IX, context.getString(R.string.question_ix_96), listOf(AR, BR, CL, MX, CU, PE), context.getString(R.string.info_ix_96)),
+        Question(97, IX, context.getString(R.string.question_ix_97), listOf(AR, BR, MX, UY, CL, PY), context.getString(R.string.info_ix_97)),
+        Question(98, IX, context.getString(R.string.question_ix_98), listOf(PA, AR, BO, CL, PE, MX), context.getString(R.string.info_ix_98))
     )
 
     private val questionsLevelX = listOf(
-        Question(101, X, context.getString(R.string.question_x_101), listOf(MX, AR, BR, CL, CO, PE)), // todo
-        Question(102, X, context.getString(R.string.question_x_102), listOf(AR, BR, CL, MX, CO, PE)), // todo
-        Question(103, X, context.getString(R.string.question_x_103), listOf(CU, NI, HN, GT, PA, CR)), // todo
-        Question(104, X, context.getString(R.string.question_x_104), listOf(AR, BR, CL, MX, CO, BO)), // todo
-        Question(105, X, context.getString(R.string.question_x_105), listOf(CL, PY, BO, BR, UY, MX)),
-        Question(106, X, context.getString(R.string.question_x_106), listOf(AR, BR, MX, CL, CO, UY)),
-        Question(107, X, context.getString(R.string.question_x_107), listOf(GT, CU, DO, HN, SV, CR)),
+        Question(101, X, context.getString(R.string.question_x_101), listOf(MX, AR, BR, CL, CO, PE), context.getString(R.string.info_x_101)),
+        Question(102, X, context.getString(R.string.question_x_102), listOf(AR, BR, CL, MX, CO, PE), context.getString(R.string.info_x_102)),
+        Question(103, X, context.getString(R.string.question_x_103), listOf(CU, NI, HN, GT, PA, CR), context.getString(R.string.info_x_103)),
+        Question(104, X, context.getString(R.string.question_x_104), listOf(AR, BR, CL, MX, CO, BO), context.getString(R.string.info_x_104)),
+        Question(105, X, context.getString(R.string.question_x_105), listOf(CL, PY, BO, BR, UY, MX), context.getString(R.string.info_x_105)),
+        Question(106, X, context.getString(R.string.question_x_106), listOf(AR, BR, MX, CL, CO, UY), context.getString(R.string.info_x_106)),
+        Question(107, X, context.getString(R.string.question_x_107), listOf(GT, CU, DO, HN, SV, CR), context.getString(R.string.info_x_107)),
     )
 
     private val questionsLevelXI = listOf(
-        Question(111, XI, context.getString(R.string.question_xi_111), listOf(BR, AR, MX, UY, PY, CO)),
-        Question(112, XI, context.getString(R.string.question_xi_112), listOf(BR, PE, CO, VE, BO, EC)),
-        Question(113, XI, context.getString(R.string.question_xi_113), listOf(CR, CL, UY, AR, PA, MX)),
-        Question(114, XI, context.getString(R.string.question_xi_114), listOf(MX, SV, CR, NI, GT, HN)),
-        Question(115, XI, context.getString(R.string.question_xi_115), listOf(AR, CL, BR, UY, PE, BO)),
-        Question(116, XI, context.getString(R.string.question_xi_116), listOf(BR, AR, MX, PY, CO, VE)), // todo
-        Question(117, XI, context.getString(R.string.question_xi_117), listOf(CL, PE, BR, EC, VE, BO))
+        Question(111, XI, context.getString(R.string.question_xi_111), listOf(BR, AR, MX, UY, PY, CO), context.getString(R.string.info_xi_111)),
+        Question(112, XI, context.getString(R.string.question_xi_112), listOf(BR, PE, CO, VE, BO, EC), context.getString(R.string.info_xi_112)),
+        Question(113, XI, context.getString(R.string.question_xi_113), listOf(CR, CL, UY, AR, PA, MX), context.getString(R.string.info_xi_113)),
+        Question(114, XI, context.getString(R.string.question_xi_114), listOf(MX, SV, CR, NI, GT, HN), context.getString(R.string.info_xi_114)),
+        Question(115, XI, context.getString(R.string.question_xi_115), listOf(AR, CL, BR, UY, PE, BO), context.getString(R.string.info_xi_115)),
+        Question(116, XI, context.getString(R.string.question_xi_116), listOf(BR, AR, MX, PY, CO, VE), context.getString(R.string.info_xi_116)),
+        Question(117, XI, context.getString(R.string.question_xi_117), listOf(CL, PE, BR, EC, VE, BO), context.getString(R.string.info_xi_117))
     )
 
     private val questionsLevelXII = listOf(
-        Question(121, XII, context.getString(R.string.question_xii_121), listOf(EC, CR, GT, CO, HN, DO)),
-        Question(122, XII, context.getString(R.string.question_xii_122), listOf(PY, UY, CR, BR, CL, NI)), // todo
-        Question(123, XII, context.getString(R.string.question_xii_123), listOf(BR, AR, MX, UY, CO, CL)),
-        Question(124, XII, context.getString(R.string.question_xii_124), listOf(BR, MX, CO, CL, VE, PE)),
-        Question(125, XII, context.getString(R.string.question_xii_125), listOf(MX, BR, CL, VE, AR, PE)),
-        Question(126, XII, context.getString(R.string.question_xii_126), listOf(BR, CO, VE, AR, CL, PE)),
-        Question(127, XII, context.getString(R.string.question_xii_127), listOf(BR, CO, VE, PE, BO, EC)),
-        Question(128, XII, context.getString(R.string.question_xii_128), listOf(AR, BR, UY, CO, PY, CL)),
+        Question(121, XII, context.getString(R.string.question_xii_121), listOf(EC, CR, GT, CO, HN, DO), context.getString(R.string.info_xii_121)),
+        Question(122, XII, context.getString(R.string.question_xii_122), listOf(PY, UY, CR, BR, CL, NI), context.getString(R.string.info_xii_122)),
+        Question(123, XII, context.getString(R.string.question_xii_123), listOf(BR, AR, MX, UY, CO, CL), context.getString(R.string.info_xii_123)),
+        Question(124, XII, context.getString(R.string.question_xii_124), listOf(BR, MX, CO, CL, VE, PE), context.getString(R.string.info_xii_124)),
+        Question(125, XII, context.getString(R.string.question_xii_125), listOf(MX, BR, CL, VE, AR, PE), context.getString(R.string.info_xii_125)),
+        Question(126, XII, context.getString(R.string.question_xii_126), listOf(BR, CO, VE, AR, CL, PE), context.getString(R.string.info_xii_126)),
+        Question(127, XII, context.getString(R.string.question_xii_127), listOf(BR, CO, VE, PE, BO, EC), context.getString(R.string.info_xii_127)),
+        Question(128, XII, context.getString(R.string.question_xii_128), listOf(AR, BR, UY, CO, PY, CL), context.getString(R.string.info_xii_128)),
     )
 
     private val questionsLevelXIII = listOf(
-        Question(131, XIII, context.getString(R.string.question_xiii_131), listOf(BR, PA, MX, CL, CO, AR)),
-        Question(132, XIII, context.getString(R.string.question_xiii_132), listOf(EC, MX, VE, BR, CO, HN)), // todo
-        Question(133, XIII, context.getString(R.string.question_xiii_133), listOf(CU, UY, CL, AR, CR, PA)),
-        Question(134, XIII, context.getString(R.string.question_xiii_134), listOf(EC, BR, PE, CO, VE, DO)), // todo
-        Question(135, XIII, context.getString(R.string.question_xiii_135), listOf(MX, PE, CL, BO, AR, GT)),
-        Question(136, XIII, context.getString(R.string.question_xiii_136), listOf(CR, HN, GT, SV, NI, PY)),
-        Question(137, XIII, context.getString(R.string.question_xiii_137), listOf(BR, MX, AR, PY, PE, VE)), // todo
-        Question(138, XIII, context.getString(R.string.question_xiii_138), listOf(AR, BR, EC, CO, CL, MX)),
+        Question(131, XIII, context.getString(R.string.question_xiii_131), listOf(BR, PA, MX, CL, CO, AR), context.getString(R.string.info_xiii_131)),
+        Question(132, XIII, context.getString(R.string.question_xiii_132), listOf(EC, MX, VE, BR, CO, HN), context.getString(R.string.info_xiii_132)),
+        Question(133, XIII, context.getString(R.string.question_xiii_133), listOf(CU, UY, CL, AR, CR, PA), context.getString(R.string.info_xiii_133)),
+        Question(134, XIII, context.getString(R.string.question_xiii_134), listOf(EC, BR, PE, CO, VE, DO), context.getString(R.string.info_xiii_134)),
+        Question(135, XIII, context.getString(R.string.question_xiii_135), listOf(MX, PE, CL, BO, AR, GT), context.getString(R.string.info_xiii_135)),
+        Question(136, XIII, context.getString(R.string.question_xiii_136), listOf(CR, HN, GT, SV, NI, PY), context.getString(R.string.info_xiii_136)),
+        Question(137, XIII, context.getString(R.string.question_xiii_137), listOf(BR, MX, AR, PY, PE, VE), context.getString(R.string.info_xiii_137)),
+        Question(138, XIII, context.getString(R.string.question_xiii_138), listOf(AR, BR, EC, CO, CL, MX), context.getString(R.string.info_xiii_138))
     )
 
     private val allQuestions = questionsLevelI + questionsLevelII + questionsLevelIII + questionsLevelIV +

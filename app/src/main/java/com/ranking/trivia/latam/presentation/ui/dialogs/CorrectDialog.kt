@@ -24,6 +24,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ranking.trivia.latam.R
+import com.ranking.trivia.latam.domain.models.FlagId.AR
+import com.ranking.trivia.latam.domain.models.FlagId.BR
+import com.ranking.trivia.latam.domain.models.FlagId.UY
+import com.ranking.trivia.latam.domain.models.Question
+import com.ranking.trivia.latam.domain.models.QuestionLevel.I
+import com.ranking.trivia.latam.presentation.theme.CustomBlue
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedSemiBold
 import com.ranking.trivia.latam.presentation.theme.strongShadow
@@ -31,6 +37,7 @@ import com.ranking.trivia.latam.presentation.theme.strongShadow
 @Composable
 fun CorrectDialog(
     isVisible: Boolean,
+    question: Question?,
     onNextClicked: () -> Unit
 ) {
     if (isVisible) {
@@ -59,6 +66,21 @@ fun CorrectDialog(
                         style = TextStyle(shadow = strongShadow),
                         modifier = Modifier.wrapContentSize()
                     )
+
+                    Spacer(modifier = Modifier.height(30.dp))
+
+                    if (!question?.moreInfo.isNullOrEmpty()) {
+                        Text(
+                            text =  stringResource(id = R.string.interesting_fact),
+                            fontSize = 19.sp,
+                            textAlign = TextAlign.Start,
+                            fontFamily = fredokaCondensedSemiBold,
+                            color = CustomBlue,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                        Spacer(modifier = Modifier.height(6.dp))
+                        ExpandableText(text = question!!.moreInfo!!)
+                    }
 
                     Spacer(modifier = Modifier.height(35.dp))
 
@@ -93,6 +115,7 @@ fun CorrectDialog(
 fun CorrectDialogPreview() {
     CorrectDialog(
         isVisible = true,
+        question = Question(11, I, "Pregunta 1", listOf(BR, AR, UY), "Descripción del dato aquí para ver qué show y tener una descripción más larga para que aparezca abajo"),
         onNextClicked = {
 
         }

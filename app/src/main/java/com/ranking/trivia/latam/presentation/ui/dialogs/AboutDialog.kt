@@ -115,10 +115,11 @@ fun ExpandableText(text: String) {
             color = Color.Black,
             overflow = TextOverflow.Ellipsis,
             onTextLayout = { textLayoutResult = it },
-            modifier = Modifier.clickable { expandedState = !expandedState }
+            //modifier = Modifier.clickable { expandedState = !expandedState }
         )
         // 44 characters
         if (text.length > 44) {
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = if (expandedState) readLess else readMore,
                 fontSize = 15.sp,

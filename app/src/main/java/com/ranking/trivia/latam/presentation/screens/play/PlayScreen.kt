@@ -6,6 +6,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -45,6 +46,8 @@ import com.ranking.trivia.latam.presentation.screens.home.AdmobBanner
 import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
 import com.ranking.trivia.latam.presentation.theme.strongShadow
 import com.ranking.trivia.latam.presentation.ui.dialogs.CorrectDialog
+import com.ranking.trivia.latam.presentation.ui.dialogs.HintDescriptionDialog
+import com.ranking.trivia.latam.presentation.ui.dialogs.HintDescriptionDialogPreview
 import com.ranking.trivia.latam.presentation.ui.dialogs.IncorrectDialog
 import com.ranking.trivia.latam.presentation.ui.dialogs.SaveRankingDialog
 import com.ranking.trivia.latam.presentation.ui.dialogs.ScoreUI
@@ -73,11 +76,31 @@ fun PlayScreen(
     var showTimeUpDialog by remember { mutableStateOf(false) }
     var showIncorrectDialog by remember { mutableStateOf(false) }
     var showCorrectDialog by remember { mutableStateOf(false) }
+    var showHintDescriptionDialog by remember { mutableStateOf(false) }
     var animateScore: AnimatedScoreData? by remember { mutableStateOf(null) }
 
     SaveRankingDialog(gameCompleted, vmh) {
         context.resetApplication()
     }
+
+    HintDescriptionDialog(
+        isVisible = showHintDescriptionDialog,
+        onAcceptClicked = { checked ->
+            showHintDescriptionDialog = false
+            loadAndShowAd(context, PLAY_FULL_SCREEN_BANNER_ID,
+                onAdFailedToLoad = { },
+                onAdDismissed = {
+                    if (checked) {
+                        viewModel.saveShouldShowHintDialog(false)
+                    }
+                    viewModel.discoverPositionOnFlag()
+                }
+            )
+        },
+        onCancelClicked = {
+            showHintDescriptionDialog = false
+        }
+    )
 
     TimeUpDialog(
         isVisible = showTimeUpDialog,
@@ -100,10 +123,10 @@ fun PlayScreen(
         isVisible = showIncorrectDialog,
         onRetryClicked = {
             if (viewModel.shouldDisplayAd()) {
+                showIncorrectDialog = false
                 loadAndShowAd(context, PLAY_FULL_SCREEN_BANNER_ID,
                     onAdDismissed = {
                         viewModel.resetErrors()
-                        showIncorrectDialog = false
                         onResetScreen()
                     })
             } else {
@@ -115,6 +138,7 @@ fun PlayScreen(
 
     CorrectDialog(
         isVisible = showCorrectDialog,
+        question = question,
         onNextClicked = {
             showCorrectDialog = false
             viewModel.saveQuestionAlreadyPlayed(question)
@@ -142,7 +166,20 @@ fun PlayScreen(
                 PlayScreenHeader(
                     level = it.level,
                     question = it.description,
-                    onBack = { onBack() }
+                    isHintEnabled = flags.any { !it.showPosition },
+                    onBack = { onBack() },
+                    onHintClicked = {
+                        if (viewModel.shouldShowHintDialog()) {
+                            showHintDescriptionDialog = true
+                        } else {
+                            loadAndShowAd(context, PLAY_FULL_SCREEN_BANNER_ID,
+                                onAdFailedToLoad = { },
+                                onAdDismissed = {
+                                    viewModel.discoverPositionOnFlag()
+                                }
+                            )
+                        }
+                    }
                 )
             }
 

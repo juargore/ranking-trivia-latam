@@ -159,12 +159,12 @@ fun ScoreUI(score: Int) {
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .wrapContentWidth()
-            .height(60.dp)
+            .height(50.dp)
     ) {
         Box(
             modifier = Modifier
                 .clip(CircleShape)
-                .size(50.dp)
+                .size(40.dp)
                 .background(Color.Red, CircleShape)
                 .clickable {
                     Toast
