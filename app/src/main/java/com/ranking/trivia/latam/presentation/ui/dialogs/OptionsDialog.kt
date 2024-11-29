@@ -69,9 +69,7 @@ fun OptionsDialog(
 ) {
     val context = LocalContext.current
     var soundEnabled by remember {
-        mutableStateOf(
-            viewModel?.shouldPlaySound() ?: false
-        )
+        mutableStateOf(viewModel?.shouldPlaySound() ?: false)
     }
     var selectedLanguage by remember {
         mutableStateOf(

@@ -6,7 +6,6 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -47,7 +46,6 @@ import com.ranking.trivia.latam.presentation.theme.fredokaCondensedBold
 import com.ranking.trivia.latam.presentation.theme.strongShadow
 import com.ranking.trivia.latam.presentation.ui.dialogs.CorrectDialog
 import com.ranking.trivia.latam.presentation.ui.dialogs.HintDescriptionDialog
-import com.ranking.trivia.latam.presentation.ui.dialogs.HintDescriptionDialogPreview
 import com.ranking.trivia.latam.presentation.ui.dialogs.IncorrectDialog
 import com.ranking.trivia.latam.presentation.ui.dialogs.SaveRankingDialog
 import com.ranking.trivia.latam.presentation.ui.dialogs.ScoreUI
@@ -138,7 +136,7 @@ fun PlayScreen(
 
     CorrectDialog(
         isVisible = showCorrectDialog,
-        question = question,
+        moreInfo = question?.info,
         onNextClicked = {
             showCorrectDialog = false
             viewModel.saveQuestionAlreadyPlayed(question)
@@ -150,12 +148,12 @@ fun PlayScreen(
 
     LaunchedEffect(Unit) {
         viewModel.getQuestionToPlay()
-        if (viewModel.shouldDisplayAdAtStart()) {
+        /*if (viewModel.shouldDisplayAdAtStart()) {
             loadAndShowAd(context, PLAY_FULL_SCREEN_BANNER_ID,
                 onAdFailedToLoad = { onBack() },
                 onAdDismissed = { viewModel.resetErrors() }
             )
-        }
+        }*/
     }
 
     Surface(modifier = Modifier.fillMaxSize()) {

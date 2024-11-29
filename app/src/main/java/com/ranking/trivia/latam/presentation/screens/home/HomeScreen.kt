@@ -61,6 +61,7 @@ import com.ranking.trivia.latam.presentation.utils.VignetteInverseEffect
 import com.ranking.trivia.latam.presentation.utils.getActivity
 import com.ranking.trivia.latam.presentation.utils.openUrl
 import com.ranking.trivia.latam.presentation.utils.playSound
+import com.ranking.trivia.latam.presentation.utils.resetApplication
 import com.ranking.trivia.latam.presentation.utils.sidePadding
 import com.ranking.trivia.latam.presentation.utils.verifyNewerVersion
 
@@ -83,7 +84,7 @@ fun HomeScreen(
         showOptionsDialog = false
         if (locale != null) {
             context.getActivity()?.runOnUiThread {
-                println("AQUI: Debe actualizar con: $locale")
+                //println("AQUI: Debe actualizar con: $locale")
                 AppCompatDelegate.setApplicationLocales(locale)
             }
         }
@@ -191,11 +192,10 @@ fun HomeBackground(
         fontFamily = fredokaCondensedSemiBold,
         fontSize = 18.sp,
     )
-    // TODO
-    /*AdmobBanner(
+    AdmobBanner(
         modifier = modifierAdmob,
         adId = HOME_BOTTOM_SMALL_BANNER_ID
-    )*/
+    )
 }
 
 @Composable

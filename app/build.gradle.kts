@@ -14,8 +14,8 @@ android {
         applicationId = "com.ranking.trivia.latam"
         minSdk = 25
         targetSdk = 34
-        versionCode = 3
-        versionName = "1.0.3"
+        versionCode = 4
+        versionName = "1.0.4"
 
         // Keystore pass = RankingTrivia2024
         // Alias = Key0

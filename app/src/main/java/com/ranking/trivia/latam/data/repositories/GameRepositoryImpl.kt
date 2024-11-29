@@ -269,8 +269,6 @@ class GameRepositoryImpl(context: Context): IGameRepository {
         Question(87, VIII, context.getString(R.string.question_viii_87), listOf(MX, AR, BR, CL, CU, CO), context.getString(R.string.info_viii_87))
     )
 
-    // TODO: Blur flags here!!! V2
-
     private val questionsLevelIX = listOf(
         Question(91, IX, context.getString(R.string.question_ix_91), listOf(BR, AR, CL, MX, UY, CO), context.getString(R.string.info_ix_91)),
         Question(92, IX, context.getString(R.string.question_ix_92), listOf(BR, AR, MX, CL, PE, UY), context.getString(R.string.info_ix_92)),

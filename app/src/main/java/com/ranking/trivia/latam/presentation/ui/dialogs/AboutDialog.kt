@@ -114,8 +114,7 @@ fun ExpandableText(text: String) {
             fontFamily = fredokaCondensedMedium,
             color = Color.Black,
             overflow = TextOverflow.Ellipsis,
-            onTextLayout = { textLayoutResult = it },
-            //modifier = Modifier.clickable { expandedState = !expandedState }
+            onTextLayout = { textLayoutResult = it }
         )
         // 44 characters
         if (text.length > 44) {

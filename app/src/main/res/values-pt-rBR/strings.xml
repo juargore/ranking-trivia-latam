@@ -107,7 +107,7 @@
     <!-- Correct Dialog -->
     <string name="correct_title">Correto!</string>
     <string name="correct_description">Ótimo trabalho! Você está indo muito bem!!\n\nVamos passar para algo mais desafiador!</string>
-    <string name="interesting_fact">Dado interessante</string>
+    <string name="interesting_fact">Curiosidade</string>
 
 
     <!-- Incorrect Dialog -->
